@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NSDM — Neuro-Symbolic Decision Boundaries</title>
-  <meta name="description" content="A rigorous research programme formalising the boundary between capability and accountable AI decision-making." />
+  <meta name="description" content="NSDM formalises the boundary between fluent AI output and accountable AI decision-making by classifying decisions according to their evidential state." />
   <meta property="og:title" content="NSDM — Neuro-Symbolic Decision Boundaries" />
-  <meta property="og:description" content="A rigorous research programme formalising the boundary between capability and accountable AI decision-making." />
+  <meta property="og:description" content="NSDM formalises the boundary between fluent AI output and accountable AI decision-making by classifying decisions according to their evidential state." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://neuro-symbolic-decisions.co.za" />
-  <meta name="theme-color" content="#0a1114" />
+  <meta name="theme-color" content="#07111F" />
   <link rel="preconnect" href="https://api.fontshare.com" />
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=zodiak@400,700&display=swap" rel="stylesheet" />
   <script type="application/ld+json">
@@ -17,44 +17,38 @@
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "NSDM — Neuro-Symbolic Decision Boundaries",
-    "description": "A rigorous research programme formalising the boundary between capability and accountable AI decision-making.",
+    "description": "NSDM formalises the boundary between fluent AI output and accountable AI decision-making by classifying decisions according to their evidential state.",
     "url": "https://neuro-symbolic-decisions.co.za"
   }
   </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html {
-      scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-rendering: optimizeLegibility;
-    }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
     :root, [data-theme="dark"] {
-      --bg: #0a1114;
-      --bg-mid: #0d1519;
-      --surface: rgba(17, 27, 31, 0.86);
-      --surface-2: rgba(22, 34, 39, 0.92);
-      --surface-3: rgba(10, 18, 21, 0.96);
-      --border: rgba(129, 161, 173, 0.16);
-      --border-hi: rgba(129, 161, 173, 0.30);
-      --text: #e8efef;
-      --text-dim: #afbcc0;
-      --text-muted: #7f9198;
-      --primary: #0e7490;
-      --primary-2: #155e75;
-      --primary-soft: rgba(14, 116, 144, 0.16);
-      --primary-glow: rgba(14, 116, 144, 0.28);
-      --green: #22c55e;
-      --orange: #f97316;
-      --violet: #8b5cf6;
-      --pink: #ec4899;
-      --red: #ef4444;
+      --bg: #07111F;
+      --bg-mid: #0D1A2B;
+      --surface: rgba(13, 26, 43, 0.92);
+      --surface-2: rgba(18, 32, 52, 0.95);
+      --surface-3: rgba(8, 16, 30, 0.98);
+      --border: rgba(148, 163, 184, 0.14);
+      --border-hi: rgba(148, 163, 184, 0.26);
+      --text: #E2E8F0;
+      --text-dim: #CBD5E1;
+      --text-muted: #94A3B8;
+      --primary: #22D3EE;
+      --primary-2: #0E7490;
+      --primary-soft: rgba(34, 211, 238, 0.10);
+      --green: #4ADE80;
+      --orange: #FCD34D;
+      --violet: #A78BFA;
+      --pink: #60A5FA;
+      --red: #F87171;
       --radius-sm: 8px;
       --radius-md: 12px;
       --radius-lg: 18px;
-      --shadow-lg: 0 30px 80px rgba(0,0,0,0.32);
-      --max-w: 1160px;
-      --py: clamp(72px, 8vw, 104px);
+      --shadow-lg: 0 30px 80px rgba(0,0,0,0.34);
+      --max-w: 1180px;
+      --py: clamp(72px, 8vw, 108px);
       --font-body: 'Satoshi', 'Inter', sans-serif;
       --font-display: 'Zodiak', Georgia, serif;
       --font-mono: 'Courier New', Courier, monospace;
@@ -62,28 +56,25 @@
     [data-theme="light"] {
       --bg: #f6f5f2;
       --bg-mid: #efede8;
-      --surface: rgba(255,255,255,0.84);
+      --surface: rgba(255,255,255,0.88);
       --surface-2: rgba(252,251,248,0.96);
       --surface-3: rgba(244,241,236,0.98);
       --border: rgba(39, 52, 57, 0.12);
       --border-hi: rgba(39, 52, 57, 0.22);
-      --text: #1e272b;
+      --text: #1f282c;
       --text-dim: #53656c;
       --text-muted: #74858b;
-      --primary: #0e7490;
-      --primary-2: #155e75;
       --primary-soft: rgba(14, 116, 144, 0.10);
-      --primary-glow: rgba(14, 116, 144, 0.18);
       --shadow-lg: 0 30px 80px rgba(21,33,38,0.10);
     }
     body {
       min-height: 100dvh;
       font-family: var(--font-body);
       font-size: 17px;
-      line-height: 1.68;
+      line-height: 1.7;
       background:
-        radial-gradient(circle at top right, rgba(14,116,144,0.09), transparent 30%),
-        radial-gradient(circle at bottom left, rgba(34,197,94,0.05), transparent 24%),
+        radial-gradient(circle at top right, rgba(34,211,238,0.08), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(167,139,250,0.05), transparent 24%),
         var(--bg);
       color: var(--text);
       overflow-x: hidden;
@@ -91,242 +82,125 @@
     a { color: var(--primary); text-decoration: none; }
     a:hover { color: var(--primary-2); }
     img, svg { display: block; max-width: 100%; }
-    button, input { font: inherit; color: inherit; }
-    button { cursor: pointer; background: none; border: none; }
+    button { font: inherit; cursor: pointer; background: none; border: none; }
     .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 28px; }
     .section { padding: var(--py) 0; border-top: 1px solid var(--border); }
     .section.alt { background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00)), var(--bg-mid); }
     .section-head { margin-bottom: 52px; }
-    .eyebrow {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--primary);
-      display: flex; align-items: center; gap: 10px;
-      margin-bottom: 14px;
-    }
+    .eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--primary); display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
     .eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--primary); display: inline-block; }
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(28px, 3.4vw, 42px);
-      line-height: 1.12;
-      letter-spacing: -0.025em;
-      margin-bottom: 12px;
-    }
-    .section-sub {
-      font-size: 16px;
-      color: var(--text-muted);
-      max-width: 66ch;
-      line-height: 1.74;
-    }
+    .section-title { font-family: var(--font-display); font-size: clamp(28px, 3.4vw, 42px); line-height: 1.12; letter-spacing: -0.025em; margin-bottom: 12px; }
+    .section-sub { font-size: 16px; color: var(--text-muted); max-width: 68ch; line-height: 1.74; }
     .r { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
     .r.on { opacity: 1; transform: translateY(0); }
     @media (prefers-reduced-motion: reduce) { .r { opacity: 1; transform: none; transition: none; } * { scroll-behavior: auto !important; } }
-
-    .skip-link {
-      position: absolute; left: 12px; top: -40px; background: var(--surface-2); color: var(--text);
-      padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-hi); z-index: 999;
-    }
+    .skip-link { position: absolute; left: 12px; top: -40px; background: var(--surface-2); color: var(--text); padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-hi); z-index: 999; }
     .skip-link:focus { top: 12px; }
 
-    #topnav {
-      position: fixed; inset: 0 0 auto 0; z-index: 200; height: 64px;
-      background: color-mix(in srgb, var(--bg) 78%, transparent);
-      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      display: flex; align-items: center;
-    }
+    #topnav { position: fixed; inset: 0 0 auto 0; z-index: 200; height: 64px; background: color-mix(in srgb, var(--bg) 80%, transparent); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); display: flex; align-items: center; }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; }
     .nav-brand { display: flex; align-items: center; gap: 12px; color: var(--text); }
     .nav-brand:hover { color: var(--text); }
     .nav-logo { width: 30px; height: 30px; color: var(--primary); }
-    .nav-wordmark {
-      font-family: var(--font-mono); font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-    }
+    .nav-wordmark { font-family: var(--font-mono); font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
     .nav-actions { display: flex; align-items: center; gap: 18px; }
     .nav-links { list-style: none; display: flex; align-items: center; gap: 24px; }
     .nav-links a { font-size: 14px; color: var(--text-dim); }
     .nav-links a:hover { color: var(--text); }
-    .theme-toggle {
-      width: 40px; height: 40px; border-radius: 999px; border: 1px solid var(--border);
-      display: inline-flex; align-items: center; justify-content: center; color: var(--text-dim);
-      background: var(--surface);
-    }
+    .theme-toggle { width: 40px; height: 40px; border-radius: 999px; border: 1px solid var(--border); display: inline-flex; align-items: center; justify-content: center; color: var(--text-dim); background: var(--surface); }
     .theme-toggle:hover { color: var(--text); border-color: var(--border-hi); }
     .nav-hamburger { display: none; width: 40px; height: 40px; border-radius: 999px; border: 1px solid var(--border); align-items: center; justify-content: center; }
     .nav-hamburger span { display: block; width: 18px; height: 1.5px; background: var(--text-dim); margin: 2px 0; }
     @media (max-width: 760px) {
       .nav-hamburger { display: inline-flex; }
-      .nav-links {
-        display: none; position: absolute; top: 63px; left: 0; right: 0; flex-direction: column; align-items: flex-start;
-        gap: 0; padding: 10px 0; background: color-mix(in srgb, var(--bg) 94%, transparent); border-bottom: 1px solid var(--border);
-      }
+      .nav-links { display: none; position: absolute; top: 63px; left: 0; right: 0; flex-direction: column; align-items: flex-start; gap: 0; padding: 10px 0; background: color-mix(in srgb, var(--bg) 94%, transparent); border-bottom: 1px solid var(--border); }
       .nav-links.open { display: flex; }
       .nav-links a { display: block; padding: 12px 28px; width: 100%; }
     }
 
-    #hero {
-      position: relative; min-height: 100dvh; padding-top: 64px; display: flex; align-items: center; overflow: hidden;
-    }
-    .grid-bg {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(14,116,144,0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(14,116,144,0.06) 1px, transparent 1px);
-      background-size: 52px 52px;
-      animation: gridmove 30s linear infinite;
-      mask-image: radial-gradient(ellipse 82% 68% at 46% 50%, #000 18%, transparent 100%);
-      pointer-events: none;
-    }
-    .hero-glow, .hero-glow-2 {
-      position: absolute; border-radius: 999px; filter: blur(70px); pointer-events: none; opacity: 0.42;
-    }
-    .hero-glow {
-      width: 560px; height: 560px; right: -120px; top: 8%;
-      background: radial-gradient(circle, rgba(14,116,144,0.28) 0%, rgba(14,116,144,0.10) 46%, transparent 72%);
-    }
-    .hero-glow-2 {
-      width: 380px; height: 380px; left: -80px; bottom: -50px;
-      background: radial-gradient(circle, rgba(34,197,94,0.16) 0%, rgba(34,197,94,0.05) 44%, transparent 72%);
-    }
+    #hero { position: relative; min-height: 100dvh; padding-top: 64px; display: flex; align-items: center; overflow: hidden; }
+    .grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(14,116,144,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(14,116,144,0.06) 1px, transparent 1px); background-size: 52px 52px; animation: gridmove 30s linear infinite; mask-image: radial-gradient(ellipse 82% 68% at 46% 50%, #000 18%, transparent 100%); pointer-events: none; }
+    .hero-glow, .hero-glow-2 { position: absolute; border-radius: 999px; filter: blur(70px); pointer-events: none; opacity: 0.42; }
+    .hero-glow { width: 560px; height: 560px; right: -120px; top: 8%; background: radial-gradient(circle, rgba(14,116,144,0.28) 0%, rgba(14,116,144,0.10) 46%, transparent 72%); }
+    .hero-glow-2 { width: 380px; height: 380px; left: -80px; bottom: -50px; background: radial-gradient(circle, rgba(34,197,94,0.16) 0%, rgba(34,197,94,0.05) 44%, transparent 72%); }
     @keyframes gridmove { from { background-position: 0 0, 0 0; } to { background-position: 52px 52px, 52px 52px; } }
     @media (prefers-reduced-motion: reduce) { .grid-bg { animation: none; } }
-    .hero-grid {
-      position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr); gap: 44px; align-items: center;
-    }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr); gap: 44px; align-items: center; }
     .hero-body { max-width: 760px; }
-    .hero-tag {
-      font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--primary); display: flex; align-items: center; gap: 10px; margin-bottom: 28px;
-    }
+    .hero-tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--primary); display: flex; align-items: center; gap: 10px; margin-bottom: 28px; }
     .hero-tag::before { content: ''; width: 28px; height: 1px; background: var(--primary); display: inline-block; }
-    .hero-h {
-      font-family: var(--font-display);
-      font-size: clamp(44px, 7vw, 84px);
-      line-height: 0.98;
-      letter-spacing: -0.045em;
-      margin-bottom: 22px;
-      max-width: 11ch;
-    }
-    .hero-sub {
-      font-size: clamp(17px, 2.1vw, 20px);
-      color: var(--text-dim);
-      max-width: 62ch;
-      line-height: 1.72;
-      margin-bottom: 34px;
-    }
+    .hero-h { font-family: var(--font-display); font-size: clamp(44px, 7vw, 84px); line-height: 0.98; letter-spacing: -0.045em; margin-bottom: 22px; max-width: 11ch; }
+    .hero-sub { font-size: clamp(17px, 2.1vw, 20px); color: var(--text-dim); max-width: 62ch; line-height: 1.72; margin-bottom: 34px; }
     .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 32px; }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; min-height: 44px;
-      padding: 0 22px; border-radius: 999px; border: 1px solid transparent;
-      font-size: 14px; font-weight: 600; letter-spacing: 0.01em;
-      transition: transform 180ms ease, background 180ms ease, color 180ms ease, border-color 180ms ease;
-    }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 22px; border-radius: 999px; border: 1px solid transparent; font-size: 14px; font-weight: 600; letter-spacing: 0.01em; transition: transform 180ms ease, background 180ms ease, color 180ms ease, border-color 180ms ease; }
     .btn:hover { transform: translateY(-1px); }
     .btn-fill { background: var(--primary); color: #fff; border-color: var(--primary); }
     .btn-fill:hover { background: var(--primary-2); color: #fff; border-color: var(--primary-2); }
     .btn-outline { background: transparent; color: var(--text); border-color: var(--border-hi); }
     .btn-outline:hover { color: var(--primary); border-color: var(--primary); }
     .pills { display: flex; flex-wrap: wrap; gap: 10px; }
-    .pill {
-      font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.02em; color: var(--text-dim);
-      background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 7px 14px;
-    }
+    .pill { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.02em; color: var(--text-dim); background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 7px 14px; }
     .pill strong { color: var(--primary); font-weight: 700; }
-    .hero-panel {
-      position: relative; background: linear-gradient(180deg, color-mix(in srgb, var(--surface-2) 92%, transparent), color-mix(in srgb, var(--surface-3) 96%, transparent));
-      border: 1px solid var(--border-hi); border-radius: var(--radius-lg); padding: 22px; box-shadow: var(--shadow-lg); overflow: hidden;
-    }
-    .hero-panel::before {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(14,116,144,0.10), transparent 38%, transparent 62%, rgba(34,197,94,0.06));
-      pointer-events: none;
-    }
-    .hero-panel-head {
-      position: relative; z-index: 1; display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-bottom: 18px;
-    }
-    .hero-panel-title, .hero-panel-note {
-      font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.10em;
-    }
+    .hero-panel { position: relative; background: linear-gradient(180deg, color-mix(in srgb, var(--surface-2) 92%, transparent), color-mix(in srgb, var(--surface-3) 96%, transparent)); border: 1px solid var(--border-hi); border-radius: var(--radius-lg); padding: 22px; box-shadow: var(--shadow-lg); overflow: hidden; }
+    .hero-panel::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(14,116,144,0.10), transparent 38%, transparent 62%, rgba(34,197,94,0.06)); pointer-events: none; }
+    .hero-panel-head { position: relative; z-index: 1; display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-bottom: 18px; }
+    .hero-panel-title, .hero-panel-note { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.10em; }
     .hero-panel-title { color: var(--primary); }
     .hero-panel-note { color: var(--text-muted); }
-    .hero-diagram {
-      position: relative; z-index: 1; aspect-ratio: 1 / 1; border-radius: 14px; border: 1px solid var(--border);
-      background:
-        radial-gradient(circle at 50% 50%, rgba(14,116,144,0.12), transparent 44%),
-        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
-      overflow: hidden;
-    }
+    .hero-diagram { position: relative; z-index: 1; aspect-ratio: 1 / 1; border-radius: 14px; border: 1px solid var(--border); background: radial-gradient(circle at 50% 50%, rgba(14,116,144,0.12), transparent 44%), linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00)); overflow: hidden; }
     .hero-legend { position: relative; z-index: 1; margin-top: 16px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
     .hero-legend-item { display: flex; gap: 8px; align-items: center; font-size: 12.5px; color: var(--text-dim); }
     .hero-legend-dot { width: 8px; height: 8px; border-radius: 999px; flex-shrink: 0; }
-    .hero-legend-dot.support { background: var(--green); }
-    .hero-legend-dot.gap { background: var(--primary); }
-    .hero-legend-dot.conflict { background: var(--orange); }
-    .hero-legend-dot.rule { background: var(--violet); }
-    @media (max-width: 920px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 30px; }
-      .hero-h { max-width: none; }
-      .hero-panel { max-width: 560px; }
-    }
+    .hero-legend-dot.support { background: var(--green); } .hero-legend-dot.gap { background: var(--primary); } .hero-legend-dot.conflict { background: var(--orange); } .hero-legend-dot.rule { background: var(--violet); }
+    @media (max-width: 920px) { .hero-grid { grid-template-columns: 1fr; gap: 30px; } .hero-h { max-width: none; } .hero-panel { max-width: 560px; } }
+
+    .audience-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 26px; }
+    @media (max-width: 980px) { .audience-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 640px) { .audience-grid { grid-template-columns: 1fr; } }
+    .aud-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 20px; }
+    .aud-card h3 { font-size: 15px; margin-bottom: 8px; }
+    .aud-card p { font-size: 14px; line-height: 1.62; color: var(--text-dim); }
+
+    .framing-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    @media (max-width: 800px) { .framing-grid { grid-template-columns: 1fr; } }
+    .frame-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 22px; }
+    .frame-box h3 { font-size: 18px; margin-bottom: 12px; }
+    .frame-box p { font-size: 14px; color: var(--text-dim); line-height: 1.66; }
+    .frame-list { display: grid; gap: 12px; margin-top: 12px; }
+    .frame-item { display: grid; gap: 4px; }
+    .frame-item strong { font-size: 13.5px; color: var(--text); }
+    .frame-item span { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
 
     .labels-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-bottom: 42px; }
     @media (max-width: 720px) { .labels-grid { grid-template-columns: 1fr; } }
-    .lcard {
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 22px;
-      transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
-    }
+    .lcard { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 22px; transition: background 180ms ease, border-color 180ms ease, transform 180ms ease; }
     .lcard:hover { background: var(--surface-2); border-color: var(--border-hi); transform: translateY(-1px); }
-    .lcard-name {
-      display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
-      font-family: var(--font-mono); font-size: 13.5px; font-weight: 700; letter-spacing: 0.03em;
-    }
+    .lcard-kicker { font-size: 13px; color: var(--text-dim); margin-bottom: 8px; }
+    .lcard-name { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-family: var(--font-mono); font-size: 13.5px; font-weight: 700; letter-spacing: 0.03em; }
     .lcard-dot { width: 8px; height: 8px; border-radius: 999px; flex-shrink: 0; }
-    .lcard-green .lcard-name { color: var(--green); }
-    .lcard-green .lcard-dot { background: var(--green); }
-    .lcard-red .lcard-name { color: var(--red); }
-    .lcard-red .lcard-dot { background: var(--red); }
-    .lcard-orange .lcard-name { color: var(--orange); }
-    .lcard-orange .lcard-dot { background: var(--orange); }
-    .lcard-indigo .lcard-name { color: var(--primary); }
-    .lcard-indigo .lcard-dot { background: var(--primary); }
-    .lcard-purple .lcard-name { color: var(--violet); }
-    .lcard-purple .lcard-dot { background: var(--violet); }
-    .lcard-pink .lcard-name { color: var(--pink); }
-    .lcard-pink .lcard-dot { background: var(--pink); }
+    .lcard-green .lcard-name { color: var(--green); } .lcard-green .lcard-dot { background: var(--green); }
+    .lcard-red .lcard-name { color: var(--red); } .lcard-red .lcard-dot { background: var(--red); }
+    .lcard-orange .lcard-name { color: var(--orange); } .lcard-orange .lcard-dot { background: var(--orange); }
+    .lcard-indigo .lcard-name { color: var(--primary); } .lcard-indigo .lcard-dot { background: var(--primary); }
+    .lcard-purple .lcard-name { color: var(--violet); } .lcard-purple .lcard-dot { background: var(--violet); }
+    .lcard-pink .lcard-name { color: var(--pink); } .lcard-pink .lcard-dot { background: var(--pink); }
     .lcard-desc { font-size: 14px; color: var(--text-dim); line-height: 1.62; margin-bottom: 12px; }
-    .lcard-tagline {
-      font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); letter-spacing: 0.05em;
-      padding-top: 10px; border-top: 1px solid var(--border);
-    }
+    .lcard-tagline { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); letter-spacing: 0.05em; padding-top: 10px; border-top: 1px solid var(--border); margin-bottom: 12px; }
+    .lcard-detail { font-size: 14px; color: var(--text-dim); line-height: 1.66; }
     .dbox { background: var(--surface); border: 1px solid var(--border-hi); border-radius: var(--radius-lg); overflow: hidden; }
     .dbox-head { padding: 16px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
     .dbox-title { font-family: var(--font-mono); font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     .tok-red { color: var(--red); } .tok-indigo { color: var(--primary); } .tok-neq { color: var(--text-muted); font-size: 16px; }
-    .novelty-badge {
-      font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 8px;
-      border-radius: 999px; background: var(--primary-soft); color: var(--primary);
-    }
+    .novelty-badge { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 8px; border-radius: 999px; background: var(--primary-soft); color: var(--primary); }
     .dbox-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
-    .dcol { padding: 22px 24px; }
-    .dcol + .dcol { border-left: 1px solid var(--border); }
-    .dcol h3 { font-size: 15px; margin-bottom: 10px; }
-    .dcol p { font-size: 14px; color: var(--text-dim); line-height: 1.66; }
-    @media (max-width: 760px) {
-      .dbox-grid { grid-template-columns: 1fr; }
-      .dcol + .dcol { border-left: 0; border-top: 1px solid var(--border); }
-    }
+    .dcol { padding: 22px 24px; } .dcol + .dcol { border-left: 1px solid var(--border); }
+    .dcol h3 { font-size: 15px; margin-bottom: 10px; } .dcol p { font-size: 14px; color: var(--text-dim); line-height: 1.66; }
+    @media (max-width: 760px) { .dbox-grid { grid-template-columns: 1fr; } .dcol + .dcol { border-left: 0; border-top: 1px solid var(--border); } }
 
-    .formal-wrap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr); gap: 18px; align-items: start; }
+    .formal-wrap { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr); gap: 18px; align-items: start; }
     @media (max-width: 920px) { .formal-wrap { grid-template-columns: 1fr; } }
-    .codebox, .ftable-wrap {
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden;
-    }
-    .code-head, .ft-head {
-      padding: 14px 18px; border-bottom: 1px solid var(--border); font-family: var(--font-mono); font-size: 11px;
-      text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted);
-    }
+    .codebox, .ftable-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+    .code-head, .ft-head { padding: 14px 18px; border-bottom: 1px solid var(--border); font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); }
     pre.code { padding: 20px; overflow-x: auto; font-size: 13px; line-height: 1.66; color: #d7e3e6; }
     .ftable { width: 100%; border-collapse: collapse; }
     .ftable th, .ftable td { text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 13.5px; }
@@ -336,77 +210,43 @@
     .paper-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
     @media (max-width: 980px) { .paper-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 640px) { .paper-grid { grid-template-columns: 1fr; } }
-    .pcard {
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 22px;
-      display: flex; flex-direction: column; gap: 12px; min-height: 270px;
-    }
-    .pcard-status {
-      align-self: flex-start; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
-      padding: 5px 8px; border-radius: 999px; border: 1px solid var(--border);
-    }
+    .pcard { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 22px; display: flex; flex-direction: column; gap: 12px; min-height: 290px; }
+    .pcard-status { align-self: flex-start; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 8px; border-radius: 999px; border: 1px solid var(--border); }
     .pcard-status.live { color: var(--green); background: color-mix(in srgb, var(--green) 10%, transparent); }
     .pcard-status.build { color: var(--primary); background: var(--primary-soft); }
     .pcard-status.plan { color: var(--text-muted); background: rgba(127,145,152,0.08); }
-    .pcard h3 { font-size: 17px; line-height: 1.34; }
-    .pcard p { font-size: 14px; line-height: 1.64; color: var(--text-dim); }
+    .pcard h3 { font-size: 17px; line-height: 1.34; } .pcard p { font-size: 14px; line-height: 1.64; color: var(--text-dim); }
 
-    .bench-shell {
-      display: grid; grid-template-columns: 1fr; gap: 18px;
-    }
+    .bench-shell { display: grid; gap: 18px; }
     .bench-top { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
     @media (max-width: 880px) { .bench-top { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 540px) { .bench-top { grid-template-columns: 1fr; } }
-    .stat {
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 18px;
-    }
+    .stat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 18px; }
     .stat-n { font-size: 30px; font-weight: 700; color: var(--text); line-height: 1; margin-bottom: 8px; }
     .stat-l { font-size: 13px; color: var(--text-dim); }
-    .growth, .baseline-box, .leakage, .bench-card, .bench-action {
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
-    }
+    .growth, .baseline-box, .leakage, .bench-card, .bench-action { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); }
     .growth, .baseline-box { padding: 22px; }
-    .subhead {
-      font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted);
-      margin-bottom: 14px;
-    }
+    .subhead { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; }
     .ladder { display: grid; grid-template-columns: repeat(9, auto); gap: 0; align-items: stretch; overflow-x: auto; }
-    .ls {
-      min-width: 108px; padding: 16px 14px; background: var(--surface-3); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      display: flex; flex-direction: column; justify-content: center;
-    }
+    .ls { min-width: 108px; padding: 16px 14px; background: var(--surface-3); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); display: flex; flex-direction: column; justify-content: center; }
     .ls:first-child { border-left: 1px solid var(--border); border-radius: var(--radius-md) 0 0 var(--radius-md); }
     .ls:last-child { border-right: 1px solid var(--border); border-radius: 0 var(--radius-md) var(--radius-md) 0; }
     .ls.cur { background: color-mix(in srgb, var(--primary-soft) 90%, var(--surface)); }
-    .ls-n { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
-    .ls-d { font-size: 12px; color: var(--text-dim); }
-    .la { width: 34px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); }
+    .ls-n { font-size: 24px; font-weight: 700; margin-bottom: 4px; } .ls-d { font-size: 12px; color: var(--text-dim); } .la { width: 34px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); }
     .baseline-box { overflow-x: auto; }
     .bltable { width: 100%; border-collapse: collapse; }
     .bltable th, .bltable td { text-align: left; padding: 13px 10px; border-bottom: 1px solid var(--border); font-size: 13.5px; }
     .bltable th { font-size: 11px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
     .bn { font-family: var(--font-mono); }
-    .badge {
-      display: inline-flex; align-items: center; justify-content: center; padding: 4px 8px; border-radius: 999px;
-      font-size: 11px; font-family: var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase;
-      border: 1px solid var(--border);
-    }
-    .done { color: var(--green); background: color-mix(in srgb, var(--green) 10%, transparent); }
-    .audit { color: var(--primary); background: var(--primary-soft); }
-    .prog { color: var(--orange); background: color-mix(in srgb, var(--orange) 10%, transparent); }
-    .plan { color: var(--text-muted); background: rgba(127,145,152,0.08); }
-    .dash { color: var(--text-muted); }
-    .leakage {
-      display: grid; grid-template-columns: auto 1fr; gap: 14px; padding: 20px 22px; border-color: color-mix(in srgb, var(--orange) 28%, var(--border));
-    }
+    .badge { display: inline-flex; align-items: center; justify-content: center; padding: 4px 8px; border-radius: 999px; font-size: 11px; font-family: var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--border); }
+    .done { color: var(--green); background: color-mix(in srgb, var(--green) 10%, transparent); } .audit { color: var(--primary); background: var(--primary-soft); } .prog { color: var(--orange); background: color-mix(in srgb, var(--orange) 10%, transparent); } .plan { color: var(--text-muted); background: rgba(127,145,152,0.08); } .dash { color: var(--text-muted); }
+    .leakage { display: grid; grid-template-columns: auto 1fr; gap: 14px; padding: 20px 22px; border-color: color-mix(in srgb, var(--orange) 28%, var(--border)); }
     .leakage-icon { color: var(--orange); font-size: 18px; margin-top: 2px; }
-    .leakage h4 { font-size: 15px; margin-bottom: 6px; }
-    .leakage p { font-size: 14px; color: var(--text-dim); line-height: 1.64; }
+    .leakage h4 { font-size: 15px; margin-bottom: 6px; } .leakage p { font-size: 14px; color: var(--text-dim); line-height: 1.64; }
     .bench-usage { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 16px; }
     @media (max-width: 760px) { .bench-usage { grid-template-columns: 1fr; } }
     .bench-card, .bench-action { padding: 22px; }
-    .bench-card h3, .bench-action h3 {
-      font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text); margin-bottom: 10px;
-    }
+    .bench-card h3, .bench-action h3 { font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text); margin-bottom: 10px; }
     .bench-card p, .bench-action p { font-size: 14px; line-height: 1.68; color: var(--text-dim); }
     .bench-list { list-style: none; display: grid; gap: 10px; margin-top: 14px; }
     .bench-list li { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; color: var(--text-dim); line-height: 1.58; }
@@ -416,21 +256,14 @@
     .pgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
     @media (max-width: 980px) { .pgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 640px) { .pgrid { grid-template-columns: 1fr; } }
-    .pcard-p {
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 22px;
-    }
-    .pcard-p h3 { font-size: 16px; line-height: 1.36; margin-bottom: 10px; }
-    .pcard-p p { font-size: 14px; line-height: 1.66; color: var(--text-dim); }
+    .pcard-p { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 22px; }
+    .pcard-p h3 { font-size: 16px; line-height: 1.36; margin-bottom: 10px; } .pcard-p p { font-size: 14px; line-height: 1.66; color: var(--text-dim); }
 
-    footer {
-      padding: 34px 0 54px; border-top: 1px solid var(--border);
-    }
-    .foot {
-      display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; flex-wrap: wrap;
-    }
+    footer { padding: 34px 0 54px; border-top: 1px solid var(--border); }
+    .foot { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
     .foot-brand { display: flex; align-items: center; gap: 12px; }
     .foot-logo { width: 28px; height: 28px; color: var(--primary); }
-    .foot-copy { font-size: 13px; color: var(--text-muted); max-width: 56ch; }
+    .foot-copy { font-size: 13px; color: var(--text-muted); max-width: 58ch; }
     .foot-nav { list-style: none; display: flex; gap: 18px; flex-wrap: wrap; }
     .foot-nav a { font-size: 13px; color: var(--text-dim); }
     .foot-nav a:hover { color: var(--text); }
@@ -438,7 +271,6 @@
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to content</a>
-
   <nav id="topnav" aria-label="Primary">
     <div class="wrap nav-inner">
       <a href="#hero" class="nav-brand" aria-label="NSDM home">
@@ -463,9 +295,7 @@
         <button class="theme-toggle" data-theme-toggle aria-label="Switch to light mode">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3A7 7 0 0 0 21 12.79z"/></svg>
         </button>
-        <button class="nav-hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links" id="nav-hamburger">
-          <div><span></span><span></span><span></span></div>
-        </button>
+        <button class="nav-hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links" id="nav-hamburger"><div><span></span><span></span><span></span></div></button>
       </div>
     </div>
   </nav>
@@ -480,7 +310,7 @@
           <div class="hero-body r">
             <div class="hero-tag">Neuro-Symbolic Decision Boundaries</div>
             <h1 class="hero-h">AI should not only answer.<br>It should know whether it is justified.</h1>
-            <p class="hero-sub">A rigorous research programme formalising the boundary between capability and accountable AI decision-making.</p>
+            <p class="hero-sub">NSDM formalises the boundary between fluent AI output and accountable AI decision-making by classifying decisions according to their evidential state.</p>
             <div class="cta-row">
               <a href="#benchmark" class="btn btn-fill">Explore Benchmark</a>
               <a href="#papers" class="btn btn-outline">Read Papers</a>
@@ -489,6 +319,7 @@
               <span class="pill"><strong>6</strong> Decision Labels</span>
               <span class="pill"><strong>60</strong> Validated Examples</span>
               <span class="pill">Target κ <strong>≥&nbsp;0.65</strong></span>
+              <span class="pill"><strong>10K</strong> long-run scale</span>
             </div>
           </div>
           <div class="hero-visual r">
@@ -500,14 +331,8 @@
               <div class="hero-diagram" aria-hidden="true">
                 <svg viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <defs>
-                    <linearGradient id="pathA" x1="92" y1="140" x2="388" y2="316" gradientUnits="userSpaceOnUse">
-                      <stop stop-color="#22c55e"/>
-                      <stop offset="1" stop-color="#0e7490"/>
-                    </linearGradient>
-                    <linearGradient id="pathB" x1="90" y1="342" x2="382" y2="180" gradientUnits="userSpaceOnUse">
-                      <stop stop-color="#f97316"/>
-                      <stop offset="1" stop-color="#8b5cf6"/>
-                    </linearGradient>
+                    <linearGradient id="pathA" x1="92" y1="140" x2="388" y2="316" gradientUnits="userSpaceOnUse"><stop stop-color="#22c55e"/><stop offset="1" stop-color="#0e7490"/></linearGradient>
+                    <linearGradient id="pathB" x1="90" y1="342" x2="382" y2="180" gradientUnits="userSpaceOnUse"><stop stop-color="#f97316"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient>
                   </defs>
                   <rect x="40" y="40" width="400" height="400" rx="20" stroke="rgba(255,255,255,0.08)" stroke-dasharray="6 10"/>
                   <circle cx="154" cy="146" r="82" fill="rgba(34,197,94,0.08)" stroke="rgba(34,197,94,0.28)"/>
@@ -540,65 +365,65 @@
       </div>
     </section>
 
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head r">
+          <span class="eyebrow">Audience</span>
+          <h2 class="section-title">Who this programme is for</h2>
+          <p class="section-sub">Every claim, recommendation, or action is evaluated as supported, unsupported, contradicted, under-specified, governance-ambiguous, or reward-aligned but unjustified.</p>
+        </div>
+        <div class="audience-grid">
+          <div class="aud-card r"><h3>Researchers</h3><p>Use the corpus and taxonomy to study evidence-state classification, epistemic failure modes, and justification boundary geometry.</p></div>
+          <div class="aud-card r"><h3>Model Evaluators</h3><p>Compare baseline systems under leakage-audited conditions and measure whether models distinguish evidential states or collapse them.</p></div>
+          <div class="aud-card r"><h3>Governance &amp; Assurance Teams</h3><p>Separate unsupported, contradicted, and under-specified AI outputs using a structured taxonomy with explicit governance-ambiguity handling.</p></div>
+          <div class="aud-card r"><h3>Enterprise Decision-System Builders</h3><p>Ground AI decision pipelines in an explicit evidence-state model that distinguishes fluent outputs from outputs that are safe to act upon.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="wrap">
+        <div class="section-head r">
+          <span class="eyebrow">Boundary Thesis</span>
+          <h2 class="section-title">Capability is not justification.</h2>
+          <p class="section-sub">Modern AI systems can produce fluent, useful, and reward-aligned outputs that are still unsupported, contradicted, under-specified, or unsafe to act upon. NSDM makes this boundary explicit.</p>
+        </div>
+        <div class="framing-grid">
+          <div class="frame-box r">
+            <div class="frame-list">
+              <div class="frame-item"><strong>Fluency is not evidence.</strong><span>A grammatically correct, coherent response can still lack an adequate evidential basis for the claim it makes.</span></div>
+              <div class="frame-item"><strong>Reward is not justification.</strong><span>An output satisfying a reward signal or target metric may still violate a higher-order constraint or lack justification.</span></div>
+              <div class="frame-item"><strong>Missing premise is its own state.</strong><span>An inference that breaks at an unspecified premise is under-specified — it is neither unsupported nor contradicted.</span></div>
+            </div>
+          </div>
+          <div class="frame-box r">
+            <h3>Why this matters</h3>
+            <p>Decision systems fail most dangerously when they collapse qualitatively different evidential states into one apparently confident output. NSDM is designed to preserve those distinctions, so that governance, evaluation, and action can remain accountable to the actual state of support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="labels" class="section">
       <div class="wrap">
         <div class="section-head r">
           <span class="eyebrow">Label Taxonomy</span>
           <h2 class="section-title">Six epistemic states. No collapsing allowed.</h2>
-          <p class="section-sub">Each label captures a distinct relationship between evidence, rules, and claims. Collapsing categories produces false precision.</p>
+          <p class="section-sub">Each label captures a distinct relationship between evidence, rules, claims, and action. Collapsing them creates false precision and conceals the actual failure mode.</p>
         </div>
-
         <div class="labels-grid">
-          <div class="lcard lcard-green r">
-            <div class="lcard-name"><span class="lcard-dot"></span>supported</div>
-            <div class="lcard-desc">Evidence supplies a complete justification chain for the claim. All required premises are present and the inference is valid.</div>
-            <div class="lcard-tagline">Evidence → Claim. Support relation holds.</div>
-          </div>
-          <div class="lcard lcard-red r">
-            <div class="lcard-name"><span class="lcard-dot"></span>unsupported</div>
-            <div class="lcard-desc">No justification chain connects the available evidence to the claim. The claim is neither confirmed nor denied — the evidence is simply absent.</div>
-            <div class="lcard-tagline">Absence of support. Not negation.</div>
-          </div>
-          <div class="lcard lcard-orange r">
-            <div class="lcard-name"><span class="lcard-dot"></span>contradicted</div>
-            <div class="lcard-desc">The evidence actively supports the negation of the claim. A positive inference to ¬Claim can be constructed from the available premises.</div>
-            <div class="lcard-tagline">Evidence → ¬Claim. Contradiction holds.</div>
-          </div>
-          <div class="lcard lcard-indigo r">
-            <div class="lcard-name"><span class="lcard-dot"></span>under_specified</div>
-            <div class="lcard-desc">A partial justification chain exists. The inference structure is identifiable but breaks at a specific missing or underspecified premise.</div>
-            <div class="lcard-tagline">Support structure exists. Premise missing.</div>
-          </div>
-          <div class="lcard lcard-purple r">
-            <div class="lcard-name"><span class="lcard-dot"></span>ambiguous_governance</div>
-            <div class="lcard-desc">The applicable rule, authority, policy, or approval boundary is unclear, conflicting, discretionary, or hidden. The model cannot establish what governance regime controls the decision.</div>
-            <div class="lcard-tagline">Rule-state unresolved. Governance unclear.</div>
-          </div>
-          <div class="lcard lcard-pink r">
-            <div class="lcard-name"><span class="lcard-dot"></span>reward_aligned_unjustified</div>
-            <div class="lcard-desc">The output achieves a target, optimises a metric, or satisfies a reward signal, but lacks adequate justification or violates a higher-order constraint.</div>
-            <div class="lcard-tagline">Reward satisfied. Justification fails.</div>
-          </div>
+          <div class="lcard lcard-green r"><div class="lcard-kicker">Evidence supplies a complete justification chain for the claim. All required premises are present and the inference is valid.</div><div class="lcard-name"><span class="lcard-dot"></span>supported</div><div class="lcard-tagline">Support relation holds.</div><div class="lcard-detail"><strong>supported</strong> when the available evidence, taken together with any applicable rules and context, is sufficient to construct a valid inference to the claim. No premise is missing. No inferential step is broken. The decision is epistemically grounded and the justification chain can be explicitly reconstructed.</div></div>
+          <div class="lcard lcard-red r"><div class="lcard-kicker">No justification chain connects the available evidence to the claim. The claim is neither confirmed nor denied — the evidence is simply absent.</div><div class="lcard-name"><span class="lcard-dot"></span>unsupported</div><div class="lcard-tagline">Not negation.</div><div class="lcard-detail"><strong>unsupported</strong> when no rule, evidence, or justification applies. The landscape of evidence is empty with respect to the claim. No inference chain can be constructed from what is available — not because a premise is missing from an existing structure, but because no adequate structure exists at all.</div></div>
+          <div class="lcard lcard-orange r"><div class="lcard-kicker">The evidence actively supports the negation of the claim. A positive inference to ¬Claim can be constructed from the available premises.</div><div class="lcard-name"><span class="lcard-dot"></span>contradicted</div><div class="lcard-tagline">Contradiction holds.</div><div class="lcard-detail"><strong>contradicted</strong> when the available evidence does not merely fail to support the claim — it actively supports its negation. An inference to ¬Claim can be explicitly constructed from the premises in the same way a supported claim would be constructed.</div></div>
+          <div class="lcard lcard-indigo r"><div class="lcard-kicker">A partial justification chain exists. The inference structure is identifiable but breaks at a specific missing or underspecified premise.</div><div class="lcard-name"><span class="lcard-dot"></span>under_specified</div><div class="lcard-tagline">Premise missing.</div><div class="lcard-detail"><strong>under_specified</strong> when a justification structure is identifiable and partially constructed, but a necessary premise is absent, ambiguous, or inadequately specified. Providing the missing premise could change the label to supported.</div></div>
+          <div class="lcard lcard-purple r"><div class="lcard-kicker">The applicable rule, authority, policy, or approval boundary is unclear, conflicting, discretionary, or hidden. The model cannot establish what governance regime controls the decision.</div><div class="lcard-name"><span class="lcard-dot"></span>ambiguous_governance</div><div class="lcard-tagline">Governance unclear.</div><div class="lcard-detail"><strong>ambiguous_governance</strong> when the rules, policies, authority structures, or approval boundaries that should govern the decision are themselves unclear, conflicting, discretionary, or hidden from the decision system.</div></div>
+          <div class="lcard lcard-pink r"><div class="lcard-kicker">The output achieves a target, optimises a metric, or satisfies a reward signal, but lacks adequate justification or violates a higher-order constraint.</div><div class="lcard-name"><span class="lcard-dot"></span>reward_aligned_unjustified</div><div class="lcard-tagline">Justification fails.</div><div class="lcard-detail"><strong>reward_aligned_unjustified</strong> when the system output satisfies a reward signal, optimisation target, or performance metric while simultaneously lacking adequate justification or while violating a higher-order constraint.</div></div>
         </div>
-
         <div class="dbox r">
-          <div class="dbox-head">
-            <div class="dbox-title">
-              <span class="tok-red">unsupported</span>
-              <span class="tok-neq">≠</span>
-              <span class="tok-indigo">under_specified</span>
-            </div>
-            <span class="novelty-badge">Critical Distinction</span>
-          </div>
+          <div class="dbox-head"><div class="dbox-title"><span class="tok-red">unsupported</span><span class="tok-neq">≠</span><span class="tok-indigo">under_specified</span></div><span class="novelty-badge">Critical Distinction</span></div>
           <div class="dbox-grid">
-            <div class="dcol">
-              <h3><span class="tok-red">unsupported</span></h3>
-              <p>No adequate support — no rule, evidence, or justification applies. The landscape of evidence is empty with respect to the claim. You cannot construct a justification from what is available.</p>
-            </div>
-            <div class="dcol">
-              <h3><span class="tok-indigo">under_specified</span></h3>
-              <p>The structure of support may exist. A justification could be constructed — but a necessary premise is absent. Provide the missing premise and the label may change to <code>supported</code>.</p>
-            </div>
+            <div class="dcol"><h3><span class="tok-red">unsupported</span></h3><p>No adequate support — no rule, evidence, or justification applies. The landscape of evidence is empty with respect to the claim. You cannot construct a justification from what is available.</p></div>
+            <div class="dcol"><h3><span class="tok-indigo">under_specified</span></h3><p>The structure of support may exist. A justification could be constructed — but a necessary premise is absent. Provide the missing premise and the label may change to <code>supported</code>.</p></div>
           </div>
         </div>
       </div>
@@ -606,16 +431,9 @@
 
     <section id="formalism" class="section alt">
       <div class="wrap">
-        <div class="section-head r">
-          <span class="eyebrow">Formal Structure</span>
-          <h2 class="section-title">Every benchmark item is grounded in a formal decision object.</h2>
-          <p class="section-sub">The structure makes implicit assumptions explicit and forces evidence states to be declared.</p>
-        </div>
-
+        <div class="section-head r"><span class="eyebrow">Formal Decision Object</span><h2 class="section-title">Evidence, rules, claim, action.</h2><p class="section-sub">Every benchmark item is grounded in a formal decision object. The structure makes implicit assumptions explicit and forces evidence states to be declared.</p></div>
         <div class="formal-wrap">
-          <div class="codebox r">
-            <div class="code-head">DecisionObject · reference schema</div>
-<pre class="code"><code>from dataclasses import dataclass
+          <div class="codebox r"><div class="code-head">DecisionObject · reference schema</div><pre class="code"><code>from dataclasses import dataclass
 from typing import Any, List, Optional
 
 @dataclass
@@ -630,169 +448,53 @@ class DecisionObject:
     y: str                 # Claim — proposition being evaluated or asserted
     a: str                 # Action — system output or recommended decision
     e: str                 # Ev. State — one of the six NSDM label classes
-    c: float               # Calibration — confidence score in [0.0, 1.0]</code></pre>
-          </div>
-
-          <div class="ftable-wrap r">
-            <div class="ft-head">Field semantics</div>
-            <table class="ftable">
-              <thead>
-                <tr><th>Field</th><th>Name</th><th>Role in the decision object</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>x</td><td>Input</td><td>The raw prompt, query, or situational context presented to the decision system.</td></tr>
-                <tr><td>r</td><td>Rules</td><td>The set of governance rules, policies, or normative constraints applicable to this decision.</td></tr>
-                <tr><td>h</td><td>History</td><td>Optional list of prior decision states, conversation turns, or context that informs the current evaluation.</td></tr>
-                <tr><td>y</td><td>Claim</td><td>The proposition or assertion whose justificatory status is being evaluated by the NSDM label.</td></tr>
-                <tr><td>a</td><td>Action</td><td>The system's output, recommendation, or decision — the thing being justified, or failing to be justified.</td></tr>
-                <tr><td>e</td><td>Evidence State</td><td>The assigned NSDM label: one of supported · unsupported · contradicted · under_specified · ambiguous_governance · reward_aligned_unjustified.</td></tr>
-                <tr><td>c</td><td>Calibration</td><td>A continuous confidence score in [0.0, 1.0] quantifying annotator certainty in the assigned evidence state.</td></tr>
-              </tbody>
-            </table>
-          </div>
+    c: float               # Calibration — confidence score in [0.0, 1.0]</code></pre></div>
+          <div class="ftable-wrap r"><div class="ft-head">Field semantics</div><table class="ftable"><thead><tr><th>Field</th><th>Name</th><th>Role in the decision object</th></tr></thead><tbody><tr><td>x</td><td>Input</td><td>The raw prompt, query, or situational context presented to the decision system.</td></tr><tr><td>r</td><td>Rules</td><td>The set of governance rules, policies, or normative constraints applicable to this decision.</td></tr><tr><td>h</td><td>History</td><td>Optional list of prior decision states, conversation turns, or context that informs the current evaluation.</td></tr><tr><td>y</td><td>Claim</td><td>The proposition or assertion whose justificatory status is being evaluated by the NSDM label.</td></tr><tr><td>a</td><td>Action</td><td>The system's output, recommendation, or decision — the thing being justified, or failing to be justified.</td></tr><tr><td>e</td><td>Evidence State</td><td>The assigned NSDM label: one of supported · unsupported · contradicted · under_specified · ambiguous_governance · reward_aligned_unjustified.</td></tr><tr><td>c</td><td>Calibration</td><td>A continuous confidence score in [0.0, 1.0] quantifying annotator certainty in the assigned evidence state.</td></tr></tbody></table></div>
         </div>
       </div>
     </section>
 
     <section id="papers" class="section">
       <div class="wrap">
-        <div class="section-head r">
-          <span class="eyebrow">Programme Arc</span>
-          <h2 class="section-title">A staged publication strategy anchored by the benchmark.</h2>
-          <p class="section-sub">The research arc moves from empirical benchmark construction to architecture, mathematical theory, and a later benevolent-constraint branch. Each paper plays a distinct programme role.</p>
-        </div>
+        <div class="section-head r"><span class="eyebrow">Programme Arc</span><h2 class="section-title">Benchmark → architecture → theory → benevolent constraints.</h2><p class="section-sub">A staged publication strategy anchored by the benchmark. Each paper plays a distinct and non-redundant programme role.</p></div>
         <div class="paper-grid">
-          <div class="pcard r">
-            <span class="pcard-status live">Anchor</span>
-            <h3>Paper 1 — Benchmark and taxonomy</h3>
-            <p>The anchor paper. Clean, technical, falsifiable, reviewer-resistant. Centred on NSDM-Bench-0, the label ontology, evidence-state formalism, benchmark validation, baseline ladder, leakage audit, and failure frontier.</p>
-          </div>
-          <div class="pcard r">
-            <span class="pcard-status build">Architecture</span>
-            <h3>Paper 2 — Decision intelligence architecture</h3>
-            <p>Evidence-state construction, neuro-symbolic reasoning, causal reasoning, active inference as a lens, and bounded decision systems. This paper translates benchmark learnings into accountable architecture.</p>
-          </div>
-          <div class="pcard r">
-            <span class="pcard-status plan">Mathematics</span>
-            <h3>Paper 3 — Boundary theory and scaling</h3>
-            <p>Speculative mathematical programme. Boundary geometry, rate-distortion reasoning, scaling-law knee, and model-selection conjectures. Mathematical analogies are clearly marked as conjectural.</p>
-          </div>
-          <div class="pcard r">
-            <span class="pcard-status plan">Future Branch</span>
-            <h3>Paper 4 — Benevolent constraints</h3>
-            <p>A later branch: a safe superior intelligence cannot merely be obedient. It must be benevolent under uncertainty, regret-sensitive under action, and autonomy-preserving under asymmetric power.</p>
-          </div>
+          <div class="pcard r"><span class="pcard-status live">Anchor</span><h3>Benchmark and taxonomy</h3><p>Clean, technical, falsifiable, reviewer-resistant. Centred on NSDM-Bench-0, the label ontology, evidence-state formalism, benchmark validation, baseline ladder, leakage audit, and failure frontier.</p></div>
+          <div class="pcard r"><span class="pcard-status build">Architecture</span><h3>Decision intelligence architecture</h3><p>Evidence-state construction, neuro-symbolic reasoning, causal reasoning, active inference as a lens, and bounded decision systems. Translates benchmark learnings into accountable architecture.</p></div>
+          <div class="pcard r"><span class="pcard-status plan">Theory</span><h3>Boundary theory and scaling</h3><p>Speculative mathematical programme. Boundary geometry, rate-distortion reasoning, scaling-law knee, and model-selection conjectures. Mathematical analogies are clearly marked as conjectural.</p></div>
+          <div class="pcard r"><span class="pcard-status plan">Future Branch</span><h3>Benevolent constraints</h3><p>A later branch: a safe superior intelligence cannot merely be obedient. It must be benevolent under uncertainty, regret-sensitive under action, and autonomy-preserving under asymmetric power.</p></div>
         </div>
       </div>
     </section>
 
     <section id="benchmark" class="section alt">
       <div class="wrap bench-shell">
-        <div class="section-head r">
-          <span class="eyebrow">Benchmark Programme</span>
-          <h2 class="section-title">The corpus is the ground truth.</h2>
-          <p class="section-sub">Without a rigorously annotated corpus and measurable inter-annotator agreement, the taxonomy is unfalsifiable.</p>
-        </div>
-
+        <div class="section-head r"><span class="eyebrow">Benchmark Corpus</span><h2 class="section-title">The ground truth.</h2><p class="section-sub">Without a rigorously annotated corpus and measurable inter-annotator agreement, the taxonomy is unfalsifiable. The corpus is not supplementary material — it is the epistemic foundation.</p></div>
         <div class="bench-top">
           <div class="stat r"><div class="stat-n">60</div><div class="stat-l">Validated examples</div></div>
           <div class="stat r"><div class="stat-n">6</div><div class="stat-l">Decision labels</div></div>
           <div class="stat r"><div class="stat-n">κ ≥ 0.65</div><div class="stat-l">IAA target</div></div>
           <div class="stat r"><div class="stat-n">10K</div><div class="stat-l">Long-run NSDM-B scale</div></div>
         </div>
-
-        <div class="growth r">
-          <div class="subhead">Growth ladder</div>
-          <div class="ladder">
-            <div class="ls cur"><div class="ls-n">60</div><div class="ls-d">Current corpus</div></div>
-            <div class="la">›</div>
-            <div class="ls"><div class="ls-n">100</div><div class="ls-d">IAA testing</div></div>
-            <div class="la">›</div>
-            <div class="ls"><div class="ls-n">300</div><div class="ls-d">Paper 1 ready</div></div>
-            <div class="la">›</div>
-            <div class="ls"><div class="ls-n">1,000</div><div class="ls-d">Open release</div></div>
-            <div class="la">›</div>
-            <div class="ls"><div class="ls-n">10,000</div><div class="ls-d">NSDM-B</div></div>
-          </div>
-        </div>
-
-        <div class="baseline-box r">
-          <div class="subhead">Baseline evaluation suite</div>
-          <table class="bltable">
-            <thead>
-              <tr><th>Baseline</th><th>Status</th><th>Leakage</th></tr>
-            </thead>
-            <tbody>
-              <tr><td class="bn">lexical-baseline</td><td><span class="badge done">Done</span></td><td><span class="badge audit">Audited</span></td></tr>
-              <tr><td class="bn">zero-shot-gpt4</td><td><span class="badge done">Done</span></td><td><span class="badge audit">Audited</span></td></tr>
-              <tr><td class="bn">few-shot-gpt4</td><td><span class="badge prog">In Progress</span></td><td><span class="dash">—</span></td></tr>
-              <tr><td class="bn">fine-tuned-classifier</td><td><span class="badge prog">In Progress</span></td><td><span class="dash">—</span></td></tr>
-              <tr><td class="bn">chain-of-thought-reasoner</td><td><span class="badge plan">Planned</span></td><td><span class="dash">—</span></td></tr>
-              <tr><td class="bn">evidence-state-reasoner</td><td><span class="badge plan">Planned</span></td><td><span class="dash">—</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="leakage r">
-          <div class="leakage-icon">⚠</div>
-          <div>
-            <h4>Leakage Warning</h4>
-            <p>All benchmark examples must be audited for training-set contamination before baseline evaluation. Any item whose label or reasoning chain appears verbatim in a model's pre-training corpus is flagged and quarantined from the evaluation set. Leakage audit is a non-negotiable step — publishing contaminated benchmark results invalidates the comparison.</p>
-          </div>
-        </div>
-
+        <div class="growth r"><div class="subhead">Growth ladder</div><div class="ladder"><div class="ls cur"><div class="ls-n">60</div><div class="ls-d">Current corpus</div></div><div class="la">›</div><div class="ls"><div class="ls-n">100</div><div class="ls-d">IAA testing</div></div><div class="la">›</div><div class="ls"><div class="ls-n">300</div><div class="ls-d">Paper 1 ready</div></div><div class="la">›</div><div class="ls"><div class="ls-n">1,000</div><div class="ls-d">Open release</div></div><div class="la">›</div><div class="ls"><div class="ls-n">10,000</div><div class="ls-d">NSDM-B</div></div></div></div>
+        <div class="baseline-box r"><div class="subhead">Baseline evaluation suite</div><table class="bltable"><thead><tr><th>Baseline</th><th>Status</th><th>Leakage</th></tr></thead><tbody><tr><td class="bn">lexical-baseline</td><td><span class="badge done">Done</span></td><td><span class="badge audit">Audited</span></td></tr><tr><td class="bn">zero-shot-gpt4</td><td><span class="badge done">Done</span></td><td><span class="badge audit">Audited</span></td></tr><tr><td class="bn">few-shot-gpt4</td><td><span class="badge prog">In Progress</span></td><td><span class="dash">—</span></td></tr><tr><td class="bn">fine-tuned-classifier</td><td><span class="badge prog">In Progress</span></td><td><span class="dash">—</span></td></tr><tr><td class="bn">chain-of-thought-reasoner</td><td><span class="badge plan">Planned</span></td><td><span class="dash">—</span></td></tr><tr><td class="bn">evidence-state-reasoner</td><td><span class="badge plan">Planned</span></td><td><span class="dash">—</span></td></tr></tbody></table></div>
+        <div class="leakage r"><div class="leakage-icon">⚠</div><div><h4>Leakage audit is non-negotiable.</h4><p>All benchmark examples must be audited for training-set contamination before baseline evaluation. Any item whose label or reasoning chain appears verbatim in a model's pre-training corpus is flagged and quarantined from the evaluation set. Publishing contaminated benchmark results invalidates the comparison.</p></div></div>
         <div class="bench-usage r">
-          <div class="bench-card">
-            <h3>Who this benchmark is for</h3>
-            <p>NSDM is designed for researchers, model evaluators, governance teams, and enterprise decision-system builders who need to distinguish fluent output from justified output. It supports benchmark construction, model comparison, annotation protocol design, and evidence-state evaluation under explicit governance constraints.</p>
-            <ul class="bench-list">
-              <li><i></i><span>Researchers can use the corpus to study evidence-state classification and epistemic failure modes.</span></li>
-              <li><i></i><span>Model evaluators can compare baseline systems under leakage-audited conditions.</span></li>
-              <li><i></i><span>Governance and assurance teams can use the taxonomy to separate unsupported, contradicted, and under-specified outputs.</span></li>
-            </ul>
-          </div>
-          <div class="bench-action">
-            <h3>Access pathway</h3>
-            <p>The benchmark programme is progressing from a validated seed corpus toward open release. The current sequence is 60 examples, then inter-annotator agreement testing, then Paper 1 readiness, and finally scaled public benchmark release.</p>
-            <a href="https://github.com/Rajesh0311/NSDM" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View Repository</a>
-          </div>
+          <div class="bench-card"><h3>Who this benchmark is for</h3><p>NSDM is designed for researchers, model evaluators, governance teams, and enterprise decision-system builders who need to distinguish fluent output from justified output. It supports benchmark construction, model comparison, annotation protocol design, and evidence-state evaluation under explicit governance constraints.</p><ul class="bench-list"><li><i></i><span>Researchers can use the corpus to study evidence-state classification and epistemic failure modes.</span></li><li><i></i><span>Model evaluators can compare baseline systems under leakage-audited conditions.</span></li><li><i></i><span>Governance and assurance teams can use the taxonomy to separate unsupported, contradicted, and under-specified outputs.</span></li></ul></div>
+          <div class="bench-action"><h3>Access pathway</h3><p>The benchmark programme is progressing from a validated seed corpus toward open release. The current sequence is 60 examples, then inter-annotator agreement testing, then Paper 1 readiness, and finally scaled public benchmark release.</p><a href="https://github.com/Rajesh0311/NSDM" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View Repository</a></div>
         </div>
       </div>
     </section>
 
     <section id="principles" class="section">
       <div class="wrap">
-        <div class="section-head r">
-          <span class="eyebrow">Research Governance</span>
-          <h2 class="section-title">Principles for accountable decision science.</h2>
-          <p class="section-sub">NSDM operates under a formal research governance charter. The following principles are binding on all benchmark design, annotation, analysis, and publication activities.</p>
-        </div>
-
+        <div class="section-head r"><span class="eyebrow">Research Governance</span><h2 class="section-title">Principles for accountable decision science.</h2><p class="section-sub">NSDM operates under a formal research governance charter. The following principles are binding on all benchmark design, annotation, analysis, and publication activities.</p></div>
         <div class="pgrid">
-          <div class="pcard-p r">
-            <h3>Source Verifiability</h3>
-            <p>Every citation must resolve to a real, retrievable source. References that cannot be located or independently verified are treated as fabrication and are excluded from the NSDM record.</p>
-          </div>
-          <div class="pcard-p r">
-            <h3>Data Integrity</h3>
-            <p>Benchmark items, labels, agreement scores, and baseline results must arise from actual annotation and evaluation runs. Synthetic, estimated, or back-filled data are prohibited in both internal analyses and public outputs.</p>
-          </div>
-          <div class="pcard-p r">
-            <h3>Falsifiability and Testability</h3>
-            <p>Claims about the taxonomy, benchmark behaviour, or model performance must be stated in a form that admits refutation. NSDM does not publish claims that cannot be operationalised into tests or refuting procedures.</p>
-          </div>
-          <div class="pcard-p r">
-            <h3>Systematic Leakage Auditing</h3>
-            <p>Every baseline evaluation is preceded by a documented training-set leakage audit. Any benchmark item whose label or reasoning chain appears in a model’s pre-training corpus is quarantined from evaluation and disclosure.</p>
-          </div>
-          <div class="pcard-p r">
-            <h3>Architecture Follows Evidence</h3>
-            <p>New model components, label extensions, and benchmark dimensions are introduced only after the existing structure has been empirically validated. Design decisions are grounded in demonstrated behaviour, not anticipated capability.</p>
-          </div>
-          <div class="pcard-p r">
-            <h3>Explicit Separation of Speculation</h3>
-            <p>Speculative ideas, hypotheses, and future directions are clearly marked and maintained in separate channels from validated findings. NSDM preserves a hard boundary between current empirical knowledge and proposed extensions.</p>
-          </div>
+          <div class="pcard-p r"><h3>Source Verifiability</h3><p>Every citation must resolve to a real, retrievable source. References that cannot be located or independently verified are treated as fabrication and are excluded from the NSDM record.</p></div>
+          <div class="pcard-p r"><h3>Data Integrity</h3><p>Benchmark items, labels, agreement scores, and baseline results must arise from actual annotation and evaluation runs. Synthetic, estimated, or back-filled data are prohibited in both internal analyses and public outputs.</p></div>
+          <div class="pcard-p r"><h3>Falsifiability and Testability</h3><p>Every research claim must be stated in a form that admits refutation. NSDM does not publish claims that cannot be operationalised into tests or refuting procedures.</p></div>
+          <div class="pcard-p r"><h3>Systematic Leakage Auditing</h3><p>High accuracy before a leakage audit is not a result. Any benchmark item whose label or reasoning chain appears in a model's pre-training corpus is quarantined from evaluation and disclosure.</p></div>
+          <div class="pcard-p r"><h3>Architecture Follows Evidence</h3><p>The cheapest possible experiment to validate the expensive assumption. New model components, label extensions, and benchmark dimensions are introduced only after the existing structure has been empirically validated.</p></div>
+          <div class="pcard-p r"><h3>Explicit Separation of Speculation</h3><p>Quantum, holographic, Vedic, and other grand-unified material is quarantined from the academic core. Analogies are not proofs, and speculative ideas are maintained separately from validated findings.</p></div>
         </div>
       </div>
     </section>
@@ -801,26 +503,10 @@ class DecisionObject:
   <footer>
     <div class="wrap foot">
       <div>
-        <div class="foot-brand">
-          <svg class="foot-logo" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="8" cy="8" r="2.5" fill="currentColor"/>
-            <circle cx="24" cy="8" r="2.5" fill="currentColor"/>
-            <circle cx="16" cy="16" r="2.5" fill="currentColor"/>
-            <circle cx="8" cy="24" r="2.5" fill="currentColor"/>
-            <circle cx="24" cy="24" r="2.5" fill="currentColor"/>
-            <path d="M8 8L16 16L24 8M16 16L8 24M16 16L24 24" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-          </svg>
-          <div class="nav-wordmark">NSDM</div>
-        </div>
-        <p class="foot-copy">Neuro-Symbolic Decision Boundaries is a research programme formalising the boundary between capability and accountable AI decision-making.</p>
+        <div class="foot-brand"><svg class="foot-logo" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="8" cy="8" r="2.5" fill="currentColor"/><circle cx="24" cy="8" r="2.5" fill="currentColor"/><circle cx="16" cy="16" r="2.5" fill="currentColor"/><circle cx="8" cy="24" r="2.5" fill="currentColor"/><circle cx="24" cy="24" r="2.5" fill="currentColor"/><path d="M8 8L16 16L24 8M16 16L8 24M16 16L24 24" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><div class="nav-wordmark">NSDM</div></div>
+        <p class="foot-copy">Neuro-Symbolic Decision Boundaries formalises the boundary between fluent AI output and accountable AI decision-making.</p>
       </div>
-      <ul class="foot-nav">
-        <li><a href="#labels">Labels</a></li>
-        <li><a href="#formalism">Formalism</a></li>
-        <li><a href="#papers">Papers</a></li>
-        <li><a href="#benchmark">Benchmark</a></li>
-        <li><a href="https://github.com/Rajesh0311/NSDM" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-      </ul>
+      <ul class="foot-nav"><li><a href="#labels">Labels</a></li><li><a href="#formalism">Formalism</a></li><li><a href="#papers">Papers</a></li><li><a href="#benchmark">Benchmark</a></li><li><a href="https://github.com/Rajesh0311/NSDM" target="_blank" rel="noopener noreferrer">GitHub</a></li></ul>
     </div>
   </footer>
 
@@ -838,9 +524,8 @@ class DecisionObject:
           ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3A7 7 0 0 0 21 12.79z"/></svg>'
           : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
       };
-      setTheme(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      setTheme('dark');
       toggle && toggle.addEventListener('click', () => setTheme(theme === 'dark' ? 'light' : 'dark'));
-
       const navButton = document.getElementById('nav-hamburger');
       const navLinks = document.getElementById('nav-links');
       navButton && navButton.addEventListener('click', () => {
@@ -851,15 +536,11 @@ class DecisionObject:
         navLinks.classList.remove('open');
         navButton && navButton.setAttribute('aria-expanded', 'false');
       }));
-
       const reveal = document.querySelectorAll('.r');
       if ('IntersectionObserver' in window) {
         const io = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('on');
-              io.unobserve(entry.target);
-            }
+            if (entry.isIntersecting) { entry.target.classList.add('on'); io.unobserve(entry.target); }
           });
         }, { threshold: 0.14 });
         reveal.forEach(el => io.observe(el));
