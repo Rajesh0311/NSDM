@@ -1,0 +1,40 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# API keys — NEVER commit these
+.env
+*.env
+secrets.json
+api_keys.txt
+
+# Model weights and large files
+*.bin
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/settings.json
+.idea/
+
+# Outputs (keep structure, ignore large outputs)
+data/raw/*.jsonl
+data/processed/*.jsonl
+data/synthetic/*.jsonl
+
+# Annotation working files (keep only validated)
+benchmark/splits/iaa_results_*.jsonl
+benchmark/splits/iaa_test_set_stripped.jsonl
+
+# Build
+dist/
+build/

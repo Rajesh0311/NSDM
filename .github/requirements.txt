@@ -1,0 +1,35 @@
+# NSDM Research Programme — Python Dependencies
+# Install: pip install -r requirements.txt
+
+# Core NLP
+transformers>=4.40.0
+datasets>=2.19.0
+tokenizers>=0.19.0
+
+# Scientific computing
+numpy>=1.26.0
+scipy>=1.13.0
+scikit-learn>=1.4.0
+pandas>=2.2.0
+
+# NLI and evaluation
+nltk>=3.8.0
+rouge-score>=0.1.2
+
+# Baseline models
+openai>=1.30.0
+anthropic>=0.28.0
+
+# Experiment tracking
+tqdm>=4.66.0
+
+# Annotation and IAA
+matplotlib>=3.8.0
+seaborn>=0.13.0
+
+# Benchmark utilities
+jsonlines>=4.0.0
+
+# Document processing (for OCR examples, future)
+# pytesseract>=0.3.10
+# pillow>=10.3.0
