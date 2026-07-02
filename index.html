@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NSDM — Neuro-Symbolic Decision Boundaries</title>
+  <meta name="description" content="A rigorous research programme developing the formal science of justified AI decision-making." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--text-xs:clamp(0.75rem,0.7rem + 0.25vw,0.875rem);--text-sm:clamp(0.875rem,0.8rem + 0.35vw,1rem);--text-base:clamp(1rem,0.95rem + 0.25vw,1.125rem);--text-lg:clamp(1.125rem,1rem + 0.75vw,1.5rem);--text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);--text-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);--text-hero:clamp((2.25rem, 1rem + 3vw, 3.75rem);--font-body:'Inter',system-ui,sans-serif;--font-mono:'JetBrains Mono','Fira Code',monospace;--space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;--space-20:5rem;--space-24:6rem;--radius-sm:0.25rem;--radius-md:0.5rem;--radius-lg:0.75rem;--radius-xl:1rem;--radius-full:9999px;--transition:180ms cubic-bezier(0.16,1,0.3,1);--content-narrow:640px;--content-default:960px;--content-wide:1200px;}
+    [data-theme="dark"]{--bg:#0a0a0b;--surface:#111113;--surface-2:#161618;--surface-3:#1c1c1f;--border:rgba(255,255,255,0.08);--border-strong:rgba(255,255,255,0.14);--text:#e8e8ea;--text-muted:#8a8a9a;--text-faint:#4a4a5a;--accent:#6e6af0;--accent-hover:#8380f5;--accent-glow:rgba(110,106,240,0.15);--accent-glow-strong:rgba(110,106,240,0.25);--green:#34c98a;--amber:#f59e0b;--red:#f87171;--purple:#a78bfa;--shadow-sm:0 1px 3px rgba(0,0,0,0.4);--shadow-md:0 4px 16px rgba(0,0,0,0.5);--shadow-lg:0 12px 40px rgba(0,0,0,0.6);}
+    [data-theme="light"]{--bg:#fafafa;--surface:#ffffff;--surface-2:#f4f4f6;--surface-3:#ebebed;--border:rgba(0,0,0,0.08);--border-strong:rgba(0,0,0,0.14);--text:#111113;--text-muted:#5a5a6a;--text-faint:#9a9aaa;--accent:#4f4de0;--accent-hover:#3e3ccc;--accent-glow:rgba(79,77,224,0.10);--accent-glow-strong:rgba(79,77,224,0.18);--green:#16a069;--amber:#d97706;--red:#dc2626;--purple:#7c3aed;--shadow-sm:0 1px 3px rgba(0,0,0,0.07);--shadow-md:0 4px 16px rgba(0,0,0,0.09);--shadow-lg:0 12px 40px rgba(0,0,0,0.12);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:72px;-webkit-font-smoothing:antialiased}
+    body{min-height:100dvh;font-family:var(--font-body);font-size:var(--text-base);color:var(--text);background:var(--bg);line-height:1.65;transition:background var(--transition),color var(--transition)}
+    img,svg{display:block;max-width:100%}
+    ul{list-style:none}
+    button{cursor:pointer;background:none;border:none;font:inherit;color:inherit}
+    a{color:inherit;text-decoration:none}
+    ::selection{background:var(--accent-glow-strong);color:var(--text)}
+    :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:var(--radius-sm)}
+    @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+    ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:9999px}
+    .container{max-width:var(--content-wide);margin-inline:auto;padding-inline:var(--space-6)}
+
+    /* NAV */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:color-mix(in oklch,var(--bg) 85%,transparent);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    .nav-inner{max-width:var(--content-wide);margin-inline:auto;padding-inline:var(--space-6);height:64px;display:flex;align-items:center;justify-content:space-between;gap:var(--space-8)}
+    .nav-logo{display:flex;align-items:center;gap:var(--space-3);font-weight:600;font-size:var(--text-sm)}
+    .nav-links{display:flex;align-items:center;gap:var(--space-1)}
+    .nav-link{padding:var(--space-2) var(--space-3);border-radius:var(--radius-md);font-size:var(--text-sm);color:var(--text-muted);transition:color var(--transition),background var(--transition)}
+    .nav-link:hover,.nav-link.active{color:var(--text);background:var(--surface-2)}
+    .nav-actions{display:flex;align-items:center;gap:var(--space-2)}
+    .btn-icon{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:var(--radius-md);color:var(--text-muted);transition:color var(--transition),background var(--transition)}
+    .btn-icon:hover{color:var(--text);background:var(--surface-2)}
+    .btn-primary{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-4);border-radius:var(--radius-md);font-size:var(--text-sm);font-weight:500;background:var(--accent);color:#fff;transition:background var(--transition),transform var(--transition),box-shadow var(--transition)}
+    .btn-primary:hover{background:var(--accent-hover);transform:translateY(-1px);box-shadow:0 4px 20px var(--accent-glow-strong)}
+    .btn-secondary{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-4);border-radius:var(--radius-md);font-size:var(--text-sm);font-weight:500;border:1px solid var(--border-strong);color:var(--text-muted);transition:color var(--transition),border-color var(--transition),background var(--transition)}
+    .btn-secondary:hover{color:var(--text);border-color:var(--text-faint);background:var(--surface-2)}
+    @media(max-width:768px){.nav-links{display:none}}
+
+    /* HERO */
+    .hero{padding-top:calc(64px + var(--space-20));padding-bottom:var(--space-20);position:relative;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+    .hero-glow{position:absolute;width:700px;height:500px;border-radius:50%;background:radial-gradient(circle,var(--accent-glow-strong) 0%,transparent 70%);top:-150px;left:50%;transform:translateX(-50%);filter:blur(80px)}
+    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;opacity:.35;mask-image:radial-gradient(ellipse 80% 55% at 50% 0%,black,transparent)}
+    .hero-inner{position:relative;text-align:center;max-width:860px;margin-inline:auto}
+    .hero-badge{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-1) var(--space-3) var(--space-1) var(--space-2);border-radius:9999px;border:1px solid var(--border-strong);background:var(--surface);font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-8)}
+    .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+    .hero-title{font-size:var(--text-hero);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:var(--space-6)}
+    .hero-accent{color:var(--accent)}
+    .hero-sub{font-size:var(--text-lg);color:var(--text-muted);max-width:600px;margin-inline:auto;margin-bottom:var(--space-10);line-height:1.6}
+    .hero-cta{display:flex;align-items:center;justify-content:center;gap:var(--space-3);flex-wrap:wrap}
+    .hero-stats{display:flex;justify-content:center;gap:var(--space-10);margin-top:var(--space-16);padding-top:var(--space-16);border-top:1px solid var(--border);flex-wrap:wrap}
+    .stat-num{font-size:var(--text-xl);font-weight:700}
+    .stat-label{font-size:var(--text-xs);color:var(--text-muted);margin-top:4px}
+
+    /* SECTIONS */
+    .section{padding-block:clamp(var(--space-16),8vw,var(--space-24))}
+    .section-alt{background:var(--surface)}
+    .s-label{display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--text-xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:var(--space-4)}
+    .s-title{font-size:var(--text-2xl);font-weight:700;letter-spacing:-.02em;margin-bottom:var(--space-4)}
+    .s-sub{font-size:var(--text-base);color:var(--text-muted);max-width:560px;line-height:1.7;margin-bottom:var(--space-12)}
+
+    /* LABELS */
+    .labels-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(320px,100%),1fr));gap:var(--space-4)}
+    .lcard{padding:var(--space-5);border-radius:var(--radius-lg);border:1px solid var(--border);background:var(--surface);transition:border-color var(--transition),box-shadow var(--transition),transform var(--transition)}
+    .lcard:hover{border-color:var(--border-strong);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+    .ltag{font-size:var(--text-xs);font-weight:700;font-family:var(--font-mono);padding:2px 8px;border-radius:var(--radius-sm);display:inline-block;margin-bottom:var(--space-3)}
+    .ltag.supported{background:rgba(52,201,138,.12);color:var(--green)}
+    .ltag.unsupported{background:rgba(248,113,113,.12);color:var(--red)}
+    .ltag.contradicted{background:rgba(245,158,11,.12);color:var(--amber)}
+    .ltag.under{background:rgba(110,106,240,.15);color:var(--accent)}
+    .ltag.gov{background:rgba(167,139,250,.15);color:var(--purple)}
+    .ltag.reward{background:rgba(244,114,182,.15);color:#f472b6}
+    .ldesc{font-size:var(--text-sm);color:var(--text-muted);line-height:1.65}
+    .lnote{font-size:var(--text-xs);font-family:var(--font-mono);color:var(--text-faint);margin-top:var(--space-2);padding-top:var(--space-2);border-top:1px solid var(--border)}
+    .warn-badge{font-size:var(--text-xs);color:var(--amber);background:rgba(245,158,11,.1);padding:2px 6px;border-radius:var(--radius-sm);font-family:var(--font-mono);display:inline-block;margin-bottom:var(--space-3)}
+
+    /* DISTINCTION */
+    .distinction{margin-top:var(--space-10);padding:var(--space-6);border-radius:var(--radius-xl);border:1px solid rgba(110,106,240,.3);background:color-mix(in oklch,var(--accent) 5%,var(--surface));display:grid;gap:var(--space-6)}
+    @media(min-width:768px){.distinction{grid-template-columns:1fr auto 1fr}}
+    .dist-vs{display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:var(--text-xl);font-weight:700;color:var(--text-faint);padding-inline:var(--space-4)}
+    @media(min-width:768px){.dist-vs{border-inline:1px solid var(--border)}}
+    .dist-h{font-size:var(--text-base);font-weight:600;margin-bottom:var(--space-2)}
+    .dist-p{font-size:var(--text-sm);color:var(--text-muted);line-height:1.65}
+
+    /* CODE / FORMALISM */
+    .pipeline{display:grid;gap:var(--space-10);margin-top:var(--space-4)}
+    @media(min-width:900px){.pipeline{grid-template-columns:1fr 1fr;align-items:start}}
+    .code-block{border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);background:var(--bg)}
+    .code-header{display:flex;align-items:center;justify-content:space-between;padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--border);background:var(--surface-2)}
+    .code-dots{display:flex;gap:6px}
+    .code-dot{width:10px;height:10px;border-radius:50%}
+    .code-filename{font-size:var(--text-xs);font-family:var(--font-mono);color:var(--text-muted)}
+    .code-body{padding:var(--space-5);font-size:var(--text-xs);font-family:var(--font-mono);line-height:1.85;overflow-x:auto;color:var(--text-muted)}
+    .kw{color:#c792ea}.str{color:var(--green)}.cmt{color:var(--text-faint)}.var{color:#82aaff}.op{color:var(--amber)}
+    .flist{display:flex;flex-direction:column;gap:var(--space-3)}
+    .fitem{display:flex;align-items:flex-start;gap:var(--space-3);padding:var(--space-3) var(--space-4);border-radius:var(--radius-md);background:var(--surface);border:1px solid var(--border)}
+    .fsym{font-family:var(--font-mono);font-size:var(--text-sm);font-weight:700;color:var(--accent);min-width:20px;padding-top:1px}
+    .ftxt{font-size:var(--text-sm);color:var(--text-muted);line-height:1.5}
+    .flabel{font-weight:600;color:var(--text)}
+
+    /* PAPERS */
+    .papers-grid{display:grid;gap:var(--space-5);margin-top:var(--space-4)}
+    @media(min-width:768px){.papers-grid{grid-template-columns:repeat(2,1fr)}}
+    .pcard{padding:var(--space-6);border-radius:var(--radius-xl);border:1px solid var(--border);background:var(--surface);display:flex;flex-direction:column;gap:var(--space-4);transition:border-color var(--transition),box-shadow var(--transition),transform var(--transition)}
+    .pcard:hover{border-color:var(--border-strong);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+    .pcard.featured{border-color:rgba(110,106,240,.4);background:color-mix(in oklch,var(--accent) 5%,var(--surface))}
+    .pnum{font-size:var(--text-xs);font-family:var(--font-mono);font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.08em}
+    .ptitle{font-size:var(--text-base);font-weight:600;line-height:1.4;flex:1}
+    .pabstract{font-size:var(--text-sm);color:var(--text-muted);line-height:1.65}
+    .pstatus{display:inline-flex;align-items:center;gap:6px;font-size:var(--text-xs);font-family:var(--font-mono)}
+    .sdot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+    .s-active .sdot{background:var(--green);box-shadow:0 0 6px var(--green)}
+    .s-draft .sdot{background:var(--amber)}
+    .s-plan .sdot{background:var(--text-faint)}
+    .s-future .sdot{background:var(--purple)}
+    .thesis-box{margin-top:var(--space-10);padding:var(--space-8);border-radius:var(--radius-xl);background:color-mix(in oklch,var(--accent) 8%,var(--surface));border:1px solid rgba(110,106,240,.25);text-align:center}
+    .thesis-q{font-size:var(--text-xl);font-weight:600;letter-spacing:-.01em;line-height:1.3;margin-bottom:var(--space-2)}
+    .thesis-attr{font-size:var(--text-sm);color:var(--text-muted)}
+
+    /* BENCHMARK */
+    .bench-layout{display:grid;gap:var(--space-10);margin-top:var(--space-4)}
+    @media(min-width:900px){.bench-layout{grid-template-columns:1fr 1.2fr}}
+    .bench-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-4)}
+    .bstat{padding:var(--space-5);border-radius:var(--radius-lg);border:1px solid var(--border);background:var(--bg)}
+    .bstat-num{font-size:var(--text-xl);font-weight:700}
+    .bstat-lbl{font-size:var(--text-xs);color:var(--text-muted);margin-top:4px}
+    .prog-wrap{margin-top:var(--space-6)}
+    .prog-header{display:flex;justify-content:space-between;font-size:var(--text-xs);font-family:var(--font-mono);color:var(--text-muted);margin-bottom:var(--space-2)}
+    .prog-bar{height:4px;background:var(--surface-3);border-radius:9999px;overflow:hidden}
+    .prog-fill{height:100%;border-radius:9999px;background:linear-gradient(90deg,var(--accent),var(--green))}
+    .bench-milestones{display:flex;flex-direction:column;gap:var(--space-2);margin-top:var(--space-5)}
+    .bm{display:flex;justify-content:space-between;font-size:var(--text-xs);font-family:var(--font-mono);padding:var(--space-2) var(--space-3);border:1px solid var(--border);border-radius:var(--radius-md);background:var(--bg)}
+    .btable{border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border)}
+    .bthead{display:grid;grid-template-columns:1.8fr 0.9fr 0.7fr;padding:var(--space-3) var(--space-4);background:var(--surface-2);font-size:var(--text-xs);font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em}
+    .brow{display:grid;grid-template-columns:1.8fr 0.9fr 0.7fr;padding:var(--space-3) var(--space-4);border-top:1px solid var(--border);font-size:var(--text-sm);transition:background var(--transition)}
+    .brow:hover{background:var(--surface-2)}
+    .bname{font-family:var(--font-mono);font-size:var(--text-xs)}
+    .bleakage-warn{margin-top:var(--space-3);padding:var(--space-3);border-radius:var(--radius-md);background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);font-size:var(--text-xs);color:var(--red);font-family:var(--font-mono)}
+
+    /* ROADMAP */
+    .roadmap-grid{display:grid;gap:var(--space-4);margin-top:var(--space-4)}
+    @media(min-width:600px){.roadmap-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:1000px){.roadmap-grid{grid-template-columns:repeat(6,1fr)}}
+    .phase-card{padding:var(--space-4);border-radius:var(--radius-lg);border:1px solid var(--border);background:var(--surface);transition:border-color var(--transition),transform var(--transition)}
+    .phase-card:hover{border-color:var(--border-strong);transform:translateY(-2px)}
+    .phase-card.active-phase{border-color:rgba(110,106,240,.4);background:color-mix(in oklch,var(--accent) 6%,var(--surface))}
+    .phase-num{font-size:var(--text-xs);font-family:var(--font-mono);font-weight:700;color:var(--text-faint);text-transform:uppercase;margin-bottom:var(--space-2)}
+    .phase-name{font-size:var(--text-sm);font-weight:700;margin-bottom:4px}
+    .phase-weeks{font-size:var(--text-xs);color:var(--text-faint);font-family:var(--font-mono)}
+    .phase-gate{margin-top:var(--space-3);padding-top:var(--space-3);border-top:1px solid var(--border);font-size:var(--text-xs);color:var(--text-muted)}
+    .unified-test{margin-top:var(--space-8);padding:var(--space-5);border-radius:var(--radius-lg);border:1px solid var(--border);background:var(--surface);font-size:var(--text-xs);font-family:var(--font-mono);color:var(--text-muted);line-height:1.9}
+
+    /* NSDM-B */
+    .nsdmb-grid{display:grid;gap:var(--space-3);margin-top:var(--space-8)}
+    @media(min-width:600px){.nsdmb-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:1000px){.nsdmb-grid{grid-template-columns:repeat(4,1fr)}}
+    .ncard{padding:var(--space-4);border-radius:var(--radius-lg);border:1px solid var(--border);background:var(--surface)}
+    .ntag{font-size:var(--text-xs);font-family:var(--font-mono);font-weight:700;color:var(--purple);background:rgba(167,139,250,.1);padding:2px 8px;border-radius:var(--radius-sm);display:inline-block;margin-bottom:var(--space-2)}
+    .ndesc{font-size:var(--text-xs);color:var(--text-muted);line-height:1.55}
+
+    /* PRINCIPLES */
+    .princi-grid{display:grid;gap:var(--space-4);margin-top:var(--space-4)}
+    @media(min-width:600px){.princi-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:1000px){.princi-grid{grid-template-columns:repeat(3,1fr)}}
+    .prcard{padding:var(--space-5);border-radius:var(--radius-lg);border:1px solid var(--border);background:var(--surface);transition:border-color var(--transition),transform var(--transition)}
+    .prcard:hover{border-color:var(--border-strong);transform:translateY(-2px)}
+    .pricon{width:36px;height:36px;border-radius:var(--radius-md);background:var(--accent-glow);display:flex;align-items:center;justify-content:center;color:var(--accent);margin-bottom:var(--space-3)}
+    .prtitle{font-size:var(--text-base);font-weight:600;margin-bottom:var(--space-2)}
+    .prdesc{font-size:var(--text-sm);color:var(--text-muted);line-height:1.65}
+
+    /* ABOUT */
+    .about-grid{display:grid;gap:var(--space-8);margin-top:var(--space-4)}
+    @media(min-width:900px){.about-grid{grid-template-columns:1fr 1fr}}
+    .acard{padding:var(--space-6);border-radius:var(--radius-xl);border:1px solid var(--border);background:var(--surface)}
+    .aname{font-size:var(--text-lg);font-weight:700;margin-bottom:4px}
+    .arole{font-size:var(--text-sm);color:var(--text-muted);margin-bottom:var(--space-4)}
+    .abio{font-size:var(--text-sm);color:var(--text-muted);line-height:1.7;margin-bottom:var(--space-3)}
+    .atags{display:flex;flex-wrap:wrap;gap:var(--space-2);margin-top:var(--space-4)}
+    .atag{font-size:var(--text-xs);padding:var(--space-1) var(--space-2);border-radius:var(--radius-sm);border:1px solid var(--border);color:var(--text-muted)}
+
+    /* FOOTER */
+    footer{border-top:1px solid var(--border);padding-block:var(--space-12)}
+    .footer-inner{max-width:var(--content-wide);margin-inline:auto;padding-inline:var(--space-6);display:grid;gap:var(--space-8)}
+    @media(min-width:768px){.footer-inner{grid-template-columns:1.5fr 1fr 1fr 1fr}}
+    .footer-brand p{font-size:var(--text-sm);color:var(--text-muted);margin-top:var(--space-3);line-height:1.65;max-width:300px}
+    .footer-col h4{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-faint);margin-bottom:var(--space-4)}
+    .footer-col a{display:block;font-size:var(--text-sm);color:var(--text-muted);padding-block:var(--space-1);transition:color var(--transition)}
+    .footer-col a:hover{color:var(--text)}
+    .footer-bottom{border-top:1px solid var(--border);padding-top:var(--space-6);max-width:var(--content-wide);margin-inline:auto;padding-inline:var(--space-6);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-4)}
+    .footer-bottom p{font-size:var(--text-xs);color:var(--text-faint)}
+
+    /* ANIMATIONS */
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-2{transition-delay:.12s}
+    .reveal-3{transition-delay:.22s}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-label="NSDM">
+        <rect width="28" height="28" rx="7" fill="var(--accent)"/>
+        <path d="M7 7L7 21L10 21L10 13L18 21L21 21L21 7L18 7L18 15L10 7Z" fill="white"/>
+        <circle cx="21" cy="7" r="2.5" fill="var(--green)"/>
+      </svg>
+      NSDM
+    </a>
+    <div class="nav-links">
+      <a href="#labels" class="nav-link">Labels</a>
+      <a href="#formalism" class="nav-link">Formalism</a>
+      <a href="#papers" class="nav-link">Papers</a>
+      <a href="#benchmark" class="nav-link">Benchmark</a>
+      <a href="#roadmap" class="nav-link">Roadmap</a>
+      <a href="#nsdmb" class="nav-link">NSDM-B</a>
+      <a href="#about" class="nav-link">About</a>
+    </div>
+    <div class="nav-actions">
+      <button class="btn-icon" data-theme-toggle aria-label="Toggle theme">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn-icon" aria-label="GitHub">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+      </a>
+      <a href="#benchmark" class="btn-primary">View Benchmark ›</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+  </div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Active Research · NSDM-Bench-0 · 60 Validated Examples
+      </div>
+      <h1 class="hero-title">
+        AI should not only answer.<br>
+        It should know whether<br>
+        it is <span class="hero-accent">justified</span>.
+      </h1>
+      <p class="hero-sub">
+        A rigorous research programme developing the formal science of justified AI decision-making —
+        formalising the boundary between capability and accountable action.
+      </p>
+      <div class="hero-cta">
+        <a href="#benchmark" class="btn-primary">Explore NSDM-Bench-0 ›</a>
+        <a href="#papers" class="btn-secondary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Read Papers
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-num">6</div><div class="stat-label">Decision Labels</div></div>
+        <div><div class="stat-num">60</div><div class="stat-label">Validated Examples</div></div>
+        <div><div class="stat-num">3</div><div class="stat-label">Research Papers</div></div>
+        <div><div class="stat-num">40<span style="font-size:var(--text-base);color:var(--text-muted)">wk</span></div><div class="stat-label">Research Roadmap</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LABELS -->
+<section class="section" id="labels">
+  <div class="container">
+    <div class="s-label reveal">● Decision Label Taxonomy</div>
+    <h2 class="s-title reveal">Six epistemic states.<br>No collapsing allowed.</h2>
+    <p class="s-sub reveal">NSDM formalises the distinctions that AI systems routinely collapse into a single output. Each label names a fundamentally different epistemic condition.</p>
+    <div class="labels-grid">
+      <div class="lcard reveal">
+        <div class="ltag supported">supported</div>
+        <p class="ldesc">A claim, answer, or action is justified when available facts, rules, and context fully support it. The evidence is sufficient and the conclusion follows.</p>
+        <div class="lnote">Evidence → Claim. Support relation holds.</div>
+      </div>
+      <div class="lcard reveal reveal-2">
+        <div class="ltag unsupported">unsupported</div>
+        <p class="ldesc">No sufficient evidence, rule, or justification is available. Does not mean disproven — it means the available evidence does not support the claim.</p>
+        <div class="lnote">Absence of support. Not negation.</div>
+      </div>
+      <div class="lcard reveal reveal-3">
+        <div class="ltag contradicted">contradicted</div>
+        <p class="ldesc">Available evidence, rules, or constraints directly conflict with the claim or action. A contradiction is an active conflict, not merely a gap in evidence.</p>
+        <div class="lnote">Evidence → ¬Claim. Contradiction holds.</div>
+      </div>
+      <div class="lcard reveal">
+        <div class="warn-badge">⚠ Critical distinction</div>
+        <div class="ltag under">under_specified</div>
+        <p class="ldesc">The claim might be justified, but at least one required premise, condition, or fact is missing. The structure of support may exist — a necessary premise is absent.</p>
+        <div class="lnote">Support structure exists. Premise missing.</div>
+      </div>
+      <div class="lcard reveal reveal-2">
+        <div class="ltag gov">ambiguous_governance</div>
+        <p class="ldesc">The relevant rule, authority, policy, approval path, or institutional constraint is unclear, discretionary, conflicting, or hidden. Critical for legal and compliance systems.</p>
+        <div class="lnote">Rule r is undefined, contested, or inaccessible.</div>
+      </div>
+      <div class="lcard reveal reveal-3">
+        <div class="ltag reward">reward_aligned_unjustified</div>
+        <p class="ldesc">Achieves a metric, target, or reward, but lacks adequate justification or violates a higher constraint. Many AI failures occur when systems optimise the wrong thing successfully.</p>
+        <div class="lnote">Reward(a) is high. Justify(a) fails.</div>
+      </div>
+    </div>
+    <div class="distinction reveal">
+      <div>
+        <div class="dist-h"><span style="color:var(--red);font-family:var(--font-mono)">unsupported</span></div>
+        <p class="dist-p">No adequate support — no rule, evidence, or justification applies. The landscape of evidence is empty with respect to the claim. You cannot construct a justification from what is available.</p>
+      </div>
+      <div class="dist-vs">≠</div>
+      <div>
+        <div class="dist-h"><span style="color:var(--accent);font-family:var(--font-mono)">under_specified</span></div>
+        <p class="dist-p">The structure of support may exist. A justification could be constructed — but a necessary premise is absent. Provide the missing premise and the label may change to <code style="font-size:var(--text-xs);color:var(--green)">supported</code>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMALISM -->
+<section class="section section-alt" id="formalism">
+  <div class="container">
+    <div class="s-label reveal">⬡ Evidence-State Formalism</div>
+    <h2 class="s-title reveal">The decision object.</h2>
+    <p class="s-sub reveal">Every classification is grounded in a formal decision object D, which captures all epistemic components required to determine the evidence state.</p>
+    <div class="pipeline">
+      <div class="code-block reveal">
+        <div class="code-header">
+          <div class="code-dots">
+            <div class="code-dot" style="background:#ff5f57"></div>
+            <div class="code-dot" style="background:#ffbd2e"></div>
+            <div class="code-dot" style="background:#28ca41"></div>
+          </div>
+          <span class="code-filename">decision_object.py</span>
+        </div>
+        <div class="code-body">
+<span class="kw">from</span> <span class="var">dataclasses</span> <span class="kw">import</span> dataclass<br>
+<span class="kw">from</span> <span class="var">typing</span> <span class="kw">import</span> Optional, List<br><br>
+<span class="kw">@dataclass</span><br>
+<span class="kw">class</span> <span class="var">DecisionObject</span>:<br>
+&nbsp;&nbsp;<span class="cmt"># x: input, case, document, or situation</span><br>
+&nbsp;&nbsp;x: <span class="var">str</span><br>
+&nbsp;&nbsp;<span class="cmt"># r: rules, policies, constraints, laws</span><br>
+&nbsp;&nbsp;r: <span class="var">List</span>[<span class="var">str</span>]<br>
+&nbsp;&nbsp;<span class="cmt"># h: history or context</span><br>
+&nbsp;&nbsp;h: <span class="var">Optional</span>[<span class="var">str</span>] <span class="op">=</span> <span class="var">None</span><br>
+&nbsp;&nbsp;<span class="cmt"># y: proposed answer or claim</span><br>
+&nbsp;&nbsp;y: <span class="var">Optional</span>[<span class="var">str</span>] <span class="op">=</span> <span class="var">None</span><br>
+&nbsp;&nbsp;<span class="cmt"># a: proposed action</span><br>
+&nbsp;&nbsp;a: <span class="var">Optional</span>[<span class="var">str</span>] <span class="op">=</span> <span class="var">None</span><br>
+&nbsp;&nbsp;<span class="cmt"># e: evidence state</span><br>
+&nbsp;&nbsp;e: <span class="var">Optional</span>[<span class="var">dict</span>] <span class="op">=</span> <span class="var">None</span><br>
+&nbsp;&nbsp;<span class="cmt"># c: confidence / calibration</span><br>
+&nbsp;&nbsp;c: <span class="var">float</span> <span class="op">=</span> <span class="str">0.0</span><br><br>
+<span class="cmt"># Classifier: f(D) → label</span><br>
+<span class="kw">def</span> <span class="var">classify</span>(d: <span class="var">DecisionObject</span>) <span class="op">-></span> <span class="var">str</span>:<br>
+&nbsp;&nbsp;<span class="kw">...</span> <span class="cmt"># evidence-state reasoner</span>
+        </div>
+      </div>
+      <div class="flist reveal reveal-2">
+        <div class="fitem"><span class="fsym">x</span><div class="ftxt"><span class="flabel">Input</span> — the case, document, prompt, claim, or situation being evaluated</div></div>
+        <div class="fitem"><span class="fsym">r</span><div class="ftxt"><span class="flabel">Rules</span> — policies, constraints, laws, standards, or institutional rules that apply</div></div>
+        <div class="fitem"><span class="fsym">h</span><div class="ftxt"><span class="flabel">History</span> — prior context, conversation history, or situational background</div></div>
+        <div class="fitem"><span class="fsym">y</span><div class="ftxt"><span class="flabel">Claim</span> — the proposed answer, assertion, or judgement to be evaluated</div></div>
+        <div class="fitem"><span class="fsym">a</span><div class="ftxt"><span class="flabel">Action</span> — the proposed action or decision to be executed</div></div>
+        <div class="fitem"><span class="fsym">e</span><div class="ftxt"><span class="flabel">Evidence state</span> — epistemic status of available evidence relative to y and a</div></div>
+        <div class="fitem"><span class="fsym">c</span><div class="ftxt"><span class="flabel">Calibration</span> — confidence state, uncertainty measure, abstention conditions</div></div>
+        <div class="fitem" style="border-color:rgba(110,106,240,.3);background:var(--accent-glow)">
+          <span class="fsym" style="color:var(--green)">f</span>
+          <div class="ftxt"><span class="flabel" style="color:var(--green)">f(D) → label</span> — classifier maps the full decision object to one of six evidence-state labels</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAPERS -->
+<section class="section" id="papers">
+  <div class="container">
+    <div class="s-label reveal">◈ Research Papers</div>
+    <h2 class="s-title reveal">Four papers. One programme.</h2>
+    <p class="s-sub reveal">A staged publication strategy anchored by the benchmark and extending into formal architecture, mathematical theory, and benevolent AI.</p>
+    <div class="papers-grid">
+      <div class="pcard featured reveal">
+        <div class="pnum">Paper 1 — Anchor</div>
+        <h3 class="ptitle">NSDM Decision Boundaries: A Benchmark for Distinguishing Support, Contradiction, Under-Specification, Governance Ambiguity, and Reward-Aligned but Unjustified Action</h3>
+        <p class="pabstract">The anchor paper. Clean, technical, falsifiable, reviewer-resistant. Centred on NSDM-Bench-0, the label ontology, evidence-state formalism, benchmark validation, baseline ladder, leakage audit, and failure frontier.</p>
+        <div><span class="pstatus s-active"><span class="sdot"></span>Active</span>&nbsp;&nbsp;<span style="font-size:var(--text-xs);font-family:var(--font-mono);color:var(--text-faint)">Requires ≥300 examples · IAA κ ≥ 0.65</span></div>
+      </div>
+      <div class="pcard reveal reveal-2">
+        <div class="pnum">Paper 2 — Architecture</div>
+        <h3 class="ptitle">The Free Energy of Choice: Toward an Evidence-State Architecture for Decision Intelligence</h3>
+        <p class="pabstract">Decision intelligence architecture. Evidence-state construction, neuro-symbolic reasoning, causal reasoning, active inference as a lens, drift-diffusion, small/domain-specialised models for bounded decision tasks.</p>
+        <div><span class="pstatus s-draft"><span class="sdot"></span>Drafting</span>&nbsp;&nbsp;<span style="font-size:var(--text-xs);font-family:var(--font-mono);color:var(--text-faint)">Needs empirical anchor from Paper 1</span></div>
+      </div>
+      <div class="pcard reveal">
+        <div class="pnum">Paper 3 — Mathematics</div>
+        <h3 class="ptitle">The Entropy of Choice: Boundary Geometry and Model Capacity in Decision Intelligence</h3>
+        <p class="pabstract">Speculative mathematical programme. Boundary geometry, model capacity, rate-distortion reasoning, scaling-law knee, model-selection conjectures. Mathematical analogies clearly marked as conjectural.</p>
+        <div><span class="pstatus s-future"><span class="sdot"></span>Speculative</span>&nbsp;&nbsp;<span style="font-size:var(--text-xs);font-family:var(--font-mono);color:var(--text-faint)">After Gate 1 (knee test)</span></div>
+      </div>
+      <div class="pcard reveal reveal-2">
+        <div class="pnum">Paper 4 — NSDM-B</div>
+        <h3 class="ptitle">Benevolent Decision Boundaries: Regret, Intent, and Protective Constraint in AI Decision Systems</h3>
+        <p class="pabstract">Future branch. A safe superior intelligence cannot merely be obedient. It must be benevolent under uncertainty, regret-sensitive under action, and autonomy-preserving under asymmetric power.</p>
+        <div><span class="pstatus s-plan"><span class="sdot"></span>Planned</span>&nbsp;&nbsp;<span style="font-size:var(--text-xs);font-family:var(--font-mono);color:var(--text-faint)">After Bench-0 validated</span></div>
+      </div>
+    </div>
+    <div class="thesis-box reveal">
+      <div class="thesis-q">"The long-term thesis: AI should not only answer.<br>It should know whether it is justified."</div>
+      <div class="thesis-attr">— NSDM Research Programme, Rajesh Singh, 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- BENCHMARK -->
+<section class="section section-alt" id="benchmark">
+  <div class="container">
+    <div class="s-label reveal">⊞ NSDM-Bench-0</div>
+    <h2 class="s-title reveal">The benchmark is the science.</h2>
+    <p class="s-sub reveal">Rigorous leakage control, blind splits, external datasets, and reproducible baselines. High accuracy without a leakage audit is not a result.</p>
+    <div class="bench-layout">
+      <div class="reveal">
+        <div class="bench-stats">
+          <div class="bstat"><div class="bstat-num">60</div><div class="bstat-lbl">Validated examples</div></div>
+          <div class="bstat"><div class="bstat-num">6</div><div class="bstat-lbl">Label classes</div></div>
+          <div class="bstat"><div class="bstat-num">0.65</div><div class="bstat-lbl">Target IAA κ</div></div>
+          <div class="bstat"><div class="bstat-num">10K</div><div class="bstat-lbl">Final target</div></div>
+        </div>
+        <div class="prog-wrap">
+          <div class="prog-header"><span>Benchmark Growth</span><span>60 / 10,000</span></div>
+          <div class="prog-bar"><div class="prog-fill" style="width:0.6%"></div></div>
+        </div>
+        <div class="bench-milestones">
+          <div class="bm"><span style="color:var(--text-muted)">→ 100 examples</span><span style="color:var(--green)">IAA testing begins</span></div>
+          <div class="bm"><span style="color:var(--text-muted)">→ 300 examples</span><span style="color:var(--accent)">Paper 1 ready</span></div>
+          <div class="bm"><span style="color:var(--text-muted)">→ 1,000 examples</span><span style="color:var(--amber)">Open dataset release</span></div>
+          <div class="bm"><span style="color:var(--text-muted)">→ 10,000 examples</span><span style="color:var(--purple)">NSDM-B branch</span></div>
+        </div>
+      </div>
+      <div class="reveal reveal-2">
+        <div style="font-size:var(--text-xs);font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:var(--space-3)">Baseline Ladder</div>
+        <div class="btable">
+          <div class="bthead"><div>Baseline</div><div>Status</div><div>Leakage</div></div>
+          <div class="brow"><div class="bname">lexical-baseline</div><div style="font-size:var(--text-xs);color:var(--green)">✓ Done</div><div style="font-size:var(--text-xs);color:var(--green);font-family:var(--font-mono)">Audited</div></div>
+          <div class="brow"><div class="bname">raw-symbolic-checker</div><div style="font-size:var(--text-xs);color:var(--green)">✓ Done</div><div style="font-size:var(--text-xs);color:var(--green);font-family:var(--font-mono)">Audited</div></div>
+          <div class="brow"><div class="bname">structured-symbolic</div><div style="font-size:var(--text-xs);color:var(--green)">✓ Done</div><div style="font-size:var(--text-xs);color:var(--green);font-family:var(--font-mono)">Audited</div></div>
+          <div class="brow"><div class="bname">no-task-family-reasoner</div><div style="font-size:var(--text-xs);color:var(--amber)">⚡ Active</div><div style="font-size:var(--text-xs);color:var(--red);font-family:var(--font-mono)">⚠ Was inflated</div></div>
+          <div class="brow"><div class="bname">clean-boundary-reasoner</div><div style="font-size:var(--text-xs);color:var(--accent)">In progress</div><div style="font-size:var(--text-xs);color:var(--text-faint);font-family:var(--font-mono)">Pending</div></div>
+          <div class="brow"><div class="bname">evidence-state-reasoner</div><div style="font-size:var(--text-xs);color:var(--text-faint)">Planned</div><div style="font-size:var(--text-xs);color:var(--text-faint);font-family:var(--font-mono)">—</div></div>
+        </div>
+        <div class="bleakage-warn">⚠ Leakage lesson: one early baseline was inflated because task-family metadata mapped directly to labels. All baselines now require blind holdout audit before reporting.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+
+
+<!-- NSDM-B -->
+<section class="section section-alt" id="nsdmb">
+  <div class="container">
+    <div class="s-label reveal" style="color:var(--purple)">♥ NSDM-B · Future Branch</div>
+    <h2 class="s-title reveal">Beyond obedience.</h2>
+    <p class="s-sub reveal">A safe superior intelligence cannot merely be obedient. It must be benevolent under uncertainty, regret-sensitive under action, and autonomy-preserving under asymmetric power.</p>
+    <div style="padding:var(--space-5);border-radius:var(--radius-lg);border:1px solid rgba(167,139,250,.25);background:rgba(167,139,250,.05);font-size:var(--text-sm);color:var(--text-muted);line-height:1.8;margin-bottom:var(--space-8)" class="reveal">
+      <strong style="color:var(--text)">Core distinction:</strong> Obedience ≠ Benevolence.<br>
+      An obedient AI asks: <em>"What did the user request?"</em><br>
+      A benevolent AI asks: <em>"Will doing this preserve the user's long-term welfare, agency, dignity, and safety?"</em>
+    </div>
+    <div class="nsdmb-grid">
+      <div class="ncard reveal"><div class="ntag">benevolently_supported</div><p class="ndesc">Action is justified, promotes user welfare, and respects autonomy</p></div>
+      <div class="ncard reveal reveal-2"><div class="ntag">obedient_but_harmful</div><p class="ndesc">Follows instruction but produces harm — classic safety gap</p></div>
+      <div class="ncard reveal reveal-3"><div class="ntag">autonomy_violating</div><p class="ndesc">Action undermines user agency, even if well-intentioned</p></div>
+      <div class="ncard reveal"><div class="ntag">precautionarily_supported</div><p class="ndesc">Action warranted by uncertainty and asymmetric risk</p></div>
+      <div class="ncard reveal reveal-2"><div class="ntag">regret_required</div><p class="ndesc">Expected counterfactual harm is high; action should pause</p></div>
+      <div class="ncard reveal reveal-3"><div class="ntag">intent_unclear</div><p class="ndesc">Cannot determine intent from observable action trajectory</p></div>
+      <div class="ncard reveal"><div class="ntag">reward_aligned_unjustified</div><p class="ndesc">Optimises reward but violates a higher constraint</p></div>
+      <div class="ncard reveal reveal-2"><div class="ntag">protective_but_paternalistic</div><p class="ndesc">Protective intent undermines the user's right to decide</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section class="section" id="principles">
+  <div class="container">
+    <div class="s-label reveal">★ Operating Principles</div>
+    <h2 class="s-title reveal">Non-negotiable. Every session.</h2>
+    <p class="s-sub reveal">The research integrity rules that govern every output of this programme. Violation of any rule invalidates the output.</p>
+    <div class="princi-grid">
+      <div class="prcard reveal">
+        <div class="pricon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 12 2 2 4-4"/><path d="M5 7c0-1.1.9-2 2-2h10a2 2 0 0 1 2 2v12H5V7Z"/></svg></div>
+        <h3 class="prtitle">Never Invent Citations</h3>
+        <p class="prdesc">Every cited source must be verifiable. If uncertain, mark [UNVERIFIED]. Violation invalidates the entire output.</p>
+      </div>
+      <div class="prcard reveal reveal-2">
+        <div class="pricon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+        <h3 class="prtitle">Never Fabricate Data</h3>
+        <p class="prdesc">No invented accuracy numbers, dataset sizes, or parameter counts. If data is unavailable, say so explicitly.</p>
+      </div>
+      <div class="prcard reveal reveal-3">
+        <div class="pricon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <h3 class="prtitle">Falsifiability Required</h3>
+        <p class="prdesc">Every research claim must have falsification criteria. Define what would kill the claim before asserting it.</p>
+      </div>
+      <div class="prcard reveal">
+        <div class="pricon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3 class="prtitle">Leakage Audit Always</h3>
+        <p class="prdesc">High accuracy before a leakage audit is not a result. Task-family metadata and annotation shortcuts invalidate baselines.</p>
+      </div>
+      <div class="prcard reveal reveal-2">
+        <div class="pricon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <h3 class="prtitle">Prove Before Building</h3>
+        <p class="prdesc">The cheapest possible experiment to validate the expensive assumption. Gate 1 must pass before any product investment.</p>
+      </div>
+      <div class="prcard reveal reveal-3">
+        <div class="pricon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <h3 class="prtitle">Quarantine Speculation</h3>
+        <p class="prdesc">Quantum, holographic, Vedic, and grand-unified material is quarantined from the academic core. Analogies are not proofs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section section-alt" id="about">
+  <div class="container">
+    <div class="s-label reveal">◎ About</div>
+    <h2 class="s-title reveal">From Johannesburg, with rigour.</h2>
+    <p class="s-sub reveal">Original research built without a lab, without institutional funding, under real constraints — on the question that matters most.</p>
+    <div class="about-grid">
+      <div class="acard reveal">
+        <div class="aname">Rajesh Singh</div>
+        <div class="arole">Enterprise Architect &amp; AI Builder · MetaForgeAI Pty Ltd · Johannesburg, ZA</div>
+        <p class="abio">NSDM was built not because it was easy, or because there was a lab, or because there was funding — but because the question is real: Does an AI system know whether it is justified? This question matters more as AI systems gain authority over more decisions. The gap between what a system can do and what it can justify is where the most harm happens at scale.</p>
+        <p class="abio">The operating model is a dark factory: AI-driven, low-code, minimal human bottleneck. Prove first. Build second. Ship third. Document always. A falsifiable claim you believe in is worth more than an unfalsifiable claim you shout.</p>
+        <div class="atags">
+          <span class="atag">Decision Boundaries</span>
+          <span class="atag">Neuro-Symbolic AI</span>
+          <span class="atag">Enterprise Architecture</span>
+          <span class="atag">Benchmark Construction</span>
+          <span class="atag">AI Alignment</span>
+          <span class="atag">Johannesburg ZA</span>
+        </div>
+      </div>
+      <div class="acard reveal reveal-2">
+        <div style="font-size:var(--text-sm);font-weight:600;margin-bottom:var(--space-4)">Research Links</div>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3);border-radius:var(--radius-md);border:1px solid var(--border);background:var(--bg);font-size:var(--text-sm);color:var(--text-muted);margin-bottom:var(--space-2);transition:background var(--transition)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          nsdm-decision-boundaries (GitHub)
+        </a>
+        <a href="https://huggingface.co" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3);border-radius:var(--radius-md);border:1px solid var(--border);background:var(--bg);font-size:var(--text-sm);color:var(--text-muted);margin-bottom:var(--space-2);transition:background var(--transition)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          NSDM-Bench-0 on HuggingFace (upcoming)
+        </a>
+        <a href="https://arxiv.org" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3);border-radius:var(--radius-md);border:1px solid var(--border);background:var(--bg);font-size:var(--text-sm);color:var(--text-muted);margin-bottom:var(--space-2);transition:background var(--transition)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          arXiv preprints (upcoming)
+        </a>
+        <div style="margin-top:var(--space-6);padding-top:var(--space-6);border-top:1px solid var(--border)">
+          <div style="font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-faint);margin-bottom:var(--space-3)">Daily Workflow</div>
+          <div style="font-size:var(--text-xs);font-family:var(--font-mono);color:var(--text-muted);line-height:2">
+            06:00 – Check status.md + tasks.md<br>
+            06:15 – Paper or benchmark work (deep work block)<br>
+            08:30 – Code / experiment block (Cursor)<br>
+            12:00 – Literature review or dataset hunt<br>
+            14:00 – Evaluation runs / metrics review<br>
+            17:00 – CrossFit (non-negotiable)<br>
+            20:00 – Documentation + daily commit<br>
+            20:30 – Session close: update status.md
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#home" class="nav-logo">
+        <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+          <rect width="28" height="28" rx="7" fill="var(--accent)"/>
+          <path d="M7 7L7 21L10 21L10 13L18 21L21 21L21 7L18 7L18 15L10 7Z" fill="white"/>
+          <circle cx="21" cy="7" r="2.5" fill="var(--green)"/>
+        </svg>
+        NSDM
+      </a>
+      <p>Neuro-Symbolic Decision Boundaries. A research programme for AI systems that know when they are justified to act.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Research</h4>
+      <a href="#labels">Label Taxonomy</a>
+      <a href="#formalism">Decision Formalism</a>
+      <a href="#benchmark">NSDM-Bench-0</a>
+      <a href="#papers">Papers</a>
+    </div>
+    <div class="footer-col">
+      <h4>Programme</h4>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#nsdmb">NSDM-B Branch</a>
+      <a href="#principles">Principles</a>
+      <a href="#about">About</a>
+    </div>
+    <div class="footer-col">
+      <h4>MetaForgeAI</h4>
+      <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://huggingface.co" target="_blank" rel="noopener noreferrer">HuggingFace</a>
+      <a href="https://arxiv.org" target="_blank" rel="noopener noreferrer">arXiv</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Rajesh Singh · MetaForgeAI Pty Ltd · Johannesburg, ZA</p>
+    <p style="font-family:var(--font-mono)">AI should not only answer. It should know whether it is justified.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const toggle=document.querySelector('[data-theme-toggle]');
+  const html=document.documentElement;
+  let theme='dark';
+  html.setAttribute('data-theme',theme);
+  if(toggle){
+    toggle.addEventListener('click',()=>{
+      theme=theme==='dark'?'light':'dark';
+      html.setAttribute('data-theme',theme);
+      toggle.innerHTML=theme==='dark'
+        ?'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'
+        :'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+    });
+  }
+})();
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});
+},{threshold:0.07,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+const sections=document.querySelectorAll('section[id]');
+const links=document.querySelectorAll('.nav-link');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});
+  links.forEach(l=>{l.classList.toggle('active',l.getAttribute('href')==='#'+cur);});
+},{passive:true});
+</script>
+</body>
+</html>
