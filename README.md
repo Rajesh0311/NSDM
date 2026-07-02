@@ -7,6 +7,7 @@
 **Current phase:** Phase 1 — Benchmark Hardening & Paper 1 Sprint  
 **Sprint end:** 31 July 2026  
 
+NSDM public website: https://neuro-symbolic-decisions.co.za
 ---
 
 ## What This Is
