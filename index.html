@@ -451,6 +451,65 @@
       }
     }
 
+  
+    /* Hard override for the legacy #hero rule */
+    #hero.nsdm-hero-v2 {
+      display: block !important;
+      align-items: initial !important;
+      min-height: auto !important;
+      padding-top: 96px !important;
+      padding-bottom: 86px !important;
+      overflow: visible !important;
+    }
+
+    #hero.nsdm-hero-v2 .wrap {
+      max-width: 1500px !important;
+      width: 100% !important;
+    }
+
+    #hero.nsdm-hero-v2 .hero-copy-wrap {
+      max-width: 1280px !important;
+      margin: 0 auto 54px auto !important;
+    }
+
+    #hero.nsdm-hero-v2 h1 {
+      max-width: 1280px !important;
+      font-size: clamp(4.4rem, 8.6vw, 9.4rem) !important;
+      line-height: 0.9 !important;
+      letter-spacing: -0.07em !important;
+    }
+
+    #hero.nsdm-hero-v2 .hero-lede {
+      max-width: 880px !important;
+    }
+
+    #hero.nsdm-hero-v2 .hero-image-wrap {
+      max-width: 1480px !important;
+      width: 100% !important;
+      margin: 0 auto !important;
+      border-radius: 32px !important;
+      overflow: hidden !important;
+      box-shadow: 0 54px 150px rgba(0, 0, 0, 0.50) !important;
+    }
+
+    #hero.nsdm-hero-v2 .hero-image-wrap img {
+      width: 100% !important;
+      height: auto !important;
+      display: block !important;
+      max-width: none !important;
+    }
+
+    @media (max-width: 900px) {
+      #hero.nsdm-hero-v2 {
+        padding-top: 76px !important;
+        padding-bottom: 58px !important;
+      }
+
+      #hero.nsdm-hero-v2 h1 {
+        font-size: clamp(3.25rem, 15vw, 5.4rem) !important;
+      }
+    }
+
   </style>
 </head>
 <body>
