@@ -289,6 +289,7 @@
           <li><a href="#labels">Labels</a></li>
           <li><a href="#formalism">Formalism</a></li>
           <li><a href="#papers">Papers</a></li>
+          <li><a href="#research-update">Research Update</a></li>
           <li><a href="#benchmark">Benchmark</a></li>
           <li><a href="#principles">Governance</a></li>
         </ul>
@@ -466,6 +467,82 @@ class DecisionObject:
       </div>
     </section>
 
+
+    <section id="research-update" class="section alt">
+      <div class="wrap">
+        <div class="section-head r">
+          <span class="eyebrow">Research Update · 2026-07-07</span>
+          <h2 class="section-title">Evidence-state decision boundaries are now measurable.</h2>
+          <p class="section-sub">NSDM has moved from concept into a measurable research programme with a seed benchmark, baseline ladder, repeated LLM evaluations, Paper 1 draft sections, and public research artifacts.</p>
+        </div>
+
+        <div class="bench-top">
+          <div class="metric r">
+            <span>Zero-shot LLM mean</span>
+            <strong>0.703</strong>
+            <em>gpt-4.1-mini · 5 runs</em>
+          </div>
+          <div class="metric r">
+            <span>Few-shot LLM mean</span>
+            <strong>0.753</strong>
+            <em>gpt-4.1-mini · 5 runs</em>
+          </div>
+          <div class="metric r">
+            <span>Few-shot gain</span>
+            <strong>+0.050</strong>
+            <em>mean accuracy improvement</em>
+          </div>
+        </div>
+
+        <div class="baseline-box r">
+          <div class="subhead">Current clean comparison results</div>
+          <table class="bltable">
+            <thead>
+              <tr><th>Evaluation</th><th>Mean Accuracy</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="bn">Clean modular boundary reasoner</td><td>0.733</td><td><span class="badge done">Clean</span></td></tr>
+              <tr><td class="bn">Evidence-state reasoner v0.2</td><td>0.733</td><td><span class="badge done">Clean</span></td></tr>
+              <tr><td class="bn">Zero-shot LLM, gpt-4.1-mini</td><td>0.703</td><td><span class="badge audit">5-run mean</span></td></tr>
+              <tr><td class="bn">Few-shot LLM, gpt-4.1-mini</td><td>0.753</td><td><span class="badge audit">5-run mean</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pgrid">
+          <div class="pcard-p r">
+            <h3>Key finding</h3>
+            <p>A zero-shot LLM baseline performed strongly on conventional support and contradiction, but had zero mean recall on <code>ambiguous_governance</code> and <code>reward_aligned_unjustified</code>.</p>
+          </div>
+          <div class="pcard-p r">
+            <h3>Few-shot result</h3>
+            <p>Few-shot demonstrations improved overall performance and governance ambiguity recall, but the most NSDM-specific categories remain difficult across repeated runs.</p>
+          </div>
+          <div class="pcard-p r">
+            <h3>Foundation paper</h3>
+            <p>Paper 1 now anchors the programme: decision boundaries, NSDM-Bench-0, baseline ladder, leakage audit, repeated LLM runs, and failure-frontier analysis.</p>
+          </div>
+          <div class="pcard-p r">
+            <h3>Important limitation</h3>
+            <p>NSDM-Bench-0 is still a seed benchmark. The current 60-item version has no true <code>unsupported</code> examples, so the next expansion must correct that gap.</p>
+          </div>
+        </div>
+
+        <div class="bench-usage r">
+          <div class="bench-card">
+            <h3>Why this matters</h3>
+            <p>Aggregate accuracy can hide boundary failures. A system may appear competent because it handles ordinary support and contradiction, while still failing to detect unclear authority, missing governance, or reward-aligned but unjustified action.</p>
+          </div>
+          <div class="bench-action">
+            <h3>Read the update</h3>
+            <p>The public repo now includes release notes, Paper 1 draft sections, and paper-ready result tables.</p>
+            <a href="docs/releases/RELEASE_NOTES_NSDM_RESEARCH_UPDATE_2026_07_07.md" class="btn btn-fill">Release Notes</a>
+            <a href="papers/paper-1-decision-boundaries/PAPER_1_FOUNDATION_DECISION_BOUNDARIES_DRAFT.md" class="btn btn-outline">Foundation Paper</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="benchmark" class="section alt">
       <div class="wrap bench-shell">
         <div class="section-head r"><span class="eyebrow">Benchmark Corpus</span><h2 class="section-title">The ground truth.</h2><p class="section-sub">Without a rigorously annotated corpus and measurable inter-annotator agreement, the taxonomy is unfalsifiable. The corpus is not supplementary material — it is the epistemic foundation.</p></div>
@@ -476,7 +553,7 @@ class DecisionObject:
           <div class="stat r"><div class="stat-n">10K</div><div class="stat-l">Long-run NSDM-B scale</div></div>
         </div>
         <div class="growth r"><div class="subhead">Growth ladder</div><div class="ladder"><div class="ls cur"><div class="ls-n">60</div><div class="ls-d">Current corpus</div></div><div class="la">›</div><div class="ls"><div class="ls-n">100</div><div class="ls-d">IAA testing</div></div><div class="la">›</div><div class="ls"><div class="ls-n">300</div><div class="ls-d">Paper 1 ready</div></div><div class="la">›</div><div class="ls"><div class="ls-n">1,000</div><div class="ls-d">Open release</div></div><div class="la">›</div><div class="ls"><div class="ls-n">10,000</div><div class="ls-d">NSDM-B</div></div></div></div>
-        <div class="baseline-box r"><div class="subhead">Baseline evaluation suite</div><table class="bltable"><thead><tr><th>Baseline</th><th>Status</th><th>Leakage</th></tr></thead><tbody><tr><td class="bn">lexical-baseline</td><td><span class="badge done">Done</span></td><td><span class="badge audit">Audited</span></td></tr><tr><td class="bn">zero-shot-gpt4</td><td><span class="badge done">Done</span></td><td><span class="badge audit">Audited</span></td></tr><tr><td class="bn">few-shot-gpt4</td><td><span class="badge prog">In Progress</span></td><td><span class="dash">—</span></td></tr><tr><td class="bn">fine-tuned-classifier</td><td><span class="badge prog">In Progress</span></td><td><span class="dash">—</span></td></tr><tr><td class="bn">chain-of-thought-reasoner</td><td><span class="badge plan">Planned</span></td><td><span class="dash">—</span></td></tr><tr><td class="bn">evidence-state-reasoner</td><td><span class="badge plan">Planned</span></td><td><span class="dash">—</span></td></tr></tbody></table></div>
+        <div class="baseline-box r"><div class="subhead">Baseline evaluation suite</div><table class="bltable"><thead><tr><th>Baseline</th><th>Status</th><th>Leakage</th></tr></thead><tbody><tr><td class="bn">lexical-baseline</td><td><span class="badge done">Done</span></td><td><span class="badge audit">Audited</span></td></tr><tr><td class="bn">zero-shot-gpt4</td><td><span class="badge done">Done</span></td><td><span class="badge audit">Audited</span></td></tr><tr><td class="bn">few-shot-gpt4</td><td><span class="badge done">Done</span></td><td><span class="badge audit">Repeated</span></td></tr><tr><td class="bn">fine-tuned-classifier</td><td><span class="badge prog">In Progress</span></td><td><span class="dash">—</span></td></tr><tr><td class="bn">chain-of-thought-reasoner</td><td><span class="badge plan">Planned</span></td><td><span class="dash">—</span></td></tr><tr><td class="bn">evidence-state-reasoner</td><td><span class="badge plan">Planned</span></td><td><span class="dash">—</span></td></tr></tbody></table></div>
         <div class="leakage r"><div class="leakage-icon">⚠</div><div><h4>Leakage audit is non-negotiable.</h4><p>All benchmark examples must be audited for training-set contamination before baseline evaluation. Any item whose label or reasoning chain appears verbatim in a model's pre-training corpus is flagged and quarantined from the evaluation set. Publishing contaminated benchmark results invalidates the comparison.</p></div></div>
         <div class="bench-usage r">
           <div class="bench-card"><h3>Who this benchmark is for</h3><p>NSDM is designed for researchers, model evaluators, governance teams, and enterprise decision-system builders who need to distinguish fluent output from justified output. It supports benchmark construction, model comparison, annotation protocol design, and evidence-state evaluation under explicit governance constraints.</p><ul class="bench-list"><li><i></i><span>Researchers can use the corpus to study evidence-state classification and epistemic failure modes.</span></li><li><i></i><span>Model evaluators can compare baseline systems under leakage-audited conditions.</span></li><li><i></i><span>Governance and assurance teams can use the taxonomy to separate unsupported, contradicted, and under-specified outputs.</span></li></ul></div>
