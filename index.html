@@ -147,7 +147,8 @@
     .hero-panel-title, .hero-panel-note { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.10em; }
     .hero-panel-title { color: var(--primary); }
     .hero-panel-note { color: var(--text-muted); }
-    .hero-diagram { position: relative; z-index: 1; aspect-ratio: 1 / 1; border-radius: 14px; border: 1px solid var(--border); background: radial-gradient(circle at 50% 50%, rgba(14,116,144,0.12), transparent 44%), linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00)); overflow: hidden; }
+    .hero-diagram { position: relative; z-index: 1; aspect-ratio: 16 / 10; border-radius: 14px; border: 1px solid var(--border); background: radial-gradient(circle at 50% 50%, rgba(14,116,144,0.12), transparent 44%), linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00)); overflow: hidden; }
+    .hero-diagram-img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
     .hero-legend { position: relative; z-index: 1; margin-top: 16px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
     .hero-legend-item { display: flex; gap: 8px; align-items: center; font-size: 12.5px; color: var(--text-dim); }
     .hero-legend-dot { width: 8px; height: 8px; border-radius: 999px; flex-shrink: 0; }
@@ -329,30 +330,13 @@
                 <div class="hero-panel-title">Decision Boundary Schema</div>
                 <div class="hero-panel-note">evidence · rules · claim · action</div>
               </div>
-              <div class="hero-diagram" aria-hidden="true">
-                <svg viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <linearGradient id="pathA" x1="92" y1="140" x2="388" y2="316" gradientUnits="userSpaceOnUse"><stop stop-color="#22c55e"/><stop offset="1" stop-color="#0e7490"/></linearGradient>
-                    <linearGradient id="pathB" x1="90" y1="342" x2="382" y2="180" gradientUnits="userSpaceOnUse"><stop stop-color="#f97316"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient>
-                  </defs>
-                  <rect x="40" y="40" width="400" height="400" rx="20" stroke="rgba(255,255,255,0.08)" stroke-dasharray="6 10"/>
-                  <circle cx="154" cy="146" r="82" fill="rgba(34,197,94,0.08)" stroke="rgba(34,197,94,0.28)"/>
-                  <circle cx="320" cy="154" r="72" fill="rgba(14,116,144,0.08)" stroke="rgba(14,116,144,0.28)"/>
-                  <circle cx="248" cy="312" r="94" fill="rgba(249,115,22,0.06)" stroke="rgba(249,115,22,0.22)"/>
-                  <path d="M92 210C146 168 194 154 244 184C292 214 330 212 388 178" stroke="url(#pathA)" stroke-width="4" stroke-linecap="round"/>
-                  <path d="M98 338C162 306 190 246 246 244C300 242 328 276 382 220" stroke="url(#pathB)" stroke-width="4" stroke-linecap="round" stroke-dasharray="10 10"/>
-                  <circle cx="118" cy="176" r="7" fill="#22c55e"/>
-                  <circle cx="206" cy="174" r="7" fill="#22c55e"/>
-                  <circle cx="274" cy="188" r="7" fill="#0e7490"/>
-                  <circle cx="346" cy="186" r="7" fill="#0e7490"/>
-                  <circle cx="190" cy="292" r="7" fill="#f97316"/>
-                  <circle cx="284" cy="270" r="7" fill="#8b5cf6"/>
-                  <circle cx="332" cy="256" r="7" fill="#8b5cf6"/>
-                  <text x="118" y="126" fill="#cdccda" font-size="12" font-family="Courier New, monospace">supported</text>
-                  <text x="286" y="122" fill="#cdccda" font-size="12" font-family="Courier New, monospace">under_specified</text>
-                  <text x="186" y="374" fill="#cdccda" font-size="12" font-family="Courier New, monospace">contradicted / governance edge</text>
-                  <text x="76" y="74" fill="#7a7a8e" font-size="11" font-family="Courier New, monospace">formal decision surface</text>
-                </svg>
+              <div class="hero-diagram">
+                <img
+                  class="hero-diagram-img"
+                  src="assets/nsdm_decision_boundary_hero_2.png"
+                  alt="NSDM decision boundary manifold showing supported, contradicted, under-specified, governance-ambiguous, and reward-aligned unjustified regions"
+                  loading="eager"
+                />
               </div>
               <div class="hero-legend">
                 <div class="hero-legend-item"><span class="hero-legend-dot support"></span><span>support relation complete</span></div>

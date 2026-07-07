@@ -1,4 +1,4 @@
-﻿# Paper 3 — Mathematical Foundations of NSDM
+﻿# Paper 4 — Mathematical Foundations of NSDM
 
 Status: planned / retained.
 
