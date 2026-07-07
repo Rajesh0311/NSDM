@@ -281,6 +281,176 @@
     .foot-nav { list-style: none; display: flex; gap: 18px; flex-wrap: wrap; }
     .foot-nav a { font-size: 13px; color: var(--text-dim); }
     .foot-nav a:hover { color: var(--text); }
+  
+    /* Final hero override — full-width research hero */
+    .hero-grid {
+      display: block !important;
+      min-height: auto !important;
+      padding: 86px 0 76px !important;
+    }
+
+    .hero-content {
+      max-width: 1180px !important;
+      margin: 0 auto 48px auto !important;
+      text-align: left !important;
+    }
+
+    .hero h1 {
+      max-width: 1160px !important;
+      font-size: clamp(4.2rem, 8.2vw, 8.8rem) !important;
+      line-height: 0.9 !important;
+      letter-spacing: -0.07em !important;
+      margin: 24px 0 26px !important;
+    }
+
+    .hero-copy {
+      max-width: 860px !important;
+      font-size: clamp(1.08rem, 1.45vw, 1.32rem) !important;
+      line-height: 1.72 !important;
+    }
+
+    .hero-visual {
+      width: 100% !important;
+      max-width: 1320px !important;
+      margin: 0 auto !important;
+    }
+
+    .hero-panel {
+      width: 100% !important;
+      border: none !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      overflow: visible !important;
+    }
+
+    .hero-panel::before {
+      display: none !important;
+    }
+
+    .hero-panel-head,
+    .hero-legend {
+      display: none !important;
+    }
+
+    .hero-diagram {
+      width: 100% !important;
+      aspect-ratio: 3 / 2 !important;
+      min-height: 0 !important;
+      height: auto !important;
+      border-radius: 30px !important;
+      border: 1px solid rgba(125, 211, 252, 0.26) !important;
+      overflow: hidden !important;
+      box-shadow: 0 48px 140px rgba(0, 0, 0, 0.46) !important;
+      background: rgba(5, 16, 32, 0.8) !important;
+    }
+
+    .hero-diagram-img {
+      width: 100% !important;
+      height: auto !important;
+      display: block !important;
+      object-fit: contain !important;
+      object-position: center !important;
+      transform: none !important;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        padding: 70px 0 54px !important;
+      }
+
+      .hero h1 {
+        font-size: clamp(3.2rem, 14vw, 5.4rem) !important;
+      }
+
+      .hero-content {
+        margin-bottom: 34px !important;
+      }
+
+      .hero-diagram {
+        border-radius: 20px !important;
+      }
+    }
+
+  
+    /* NSDM Hero v2 — clean full-width research hero */
+    .nsdm-hero-v2 {
+      position: relative;
+      padding: 96px 0 86px;
+      overflow: hidden;
+    }
+
+    .nsdm-hero-v2 .hero-copy-wrap {
+      max-width: 1180px;
+      margin: 0 auto 54px;
+    }
+
+    .nsdm-hero-v2 h1 {
+      font-family: var(--serif);
+      font-size: clamp(4.4rem, 8.4vw, 9rem);
+      line-height: 0.9;
+      letter-spacing: -0.07em;
+      margin: 24px 0 26px;
+      max-width: 1180px;
+    }
+
+    .nsdm-hero-v2 .hero-lede {
+      max-width: 880px;
+      color: var(--text-muted);
+      font-size: clamp(1.08rem, 1.45vw, 1.34rem);
+      line-height: 1.72;
+      margin: 0;
+    }
+
+    .nsdm-hero-v2 .hero-actions {
+      margin-top: 34px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nsdm-hero-v2 .hero-stats {
+      margin-top: 34px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nsdm-hero-v2 .hero-image-wrap {
+      max-width: 1420px;
+      margin: 0 auto;
+      border-radius: 34px;
+      border: 1px solid rgba(125, 211, 252, 0.26);
+      background: rgba(5, 16, 32, 0.78);
+      box-shadow: 0 54px 150px rgba(0, 0, 0, 0.50);
+      overflow: hidden;
+    }
+
+    .nsdm-hero-v2 .hero-image-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    @media (max-width: 900px) {
+      .nsdm-hero-v2 {
+        padding: 76px 0 58px;
+      }
+
+      .nsdm-hero-v2 h1 {
+        font-size: clamp(3.25rem, 15vw, 5.4rem);
+      }
+
+      .nsdm-hero-v2 .hero-copy-wrap {
+        margin-bottom: 34px;
+      }
+
+      .nsdm-hero-v2 .hero-image-wrap {
+        border-radius: 20px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -316,50 +486,42 @@
   </nav>
 
   <main id="main">
-    <section id="hero">
-      <div class="grid-bg" aria-hidden="true"></div>
-      <div class="hero-glow" aria-hidden="true"></div>
-      <div class="hero-glow-2" aria-hidden="true"></div>
+
+    <section id="hero" class="nsdm-hero-v2">
       <div class="wrap">
-        <div class="hero-grid">
-          <div class="hero-body r">
-            <div class="hero-tag">Neuro-Symbolic Decision Boundaries</div>
-            <h1 class="hero-h">AI should not only answer.<br>It should know whether it is justified.</h1>
-            <p class="hero-sub">NSDM formalises the boundary between fluent AI output and accountable AI decision-making by classifying decisions according to their evidential state.</p>
-            <div class="cta-row">
-              <a href="#benchmark" class="btn btn-fill">Explore Benchmark</a>
-              <a href="#papers" class="btn btn-outline">Read Papers</a>
-            </div>
-            <div class="pills">
-              <span class="pill"><strong>6</strong> Decision Labels</span>
-              <span class="pill"><strong>60</strong> Validated Examples</span>
-              <span class="pill">Target κ <strong>≥&nbsp;0.65</strong></span>
-              <span class="pill"><strong>10K</strong> long-run scale</span>
-            </div>
+        <div class="hero-copy-wrap">
+          <div class="eyebrow"><span></span> Neuro-Symbolic Decision Boundaries</div>
+
+          <h1>AI should not only answer. It should know whether it is justified.</h1>
+
+          <p class="hero-lede">
+            NSDM formalises the boundary between fluent AI output and accountable AI decision-making by classifying decisions according to their evidential state.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#benchmark" class="btn btn-fill">Explore Benchmark</a>
+            <a href="#papers" class="btn btn-outline">Read Papers</a>
           </div>
-          <div class="hero-visual r">
-            <div class="hero-panel">
-              <div class="hero-diagram">
-                <img
-                  class="hero-diagram-img"
-                  src="assets/nsdm_decision_boundary_hero_2.png"
-                  alt="NSDM decision boundary manifold showing supported, contradicted, under-specified, governance-ambiguous, and reward-aligned unjustified regions"
-                  loading="eager"
-                />
-              </div>
-              <div class="hero-legend">
-                <div class="hero-legend-item"><span class="hero-legend-dot support"></span><span>support relation complete</span></div>
-                <div class="hero-legend-item"><span class="hero-legend-dot gap"></span><span>premise missing or unresolved</span></div>
-                <div class="hero-legend-item"><span class="hero-legend-dot conflict"></span><span>evidence supports negation</span></div>
-                <div class="hero-legend-item"><span class="hero-legend-dot rule"></span><span>governance boundary in force</span></div>
-              </div>
-            </div>
+
+          <div class="hero-stats">
+            <span class="pill">6 Decision Labels</span>
+            <span class="pill">60 Validated Examples</span>
+            <span class="pill">Target κ ≥ 0.65</span>
+            <span class="pill">10K long-run scale</span>
           </div>
+        </div>
+
+        <div class="hero-image-wrap">
+          <img
+            src="assets/nsdm_decision_boundary_hero_2.png"
+            alt="NSDM decision boundary manifold showing supported, contradicted, under-specified, governance-ambiguous, and reward-aligned unjustified regions"
+            loading="eager"
+          />
         </div>
       </div>
     </section>
 
-    <section class="section">
+<section class="section">
       <div class="wrap">
         <div class="section-head r">
           <span class="eyebrow">Audience</span>
