@@ -214,6 +214,48 @@
       display: block;
     }
 
+
+    .governance-stack {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .governance-card {
+      min-height: 230px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .governance-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(34, 211, 238, 0.11), transparent 42%);
+      pointer-events: none;
+    }
+
+    .governance-card .layer {
+      position: relative;
+      z-index: 1;
+      font-family: var(--mono);
+      color: var(--cyan);
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .governance-card h3,
+    .governance-card p {
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 980px) {
+      .governance-stack { grid-template-columns: 1fr; }
+    }
+
     .grid-2 { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 34px; align-items: start; }
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
@@ -391,6 +433,7 @@
         <li><a href="#use-cases">Use Cases</a></li>
         <li><a href="#downloads">Downloads</a></li>
         <li><a href="#evidence">Evidence</a></li>
+        <li><a href="#governance-justification">Governance</a></li>
         <li><a href="#papers">Papers</a></li>
         <li><a href="#benchmark">Benchmark</a></li>
         <li><a href="#roadmap">Roadmap</a></li>
@@ -521,6 +564,42 @@
             <tr><td>Few-shot LLM, five-run mean</td><td>0.753</td></tr>
           </tbody>
         </table>
+      </div>
+    </section>
+
+    <section id="governance-justification" class="section alt">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">Governance-Aware Justification</div>
+          <h2>Explainability is not enough.</h2>
+          <p>High-stakes AI systems need a stronger standard: evidence-backed decisions, calibrated uncertainty, machine-readable governance rules, and repeatable evaluation protocols.</p>
+        </div>
+
+        <div class="governance-stack">
+          <div class="card governance-card">
+            <div class="layer">Layer 1</div>
+            <h3>Decision Justification</h3>
+            <p>Does the evidence actually support the claim, recommendation, or action?</p>
+          </div>
+
+          <div class="card governance-card">
+            <div class="layer">Layer 2</div>
+            <h3>Uncertainty and Abstention</h3>
+            <p>Does the system know when confidence is too low and when it should defer, ask, or abstain?</p>
+          </div>
+
+          <div class="card governance-card">
+            <div class="layer">Layer 3</div>
+            <h3>Machine-Readable Governance</h3>
+            <p>Can policies, rules, authority limits, and escalation requirements be encoded as testable boundaries?</p>
+          </div>
+
+          <div class="card governance-card">
+            <div class="layer">Layer 4</div>
+            <h3>Continuous Evaluation</h3>
+            <p>Can models be repeatedly tested for calibration failure, boundary violations, reward hacking, and long-context degradation?</p>
+          </div>
+        </div>
       </div>
     </section>
 
