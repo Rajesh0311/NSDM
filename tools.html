@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NSDM Tools | Decision-Boundary Utilities</title>
+  <meta name="description" content="NSDM tools for AI readiness, decision-boundary evaluation, RAG readiness, TokenOps, governance credibility, and exportable decision packs.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    :root {
+      --bg: #f7f6f2;
+      --ink: #102326;
+      --muted: #526468;
+      --teal: #01696f;
+      --teal-dark: #004b50;
+      --card: #ffffff;
+      --line: #d9dedb;
+      --soft: #eef4f3;
+      --accent: #d99b42;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    a { color: var(--teal); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(247, 246, 242, 0.94);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 750;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: var(--teal);
+      display: grid;
+      place-items: center;
+      color: var(--bg);
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+
+    .links a {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .links a.active {
+      color: var(--teal);
+    }
+
+    .hero {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 84px 24px 48px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--teal);
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 0.96;
+      letter-spacing: -0.06em;
+      margin: 0 0 22px;
+    }
+
+    .lead {
+      font-size: 20px;
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 0 28px;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 750;
+      border: 1px solid var(--teal);
+      background: var(--teal);
+      color: white;
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--teal);
+    }
+
+    .hero-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 22px 70px rgba(1, 105, 111, 0.12);
+    }
+
+    .boundary-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 14px;
+    }
+
+    .boundary-list li {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      font-weight: 650;
+    }
+
+    section {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1;
+      letter-spacing: -0.045em;
+      margin: 0 0 18px;
+    }
+
+    .section-lead {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 820px;
+      margin: 0 0 30px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      min-height: 260px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin: 0 0 16px;
+    }
+
+    .tag {
+      display: inline-flex;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 10px;
+      margin-bottom: 14px;
+    }
+
+    .checklist {
+      padding-left: 18px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .panel {
+      background: var(--teal);
+      color: white;
+      border-radius: 30px;
+      padding: 36px;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .panel h2,
+    .panel p {
+      color: white;
+    }
+
+    .panel .section-lead {
+      opacity: 0.88;
+    }
+
+    .matrix {
+      display: grid;
+      gap: 12px;
+    }
+
+    .matrix-row {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 18px;
+      padding: 14px 16px;
+    }
+
+    .matrix-row strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .note {
+      background: #fff7e8;
+      border: 1px solid #efd7a8;
+      border-radius: 24px;
+      padding: 24px;
+      color: #4c3920;
+    }
+
+    footer {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 36px 24px 56px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 860px) {
+      .hero,
+      .panel {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="nav">
+      <a class="brand" href="/">
+        <span class="mark">N</span>
+        <span>NSDM Institute</span>
+      </a>
+      <div class="links">
+        <a href="/">Home</a>
+        <a class="active" href="/tools.html">Tools</a>
+        <a href="/#research">Research</a>
+        <a href="/#governance">Governance</a>
+        <a href="/#action-states">Action States</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Decision-Boundary Utilities</div>
+        <h1>Tools for justified AI decisions.</h1>
+        <p class="lead">
+          Most AI readiness tools ask whether an organisation can adopt AI.
+          NSDM asks a harder question: can the organisation make AI decisions that are justified, governed, contestable, and safe to act on?
+        </p>
+        <div class="button-row">
+          <a class="button" href="#tools">View tools</a>
+          <a class="button secondary" href="/">Back to institute</a>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <div class="tag">NSDM test</div>
+        <ul class="boundary-list">
+          <li>Is the claim supported?</li>
+          <li>Is a premise missing?</li>
+          <li>Does evidence contradict the claim?</li>
+          <li>Is authority ambiguous?</li>
+          <li>Is reward pressure distorting the action?</li>
+          <li>Should the system answer, abstain, refuse, or escalate?</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="tools">
+      <h2>Tool layer</h2>
+      <p class="section-lead">
+        These utilities translate NSDM research into practical checks for executives, AI builders, governance teams, and product owners. They are designed to expose decision risk before a model output becomes an operational action.
+      </p>
+
+      <div class="grid">
+        <article class="card">
+          <div class="tag">01</div>
+          <h3>AI Readiness Assessment</h3>
+          <p>Evaluates whether an organisation is ready to use AI in decision workflows, not only whether it has data, cloud access, or automation ambition.</p>
+          <ul class="checklist">
+            <li>Decision ownership</li>
+            <li>Evidence availability</li>
+            <li>Governance maturity</li>
+            <li>Human override path</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="tag">02</div>
+          <h3>Use-Case Scorer</h3>
+          <p>Ranks AI use cases by value, risk, evidence quality, governance clarity, and actionability.</p>
+          <ul class="checklist">
+            <li>Business value</li>
+            <li>Decision risk</li>
+            <li>Data readiness</li>
+            <li>Boundary complexity</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="tag">03</div>
+          <h3>RAG Readiness / Data-Rot Audit</h3>
+          <p>Checks whether retrieval systems are relying on current, authoritative, and decision-relevant sources.</p>
+          <ul class="checklist">
+            <li>Source authority</li>
+            <li>Document freshness</li>
+            <li>Contradictory sources</li>
+            <li>Evidence traceability</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="tag">04</div>
+          <h3>Decision-Boundary Checklist</h3>
+          <p>Tests whether a model output is supported, under-specified, unsupported, contradicted, or governance-ambiguous.</p>
+          <ul class="checklist">
+            <li>Supported claim</li>
+            <li>Missing premise</li>
+            <li>Contradiction</li>
+            <li>Escalation trigger</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="tag">05</div>
+          <h3>TokenOps Cost Card</h3>
+          <p>Connects token spend to justified decisions rather than raw usage volume.</p>
+          <ul class="checklist">
+            <li>Cost per justified decision</li>
+            <li>Cost per safe refusal</li>
+            <li>Negative-value token rate</li>
+            <li>Boundary stress-test cost</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="tag">06</div>
+          <h3>Governance Credibility Test</h3>
+          <p>Assesses whether a proposed AI workflow has clear authority, policy coverage, auditability, and human accountability.</p>
+          <ul class="checklist">
+            <li>Policy authority</li>
+            <li>Role permission</li>
+            <li>Audit trail</li>
+            <li>Review threshold</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="panel">
+        <div>
+          <div class="eyebrow" style="color:#f7f6f2;">Exportable decision pack</div>
+          <h2>From model output to defensible decision.</h2>
+          <p class="section-lead">
+            NSDM tools are designed to produce a compact decision pack: the claim, evidence, governing rule, boundary state, action recommendation, and escalation logic.
+          </p>
+        </div>
+
+        <div class="matrix">
+          <div class="matrix-row">
+            <strong>Evidence state</strong>
+            supported, unsupported, contradicted, under-specified, ambiguous governance, or reward-aligned unjustified.
+          </div>
+          <div class="matrix-row">
+            <strong>Governance state</strong>
+            policy allowed, policy forbidden, authority missing, human review required, audit required.
+          </div>
+          <div class="matrix-row">
+            <strong>Action state</strong>
+            answer, ask for clarification, request more evidence, abstain, refuse, escalate, or block.
+          </div>
+          <div class="matrix-row">
+            <strong>TokenOps value</strong>
+            whether the tokens spent produced a justified decision, a safe refusal, or avoidable noise.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="note">
+        <strong>Research status:</strong>
+        These tools are part of an active research and product programme. Early GOV-0 experiments suggest that text-only embeddings can recognise topic structure, but struggle with evidence-state boundaries. Structured NSDM diagnostic features substantially improved performance on a targeted contrast set. The current tools should be treated as decision-support utilities, not automated certification.
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>NSDM Institute for Decision Boundaries. AI should not only answer. It should know whether it is justified.</p>
+  </footer>
+</body>
+</html>
