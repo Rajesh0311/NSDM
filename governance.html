@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NSDM Governance States</title>
+  <meta name="description" content="NSDM research on evidence-state, governance-state, action-state, and neurosymbolic decision boundaries.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a class="brand" href="/index.html">
+      <span class="mark">N</span>
+      <span>NSDM Institute</span>
+    </a>
+    <div class="links">
+      <a href="/index.html">Home</a>
+      <a href="/research.html">Research</a>
+      <a href="/papers.html">Papers</a>
+      <a href="/use-cases.html">Use Cases</a>
+      <a href="/verticals.html">Verticals</a>
+      <a href="/governance.html">Governance</a>
+      <a href="/action-states.html">Action States</a>
+      <a href="/tools.html">Tools</a>
+      <a class="contact-link" href="/index.html#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="eyebrow">Governance-state model</div>
+  <h1>Make authority, policy, and accountability machine-visible.</h1>
+  <p class="lead">Governance becomes explicit states, required evidence, operational gates, and human escalation paths.</p>
+</section>
+<section>
+  <table class="result-table">
+    <thead><tr><th>State</th><th>Meaning</th><th>Required behaviour</th></tr></thead>
+    <tbody>
+      <tr><td class="metric">governance_clear</td><td>Authority, policy, responsibility, and escalation route are known.</td><td>Proceed only if evidence and consequence thresholds also pass.</td></tr>
+      <tr><td class="metric">governance_ambiguous</td><td>Policy, authority, responsibility, or jurisdiction is unclear.</td><td>Ask, abstain, or escalate.</td></tr>
+      <tr><td class="metric">policy_allowed</td><td>The action is explicitly permitted within scope.</td><td>Record scope and evidence; continue with monitoring.</td></tr>
+      <tr><td class="metric">policy_forbidden</td><td>The action is explicitly prohibited.</td><td>Refuse or stop and log the rule.</td></tr>
+      <tr><td class="metric">authority_missing</td><td>The system or operator lacks decision authority.</td><td>Escalate to the accountable role.</td></tr>
+      <tr><td class="metric">human_review_required</td><td>Policy or consequence requires a human decision.</td><td>Prepare an evidence packet and route for review.</td></tr>
+      <tr><td class="metric">compliance_sensitive</td><td>The action touches regulated, contractual, or rights-sensitive obligations.</td><td>Apply logging, retention, and approval controls.</td></tr>
+      <tr><td class="metric">high_risk_domain</td><td>Error could affect safety, rights, finance, health, or infrastructure.</td><td>Use higher evidence thresholds and mandatory escalation.</td></tr>
+      <tr><td class="metric">role_permission_missing</td><td>The user or agent lacks permission.</td><td>Deny and provide a legitimate access route.</td></tr>
+      <tr><td class="metric">audit_required</td><td>The decision must retain an inspectable trace.</td><td>Store claim, sources, model/version, policy, decision, and reviewer trail.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</main>
+<footer>
+  <p>NSDM Institute for Decision Boundaries. AI should not only answer. It should know whether it is justified.</p>
+</footer>
+</body>
+</html>

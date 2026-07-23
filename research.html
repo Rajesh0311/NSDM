@@ -4,500 +4,104 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NSDM Research | Evidence-State Decision Boundaries</title>
-  <meta name="description" content="NSDM research on evidence-state, governance-state, and action-state decision boundaries for justified AI systems.">
+  <meta name="description" content="NSDM research on evidence-state, governance-state, action-state, and neurosymbolic decision boundaries.">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <style>
-    :root {
-      --bg: #f7f6f2;
-      --ink: #102326;
-      --muted: #526468;
-      --teal: #01696f;
-      --teal-dark: #004b50;
-      --card: #ffffff;
-      --line: #d9dedb;
-      --soft: #eef4f3;
-      --amber: #d99b42;
-      --amber-soft: #fff7e8;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--ink);
-      line-height: 1.6;
-    }
-
-    a { color: var(--teal); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    header {
-      border-bottom: 1px solid var(--line);
-      background: rgba(247, 246, 242, 0.94);
-      position: sticky;
-      top: 0;
-      z-index: 5;
-      backdrop-filter: blur(10px);
-    }
-
-    .nav {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 18px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 750;
-      letter-spacing: -0.02em;
-      color: var(--ink);
-    }
-
-    .mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 9px;
-      background: var(--teal);
-      display: grid;
-      place-items: center;
-      color: var(--bg);
-      font-size: 15px;
-      font-weight: 800;
-    }
-
-    .links {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      font-size: 14px;
-    }
-
-    .links a {
-      color: var(--muted);
-      font-weight: 600;
-    }
-
-    .links a.active {
-      color: var(--teal);
-    }
-
-    .hero {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 84px 24px 44px;
-    }
-
-    .eyebrow {
-      color: var(--teal);
-      text-transform: uppercase;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      margin-bottom: 16px;
-    }
-
-    h1 {
-      font-size: clamp(40px, 6vw, 72px);
-      line-height: 0.96;
-      letter-spacing: -0.06em;
-      margin: 0 0 22px;
-      max-width: 900px;
-    }
-
-    .lead {
-      font-size: 20px;
-      color: var(--muted);
-      max-width: 860px;
-      margin: 0 0 28px;
-    }
-
-    .button-row {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 28px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 18px;
-      border-radius: 999px;
-      font-weight: 750;
-      border: 1px solid var(--teal);
-      background: var(--teal);
-      color: white;
-    }
-
-    .button.secondary {
-      background: transparent;
-      color: var(--teal);
-    }
-
-    section {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 46px 24px;
-    }
-
-    h2 {
-      font-size: clamp(30px, 4vw, 48px);
-      line-height: 1;
-      letter-spacing: -0.045em;
-      margin: 0 0 18px;
-    }
-
-    h3 {
-      margin: 0 0 10px;
-      font-size: 22px;
-      letter-spacing: -0.025em;
-      line-height: 1.15;
-    }
-
-    .section-lead {
-      color: var(--muted);
-      font-size: 18px;
-      max-width: 860px;
-      margin: 0 0 30px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 24px;
-    }
-
-    .card p {
-      color: var(--muted);
-      margin: 0;
-    }
-
-    .tag {
-      display: inline-flex;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--teal-dark);
-      background: var(--soft);
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 6px 10px;
-      margin-bottom: 14px;
-    }
-
-    .result-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      overflow: hidden;
-    }
-
-    .result-table th,
-    .result-table td {
-      padding: 14px 16px;
-      border-bottom: 1px solid var(--line);
-      text-align: left;
-      vertical-align: top;
-    }
-
-    .result-table th {
-      background: var(--soft);
-      color: var(--ink);
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .result-table tr:last-child td {
-      border-bottom: 0;
-    }
-
-    .metric {
-      font-weight: 800;
-      color: var(--teal-dark);
-    }
-
-    .panel {
-      background: var(--teal);
-      color: white;
-      border-radius: 30px;
-      padding: 36px;
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 30px;
-      align-items: start;
-    }
-
-    .panel h2,
-    .panel p {
-      color: white;
-    }
-
-    .panel .section-lead {
-      opacity: 0.88;
-    }
-
-    .matrix {
-      display: grid;
-      gap: 12px;
-    }
-
-    .matrix-row {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      border-radius: 18px;
-      padding: 14px 16px;
-    }
-
-    .matrix-row strong {
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .note {
-      background: var(--amber-soft);
-      border: 1px solid #efd7a8;
-      border-radius: 24px;
-      padding: 24px;
-      color: #4c3920;
-    }
-
-    .note strong {
-      color: #3c2a11;
-    }
-
-    footer {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 36px 24px 56px;
-      color: var(--muted);
-      border-top: 1px solid var(--line);
-    }
-
-    @media (max-width: 860px) {
-      .grid,
-      .panel {
-        grid-template-columns: 1fr;
-      }
-
-      .nav {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .result-table {
-        display: block;
-        overflow-x: auto;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="/assets/site.css">
 </head>
-
 <body>
-  <header>
-    <nav class="nav">
-      <a class="brand" href="/">
-        <span class="mark">N</span>
-        <span>NSDM Institute</span>
-      </a>
-      <div class="links">
-        <a href="/">Home</a>
-        <a href="/tools.html">Tools</a>
-        <a class="active" href="/research.html">Research</a>
-        <a href="/#governance">Governance</a>
-        <a href="/#action-states">Action States</a>
-      </div>
-    </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="eyebrow">Research programme</div>
-      <h1>Evidence-state decision boundaries for justified AI.</h1>
-      <p class="lead">
-        NSDM investigates whether AI systems can distinguish between claims that are supported, unsupported, contradicted, under-specified, governance-ambiguous, or reward-aligned but unjustified.
-      </p>
-      <p class="lead">
-        The central question is simple: does the system know what its evidence actually justifies?
-      </p>
-      <div class="button-row">
-        <a class="button" href="#results">View early results</a>
-        <a class="button secondary" href="/tools.html">Open tools</a>
-      </div>
-    </section>
+<header>
+  <nav class="nav">
+    <a class="brand" href="/index.html">
+      <span class="mark">N</span>
+      <span>NSDM Institute</span>
+    </a>
+    <div class="links">
+      <a href="/index.html">Home</a>
+      <a href="/research.html">Research</a>
+      <a href="/papers.html">Papers</a>
+      <a href="/use-cases.html">Use Cases</a>
+      <a href="/verticals.html">Verticals</a>
+      <a href="/governance.html">Governance</a>
+      <a href="/action-states.html">Action States</a>
+      <a href="/tools.html">Tools</a>
+      <a class="contact-link" href="/index.html#contact">Contact</a>
+    </div>
+  </nav>
+</header>
 
-    <section>
-      <h2>Research thesis</h2>
-      <p class="section-lead">
-        Modern AI systems often produce plausible answers without clearly separating evidence, policy authority, uncertainty, and action permission. NSDM treats those as separate boundaries.
-      </p>
+<main>
 
-      <div class="grid">
-        <article class="card">
-          <div class="tag">Boundary 01</div>
-          <h3>Evidence-state</h3>
-          <p>Does the available evidence support the claim, fail to support it, contradict it, or leave a necessary premise missing?</p>
-        </article>
+<section class="hero">
+  <div class="eyebrow">Research programme</div>
+  <h1>Evidence-state decision boundaries for justified AI.</h1>
+  <p class="lead">NSDM investigates whether AI systems can distinguish between claims that are supported, unsupported, contradicted, under-specified, governance-ambiguous, or reward-aligned but unjustified.</p>
+  <p class="lead">The central question is simple: does the system know what its evidence actually justifies?</p>
+  <div class="button-row">
+    <a class="button" href="#results">View early results</a>
+    <a class="button secondary" href="/papers.html">View papers</a>
+  </div>
+</section>
 
-        <article class="card">
-          <div class="tag">Boundary 02</div>
-          <h3>Governance-state</h3>
-          <p>Is the action allowed, forbidden, ambiguous, outside authority, audit-sensitive, or requiring human review?</p>
-        </article>
+<section>
+  <h2>Research thesis</h2>
+  <p class="section-lead">Modern AI systems often produce plausible answers without clearly separating evidence, policy authority, uncertainty, and action permission. NSDM treats those as separate boundaries.</p>
+  <div class="grid">
+    <article class="card"><div class="tag">Boundary 01</div><h3>Evidence-state</h3><p>Does the available evidence support the claim, fail to support it, contradict it, or leave a necessary premise missing?</p></article>
+    <article class="card"><div class="tag">Boundary 02</div><h3>Governance-state</h3><p>Is the action allowed, forbidden, ambiguous, outside authority, audit-sensitive, or requiring human review?</p></article>
+    <article class="card"><div class="tag">Boundary 03</div><h3>Action-state</h3><p>Should the system answer, ask for clarification, request more evidence, abstain, refuse, escalate, or block?</p></article>
+  </div>
+</section>
 
-        <article class="card">
-          <div class="tag">Boundary 03</div>
-          <h3>Action-state</h3>
-          <p>Should the system answer, ask for clarification, request more evidence, abstain, refuse, escalate, or block?</p>
-        </article>
-      </div>
-    </section>
+<section>
+  <div class="panel">
+    <div>
+      <div class="eyebrow" style="color:#f7f6f2;">NSDM-Bench GOV-0</div>
+      <h2>A seed benchmark for justification boundaries.</h2>
+      <p class="section-lead">GOV-0 is an early, hand-designed seed benchmark used to test evidence-state, governance-state, and action-state classification under decision-boundary pressure.</p>
+    </div>
+    <div class="matrix">
+      <div class="matrix-row"><strong>Locked seed</strong>40 rows, 10 families, 4 examples per family.</div>
+      <div class="matrix-row"><strong>Targeted contrast set</strong>20 rows focused on hard evidence-state distinctions.</div>
+      <div class="matrix-row"><strong>Structured V2 set</strong>Adds missing premise, contradiction, governance conflict, reward pressure, and policy-forbidden fields.</div>
+    </div>
+  </div>
+</section>
 
-    <section>
-      <div class="panel">
-        <div>
-          <div class="eyebrow" style="color:#f7f6f2;">NSDM-Bench GOV-0</div>
-          <h2>A seed benchmark for justification boundaries.</h2>
-          <p class="section-lead">
-            GOV-0 is an early, hand-designed seed benchmark. It is used to test evidence-state, governance-state, and action-state classification under decision-boundary pressure.
-          </p>
-        </div>
+<section id="results">
+  <h2>Early experimental results</h2>
+  <p class="section-lead">These are early leave-one-out experiments on small seed datasets. They are useful research signals, not final scientific claims.</p>
+  <table class="result-table">
+    <thead><tr><th>Experiment</th><th>Representation</th><th>Target</th><th>Accuracy</th><th>Macro-F1</th><th>Interpretation</th></tr></thead>
+    <tbody>
+      <tr><td>GOV-0 40-row seed</td><td>Text embeddings</td><td>Evidence-state</td><td class="metric">0.750</td><td class="metric">0.769</td><td>Evidence-state was harder than governance-state and action-state classification.</td></tr>
+      <tr><td>V1 contrast set</td><td>Text embeddings</td><td>Evidence-state</td><td class="metric">0.150</td><td class="metric">0.141</td><td>Minimal-pair examples exposed the weakness of text-only semantic similarity.</td></tr>
+      <tr><td>V1 contrast set</td><td>Text embeddings</td><td>Domain / contrast type</td><td class="metric">1.000</td><td class="metric">1.000</td><td>The model recognised topic and contrast family, but not the evidence-state boundary.</td></tr>
+      <tr><td>V2 contrast set</td><td>Structured flags</td><td>Evidence-state</td><td class="metric">0.950</td><td class="metric">0.952</td><td>Explicit NSDM diagnostic features substantially improved classification.</td></tr>
+      <tr><td>V2 contrast set</td><td>Hybrid text + structure</td><td>Evidence-state</td><td class="metric">0.950</td><td class="metric">0.952</td><td>Adding structure recovered the boundary signal that text-only embeddings missed.</td></tr>
+    </tbody>
+  </table>
+</section>
 
-        <div class="matrix">
-          <div class="matrix-row">
-            <strong>Locked seed</strong>
-            40 rows, 10 families, 4 examples per family.
-          </div>
-          <div class="matrix-row">
-            <strong>Targeted contrast set</strong>
-            20 rows focused on hard evidence-state distinctions.
-          </div>
-          <div class="matrix-row">
-            <strong>Structured V2 set</strong>
-            Adds explicit diagnostic fields such as missing premise, contradiction, governance conflict, reward pressure, and policy-forbidden status.
-          </div>
-        </div>
-      </div>
-    </section>
+<section>
+  <h2>Expanded research tracks</h2>
+  <div class="grid">
+    <article class="card"><div class="tag">Behaviour</div><h3>QSR decision-state benchmark</h3><p>Impulse, conflict, deliberation, commitment, abandonment, actor-heldout testing, and decision graph development.</p></article>
+    <article class="card"><div class="tag">Neurosymbolic</div><h3>Neurosymbolic decision systems</h3><p>Neural perception, symbolic constraints, explicit evidence states, governance states, and action selection.</p></article>
+    <article class="card"><div class="tag">Verification</div><h3>Conjecture and product-state verification</h3><p>Independent checking of generated candidates and proof that AI-built products reach intended user outcomes.</p></article>
+    <article class="card"><div class="tag">Telecom</div><h3>Telecom AI governance</h3><p>Vendor claims, decision authority, customer harm, infrastructure dependence, and operational sovereignty.</p></article>
+    <article class="card"><div class="tag">Rights-aware data</div><h3>Review signal benchmark</h3><p>Trust, switching, value perception, service recovery, source rights, attribution, and retention.</p></article>
+    <article class="card"><div class="tag">NeuroBench</div><h3>Decision health and neuroinference</h3><p>Separates measured sensor signals from probabilistic cognitive markers, decision pathways, and ethical interventions.</p></article>
+  </div>
+</section>
 
-    <section id="results">
-      <h2>Early experimental results</h2>
-      <p class="section-lead">
-        These are early leave-one-out experiments on small seed datasets. They are useful research signals, not final scientific claims.
-      </p>
+<section>
+  <div class="note"><strong>Limitations:</strong> GOV-0 is a small seed benchmark and should not be treated as a final scientific result or production certification system. The findings guide benchmark expansion, structured-feature testing, model comparison, and paper development.</div>
+</section>
 
-      <table class="result-table">
-        <thead>
-          <tr>
-            <th>Experiment</th>
-            <th>Representation</th>
-            <th>Target</th>
-            <th>Accuracy</th>
-            <th>Macro-F1</th>
-            <th>Interpretation</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>GOV-0 40-row seed</td>
-            <td>Text embeddings</td>
-            <td>Evidence-state</td>
-            <td class="metric">0.750</td>
-            <td class="metric">0.769</td>
-            <td>Evidence-state was harder than governance-state and action-state classification.</td>
-          </tr>
-          <tr>
-            <td>V1 contrast set</td>
-            <td>Text embeddings</td>
-            <td>Evidence-state</td>
-            <td class="metric">0.150</td>
-            <td class="metric">0.141</td>
-            <td>Minimal-pair contrast examples exposed the weakness of text-only semantic similarity.</td>
-          </tr>
-          <tr>
-            <td>V1 contrast set</td>
-            <td>Text embeddings</td>
-            <td>Domain / contrast type</td>
-            <td class="metric">1.000</td>
-            <td class="metric">1.000</td>
-            <td>The model recognised topic and contrast family, but not the evidence-state boundary.</td>
-          </tr>
-          <tr>
-            <td>V2 contrast set</td>
-            <td>Structured diagnostic flags</td>
-            <td>Evidence-state</td>
-            <td class="metric">0.950</td>
-            <td class="metric">0.952</td>
-            <td>Explicit NSDM diagnostic features substantially improved evidence-state classification.</td>
-          </tr>
-          <tr>
-            <td>V2 contrast set</td>
-            <td>Hybrid text + structure</td>
-            <td>Evidence-state</td>
-            <td class="metric">0.950</td>
-            <td class="metric">0.952</td>
-            <td>Adding structure recovered the boundary signal that text-only embeddings missed.</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section>
-      <h2>Main finding</h2>
-      <p class="section-lead">
-        Topic recognition is not the same as justification recognition. A system can know what a case is about while failing to know what the evidence justifies.
-      </p>
-
-      <div class="grid">
-        <article class="card">
-          <div class="tag">Finding</div>
-          <h3>Text-only embeddings struggled</h3>
-          <p>On the targeted contrast set, text-only evidence-state classification performed poorly despite perfect recognition of domain and contrast family.</p>
-        </article>
-
-        <article class="card">
-          <div class="tag">Finding</div>
-          <h3>Structured diagnostics helped</h3>
-          <p>When missing premise, contradiction, governance conflict, reward pressure, and policy-forbidden status were made explicit, performance improved sharply.</p>
-        </article>
-
-        <article class="card">
-          <div class="tag">Implication</div>
-          <h3>Justification needs structure</h3>
-          <p>Evidence-state boundaries appear to require explicit justification primitives, not semantic similarity alone.</p>
-        </article>
-      </div>
-    </section>
-
-    <section>
-      <div class="note">
-        <strong>Limitations:</strong>
-        GOV-0 is a small seed benchmark and should not be treated as a final scientific result or production certification system. The current findings are early signals from deliberately constructed examples. NSDM is using them to guide benchmark expansion, structured-feature testing, model comparison, and future paper development.
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p>NSDM Institute for Decision Boundaries. AI should not only answer. It should know whether it is justified.</p>
-  </footer>
+</main>
+<footer>
+  <p>NSDM Institute for Decision Boundaries. AI should not only answer. It should know whether it is justified.</p>
+</footer>
 </body>
 </html>
