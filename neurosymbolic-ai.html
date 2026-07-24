@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Neuro-Symbolic AI | NSDM Institute</title>
+  <meta name="description" content="A technically rigorous, plain-English introduction to neuro-symbolic AI and how NSDM extends learning and reasoning into justified action.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <a class="brand" href="/index.html"><span class="mark">N</span><span>NSDM Institute</span></a>
+    <div class="links">
+      <a href="/index.html">Home</a>
+      <a href="/research.html">Research</a>
+      <a href="/papers.html">Papers</a>
+      <a class="active" href="/neurosymbolic-ai.html">Neuro-Symbolic AI</a>
+      <a href="/use-cases.html">Use Cases</a>
+      <a href="/verticals.html">Verticals</a>
+      <a href="/governance.html">Governance</a>
+      <a href="/action-states.html">Action States</a>
+      <a href="/tools.html">Tools</a>
+      <a class="contact-link" href="/index.html#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="eyebrow">Research foundation</div>
+  <h1>Neuro-symbolic AI: from pattern recognition to reasoning—and from reasoning to <em>justified action.</em></h1>
+  <p class="lead">Neural systems learn from uncertain data. Symbolic systems represent explicit facts, rules and relationships. Neuro-symbolic AI brings those abilities together.</p>
+  <p class="lead">NSDM adds the next question: is the resulting conclusion sufficiently supported, authorised and safe to act on?</p>
+  <div class="button-row">
+    <a class="button" href="#nsdm-extension">See the NSDM extension</a>
+    <a class="button secondary" href="/research.html">View the research programme</a>
+  </div>
+</section>
+
+<section>
+  <h2>The problem neuro-symbolic AI is trying to solve</h2>
+  <p class="section-lead">Modern neural models are powerful pattern recognisers. They can interpret text, images, audio, video and sensor streams. But pattern recognition alone does not guarantee reliable reasoning.</p>
+  <div class="grid two">
+    <article class="card">
+      <div class="tag">Neural AI</div>
+      <h3>Strong at learning from complex data</h3>
+      <p>Neural systems learn useful representations from large, noisy and unstructured datasets. They are effective in perception, prediction, language and multimodal tasks.</p>
+      <p>Their limitations include opaque internal representations, weak compositional reasoning, sensitivity to distribution shift and fluent outputs that may not be well supported.</p>
+    </article>
+    <article class="card">
+      <div class="tag">Symbolic AI</div>
+      <h3>Strong at explicit rules and relationships</h3>
+      <p>Symbolic systems represent knowledge through facts, concepts, rules, ontologies, knowledge graphs, logic and executable programs.</p>
+      <p>Their limitations include brittleness, difficulty learning from raw data and the cost of maintaining complete rule bases for complex, changing environments.</p>
+    </article>
+  </div>
+</section>
+
+<section class="wide">
+  <div class="panel">
+    <div>
+      <div class="eyebrow" style="color:#f7f6f2;">The hybrid</div>
+      <h2>Neuro-symbolic AI joins learning with explicit reasoning.</h2>
+      <p>The neural component handles perception, uncertain inputs and learned representations. The symbolic component supplies structure: concepts, rules, relationships, constraints and reasoning procedures.</p>
+      <p>The exact integration varies. In some systems, the neural model extracts symbols from raw data. In others, symbolic constraints guide training. Some systems allow neural and symbolic components to exchange results iteratively.</p>
+    </div>
+    <div class="matrix">
+      <div class="matrix-row"><strong>Perceive</strong>Interpret text, images, video, behaviour or telemetry.</div>
+      <div class="matrix-row"><strong>Represent</strong>Convert relevant information into entities, concepts, relations and uncertainty.</div>
+      <div class="matrix-row"><strong>Reason</strong>Apply logic, programs, knowledge graphs, causal structure or temporal constraints.</div>
+      <div class="matrix-row"><strong>Check</strong>Detect contradiction, missing premises, policy conflicts and rule violations.</div>
+      <div class="matrix-row"><strong>Act</strong>Produce an answer, plan, prediction or controlled intervention.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Four common architecture patterns</h2>
+  <p class="section-lead">Neuro-symbolic AI is not one model type. It is a family of integration patterns.</p>
+  <div class="grid two">
+    <article class="card">
+      <div class="tag">Sequential</div>
+      <h3>Symbolic → neural → symbolic</h3>
+      <p>Structured input is encoded into a learned representation, processed by a neural model and decoded back into symbolic output.</p>
+      <p>Typical uses include semantic parsing, logical-form generation and knowledge-graph construction.</p>
+    </article>
+    <article class="card">
+      <div class="tag">Nested</div>
+      <h3>A symbolic system containing a neural component</h3>
+      <p>A symbolic planner or reasoner controls the overall process while a neural component performs perception, prediction or scoring.</p>
+      <p>Typical uses include visual reasoning, search, planning and structured decision support.</p>
+    </article>
+    <article class="card">
+      <div class="tag">Constraint-guided</div>
+      <h3>A neural system containing symbolic constraints</h3>
+      <p>Rules, temporal logic or domain knowledge shape the loss function, inference process or output filter.</p>
+      <p>Typical uses include rule-compliant prediction, constrained generation and process monitoring.</p>
+    </article>
+    <article class="card">
+      <div class="tag">Cooperative</div>
+      <h3>Neural ↔ symbolic iteration</h3>
+      <p>Neural and symbolic components exchange intermediate results until a solution, stable state or stop condition is reached.</p>
+      <p>Typical uses include agentic reasoning, scientific discovery and long-horizon planning.</p>
+    </article>
+  </div>
+</section>
+
+<section>
+  <div class="formula-panel">
+    <div class="eyebrow">The key distinction</div>
+    <h2>Logical consistency is not the same as justified action.</h2>
+    <div class="formula-visual">
+      <div class="formula-main"><strong>Explicit reasoning</strong> does not automatically establish <strong>truth, authority or safety.</strong></div>
+    </div>
+    <div class="formula-key">
+      <span>Valid rule ≠ true premise</span>
+      <span>Traceable path ≠ causal explanation</span>
+      <span>Explicit policy ≠ legitimate authority</span>
+      <span>Consistent output ≠ supported claim</span>
+      <span>High confidence ≠ low risk</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>What neuro-symbolic AI can improve</h2>
+  <div class="grid">
+    <article class="card"><h3>Compositional reasoning</h3><p>Concepts and rules can be reused in new combinations rather than learned independently for every case.</p></article>
+    <article class="card"><h3>Data efficiency</h3><p>Prior knowledge can reduce the number of examples required to learn a useful pattern.</p></article>
+    <article class="card"><h3>Constraint compliance</h3><p>Formal or domain-specific constraints can influence training, inference and output selection.</p></article>
+    <article class="card"><h3>Inspectability</h3><p>Symbolic representations can make parts of the reasoning process easier to inspect, test and modify.</p></article>
+    <article class="card"><h3>Counterfactual and causal tasks</h3><p>Explicit models of events and relations can support reasoning beyond simple correlation.</p></article>
+    <article class="card"><h3>Human intervention</h3><p>Editable rules, constraints and decision traces can create clearer points for review and override.</p></article>
+  </div>
+</section>
+
+<section>
+  <h2>What it does not automatically solve</h2>
+  <p class="section-lead">Neuro-symbolic AI is promising, but it is not an automatic guarantee of correctness, fairness or safety.</p>
+  <div class="grid two">
+    <article class="card"><h3>Incomplete knowledge</h3><p>A rule base or knowledge graph can omit the exact fact that matters. Missing knowledge may remain invisible unless the system represents under-specification.</p></article>
+    <article class="card"><h3>Incorrect rules</h3><p>Symbolic reasoning can be perfectly consistent while operating on false, outdated or biased premises.</p></article>
+    <article class="card"><h3>Scalability</h3><p>Logical operations, sparse data structures, branching and symbolic search can be expensive on standard computing hardware.</p></article>
+    <article class="card"><h3>Faithful explanation</h3><p>A readable reasoning trace does not prove that it faithfully explains the neural component's actual internal computation.</p></article>
+    <article class="card"><h3>Authority and rights</h3><p>A system can follow a rule correctly while lacking legitimate authority to act or failing to provide an appeal path.</p></article>
+    <article class="card"><h3>Consequence sensitivity</h3><p>The same evidence threshold should not govern a restaurant suggestion, a credit decision and a medical intervention.</p></article>
+  </div>
+</section>
+
+<section id="nsdm-extension">
+  <h2>How NSDM extends neuro-symbolic AI</h2>
+  <p class="section-lead">Neuro-symbolic AI improves the relationship between learning and reasoning. NSDM studies the boundary between reasoning and justified action.</p>
+  <div style="overflow-x:auto;">
+    <table class="result-table">
+      <thead>
+        <tr><th>Layer</th><th>Central question</th><th>Typical output</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="metric">Neural AI</td><td>What patterns can the system detect or predict?</td><td>Representations, scores, classifications and generated candidates.</td></tr>
+        <tr><td class="metric">Symbolic AI</td><td>What follows from the represented facts and rules?</td><td>Logical consequences, programs, plans and constraint results.</td></tr>
+        <tr><td class="metric">Neuro-symbolic AI</td><td>How can learning and explicit reasoning work together?</td><td>Grounded concepts, constrained predictions and structured reasoning.</td></tr>
+        <tr><td class="metric">NSDM</td><td>Is the conclusion supported, authorised and safe enough to act on?</td><td>Evidence-state, governance-state, consequence level and action-state.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>The NSDM decision path</h2>
+  <div class="architecture">
+    <article class="card"><div class="step">01</div><h3>Neural proposal</h3><p>A model detects a pattern, generates a candidate or interprets an input.</p></article>
+    <article class="card"><div class="step">02</div><h3>Symbolic representation</h3><p>Relevant facts, concepts, relationships and uncertainty are made explicit.</p></article>
+    <article class="card"><div class="step">03</div><h3>Rule and evidence checks</h3><p>Logic, policy, provenance and missing premises are evaluated.</p></article>
+    <article class="card"><div class="step">04</div><h3>Boundary evaluation</h3><p>NSDM assigns evidence, governance and consequence states.</p></article>
+    <article class="card"><div class="step">05</div><h3>Controlled action</h3><p>Answer, ask, verify, abstain, refuse or escalate.</p></article>
+  </div>
+</section>
+
+<section>
+  <h2>Research examples</h2>
+  <div class="grid two">
+    <article class="card">
+      <div class="tag">Visual and causal reasoning</div>
+      <h3>CLEVRER and neuro-symbolic dynamic reasoning</h3>
+      <p>CLEVRER distinguishes descriptive, explanatory, predictive and counterfactual questions. It showed that strong perception does not automatically produce strong causal reasoning.</p>
+      <p>For NSDM, competence in one reasoning state should not be mistaken for justification in another.</p>
+    </article>
+    <article class="card">
+      <div class="tag">Temporal reasoning</div>
+      <h3>Logic-guided process prediction</h3>
+      <p>Temporal logic can be incorporated into sequence prediction so generated process continuations are statistically plausible and more consistent with known constraints.</p>
+      <p>NSDM adds provenance, authority, consequence and escalation requirements.</p>
+    </article>
+    <article class="card">
+      <div class="tag">Knowledge extraction</div>
+      <h3>Knowledge graphs and expert rules</h3>
+      <p>Language models can extract entities, relations and candidate rules from technical literature, which can then guide downstream models.</p>
+      <p>NSDM asks whether the extraction was faithful, expert-reviewed, current and appropriate to the present case.</p>
+    </article>
+    <article class="card">
+      <div class="tag">Planning and agents</div>
+      <h3>Neuro-symbolic concepts and tool use</h3>
+      <p>Symbolic programs, modular neural components and external tools can improve planning, long-horizon reasoning and generalisation.</p>
+      <p>NSDM controls when those plans may be executed and when human authority is required.</p>
+    </article>
+  </div>
+</section>
+
+<section>
+  <h2>NSDM research tracks connected to neuro-symbolic AI</h2>
+  <div class="grid">
+    <article class="card"><h3>Decision Boundary Benchmark</h3><p>Tests whether models distinguish supported, unsupported, contradicted and under-specified cases.</p></article>
+    <article class="card"><h3>QSR Decision-State Benchmark</h3><p>Tests impulse, conflict, deliberation, commitment and abandonment under structured decision conditions.</p></article>
+    <article class="card"><h3>Conjecture Verification</h3><p>Separates neural candidate generation from deterministic verification and provenance.</p></article>
+    <article class="card"><h3>Product-State Verification</h3><p>Checks whether AI-built systems reach the intended user state rather than merely producing code.</p></article>
+    <article class="card"><h3>Telecom AI Governance</h3><p>Maps vendor claims, network decisions, customer consequences, authority and human override.</p></article>
+    <article class="card"><h3>NeuroBench</h3><p>Separates measured multimodal signals from inferred cognitive markers and permitted intervention.</p></article>
+  </div>
+</section>
+
+<section>
+  <div class="note">
+    <strong>Research status:</strong>
+    Neuro-symbolic AI is an active field with multiple architecture families and unresolved challenges. The presence of rules or symbolic representations does not certify a system as safe, interpretable or correct. NSDM treats those properties as claims that must be tested.
+  </div>
+</section>
+</main>
+
+<footer>
+  <p>NSDM Institute for Decision Boundaries, a MetaForgeX AI research programme. AI should not only answer. It should know whether it is justified.</p>
+</footer>
+</body>
+</html>
