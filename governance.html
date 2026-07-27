@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NSDM Governance States</title>
-  <meta name="description" content="NSDM research on evidence-state, governance-state, action-state, and neurosymbolic decision boundaries.">
+  <meta name="description" content="NSDM governance research on authority, cross-layer conflict, interoperability, due process, contestability, and justified AI action. Updated 27 July 2026.">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/assets/site.css">
 </head>
@@ -34,31 +34,102 @@
 <main>
 
 <section class="hero">
-  <div class="eyebrow">Governance-state model</div>
-  <h1>Make authority, policy, and accountability machine-visible.</h1>
-  <p class="lead">Governance becomes explicit states, required evidence, operational gates, and human escalation paths.</p>
+  <div class="eyebrow">Governance-state model · Updated 27 July 2026</div>
+  <h1>Make authority, policy, interoperability, and accountability machine-visible.</h1>
+  <p class="lead">AI decisions are rarely governed by one policy or one institution. Legal rules, technical standards, payment rails, platform code, model inference, and human authority may all shape the final outcome.</p>
+  <p class="lead">NSDM evaluates the complete decision stack: which layer made the decisive choice, whether the layers agree, whether evidence and authority are sufficient, and whether the affected person can understand and contest the result.</p>
 </section>
+
 <section>
+  <h2>Core governance states</h2>
   <table class="result-table">
     <thead><tr><th>State</th><th>Meaning</th><th>Required behaviour</th></tr></thead>
     <tbody>
-      <tr><td class="metric">governance_clear</td><td>Authority, policy, responsibility, and escalation route are known.</td><td>Proceed only if evidence and consequence thresholds also pass.</td></tr>
+      <tr><td class="metric">governance_clear</td><td>Authority, policy, responsibility, jurisdiction, and escalation route are known.</td><td>Proceed only if evidence and consequence thresholds also pass.</td></tr>
       <tr><td class="metric">governance_ambiguous</td><td>Policy, authority, responsibility, or jurisdiction is unclear.</td><td>Ask, abstain, or escalate.</td></tr>
       <tr><td class="metric">policy_allowed</td><td>The action is explicitly permitted within scope.</td><td>Record scope and evidence; continue with monitoring.</td></tr>
       <tr><td class="metric">policy_forbidden</td><td>The action is explicitly prohibited.</td><td>Refuse or stop and log the rule.</td></tr>
       <tr><td class="metric">authority_missing</td><td>The system or operator lacks decision authority.</td><td>Escalate to the accountable role.</td></tr>
       <tr><td class="metric">human_review_required</td><td>Policy or consequence requires a human decision.</td><td>Prepare an evidence packet and route for review.</td></tr>
       <tr><td class="metric">compliance_sensitive</td><td>The action touches regulated, contractual, or rights-sensitive obligations.</td><td>Apply logging, retention, and approval controls.</td></tr>
-      <tr><td class="metric">high_risk_domain</td><td>Error could affect safety, rights, finance, health, or infrastructure.</td><td>Use higher evidence thresholds and mandatory escalation.</td></tr>
+      <tr><td class="metric">high_risk_domain</td><td>Error could affect safety, rights, finance, health, trade, or infrastructure.</td><td>Use higher evidence thresholds and mandatory escalation.</td></tr>
       <tr><td class="metric">role_permission_missing</td><td>The user or agent lacks permission.</td><td>Deny and provide a legitimate access route.</td></tr>
       <tr><td class="metric">audit_required</td><td>The decision must retain an inspectable trace.</td><td>Store claim, sources, model/version, policy, decision, and reviewer trail.</td></tr>
     </tbody>
   </table>
 </section>
 
+<section>
+  <h2>The polycentric governance stack</h2>
+  <p class="section-lead">Practical authority is distributed across several layers. A decision may appear valid inside each individual layer and still be unjustified when the layers conflict, fail to interoperate, or leave responsibility unassigned.</p>
+  <div class="grid">
+    <article class="card"><div class="tag">Layer 01</div><h3>Legal and treaty authority</h3><p>Defines rights, duties, jurisdiction, liability, prohibited conduct, and appeal rights.</p></article>
+    <article class="card"><div class="tag">Layer 02</div><h3>Technical standards</h3><p>Defines formats, identifiers, taxonomies, interoperability, and which evidence can be represented or exchanged.</p></article>
+    <article class="card"><div class="tag">Layer 03</div><h3>Settlement and execution</h3><p>Determines whether a transaction can execute, on which rail, under which identity and compliance conditions, and whether it is reversible.</p></article>
+    <article class="card"><div class="tag">Layer 04</div><h3>Platform and code</h3><p>Implements the actual rules, defaults, workflows, blocks, routes, and user-facing consequences.</p></article>
+    <article class="card"><div class="tag">Layer 05</div><h3>Model and inference</h3><p>Produces classifications, rankings, risk scores, generated claims, recommendations, and uncertainty estimates.</p></article>
+    <article class="card"><div class="tag">Layer 06</div><h3>Human accountability</h3><p>Assigns approval, override, review, appeal, remedy, and liability to identifiable people and organisations.</p></article>
+  </div>
+</section>
+
+<section class="wide">
+  <div class="panel">
+    <div>
+      <div class="eyebrow" style="color:#f7f6f2;">Boundary-first governance</div>
+      <h2>The most dangerous failures often occur between layers.</h2>
+      <p>A legal right may not exist in the technical data model. A platform may implement a narrower rule than the standard requires. A model may produce a valid inference from information that was unavailable at the prediction moment. A permitted action may still be irreversible, unappealable, or outside the operator's authority.</p>
+    </div>
+    <div class="matrix">
+      <div class="matrix-row"><strong>Law → standard</strong>Can the right, duty, or exception be represented?</div>
+      <div class="matrix-row"><strong>Standard → platform</strong>Does the implementation preserve the intended meaning?</div>
+      <div class="matrix-row"><strong>Platform → model</strong>Did the model receive valid evidence at the declared prediction time?</div>
+      <div class="matrix-row"><strong>Model → action</strong>Is an inference being mistaken for permission to act?</div>
+      <div class="matrix-row"><strong>Action → settlement</strong>Is the action proportionate and reversible?</div>
+      <div class="matrix-row"><strong>Decision → human</strong>Can the affected party understand, contest, and obtain independent review?</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Cross-layer governance states</h2>
+  <table class="result-table">
+    <thead><tr><th>State</th><th>Meaning</th><th>Required behaviour</th></tr></thead>
+    <tbody>
+      <tr><td class="metric">jurisdiction_ambiguous</td><td>More than one jurisdiction may control the decision, data, actor, or transaction.</td><td>Pause and resolve applicable authority.</td></tr>
+      <tr><td class="metric">cross_layer_conflict</td><td>Two or more governance layers produce incompatible requirements or permissions.</td><td>Abstain or escalate; do not silently choose a layer.</td></tr>
+      <tr><td class="metric">interoperability_failure</td><td>Systems cannot reliably exchange or interpret the required data, evidence, or control.</td><td>Block automation until the boundary is repaired.</td></tr>
+      <tr><td class="metric">semantic_mismatch</td><td>The same field, category, or rule has different meanings across layers.</td><td>Request clarification and preserve the mapping.</td></tr>
+      <tr><td class="metric">code_policy_divergence</td><td>Runtime code does not implement the declared rule or obligation.</td><td>Pause deployment and generate a critical defect record.</td></tr>
+      <tr><td class="metric">accountable_owner_missing</td><td>No identifiable person or organisation owns the decision and its consequences.</td><td>Do not permit consequential action.</td></tr>
+      <tr><td class="metric">contestability_missing</td><td>The affected party has no practical way to challenge the decision.</td><td>Require a contestability route before deployment.</td></tr>
+      <tr><td class="metric">independent_review_missing</td><td>Review exists but is controlled by the same system or team that made the decision.</td><td>Route to an independent reviewer.</td></tr>
+      <tr><td class="metric">remedy_unavailable</td><td>An error can be identified but not corrected, reversed, or compensated.</td><td>Raise the evidence threshold or prohibit the action.</td></tr>
+      <tr><td class="metric">liability_unassigned</td><td>Responsibility for harm or loss is not contractually or institutionally allocated.</td><td>Escalate before execution.</td></tr>
+      <tr><td class="metric">irreversible_action_high_risk</td><td>The action cannot be readily reversed and carries material consequences.</td><td>Require stronger evidence and mandatory human approval.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>The NSDM due-process floor</h2>
+  <p class="section-lead">No consequential automated decision should proceed without a minimum, standardised route for transparency, challenge, and remedy.</p>
+  <div class="grid four">
+    <article class="card"><div class="tag">Notice</div><h3>Know a decision occurred</h3><p>The affected person should be told that an automated or algorithmically mediated decision materially influenced the outcome.</p></article>
+    <article class="card"><div class="tag">Explanation</div><h3>Understand the decisive factors</h3><p>The responsible system, organisation, evidence, and major rules should be identifiable in meaningful terms.</p></article>
+    <article class="card"><div class="tag">Contestability</div><h3>Challenge evidence and outcome</h3><p>The affected party needs a practical route to dispute errors, missing context, or inappropriate authority.</p></article>
+    <article class="card"><div class="tag">Independent review</div><h3>Reach a separate authority</h3><p>Review should not be limited to the same model, workflow, or team that produced the original decision.</p></article>
+    <article class="card"><div class="tag">Remedy</div><h3>Correct, reverse, or compensate</h3><p>A review process without the power to change an unjust outcome is not sufficient accountability.</p></article>
+    <article class="card"><div class="tag">Auditability</div><h3>Preserve the decision record</h3><p>Evidence, versions, authority, actions, reviewers, and outcomes must remain inspectable.</p></article>
+  </div>
+</section>
+
+<section>
+  <div class="note"><strong>Research status:</strong> The polycentric governance stack is an NSDM architecture and research direction. It does not claim that every underlying legal or institutional proposition has already been empirically validated. Each public factual claim will require primary-source verification, while the architecture itself is used to design benchmarks, evidence passports, deployment gates, and audit systems.</div>
+</section>
+
 </main>
 <footer>
-  <p>NSDM Institute for Decision Boundaries. AI should not only answer. It should know whether it is justified.</p>
+  <p>NSDM Institute for Decision Boundaries. AI should not only answer. It should know whether it is justified. Updated 27 July 2026.</p>
 </footer>
 </body>
 </html>
