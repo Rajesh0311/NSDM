@@ -67,11 +67,17 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      overflow: hidden;
     }
 
     .home-hero .hero-visual img {
+      width: 100%;
+      aspect-ratio: 4873 / 6049;
       min-height: 0;
       max-height: 590px;
+      object-fit: contain;
+      object-position: center;
+      background: #fff;
     }
 
     .home-hero .visual-card figcaption {
@@ -130,6 +136,54 @@
       line-height: 1.65;
     }
 
+    .home-visual-lab {
+      max-width: var(--wide);
+      padding: 18px 24px 48px;
+    }
+
+    .home-visual-lab-copy {
+      max-width: var(--max);
+      margin: 0 auto 26px;
+    }
+
+    .home-visual-lab-copy .eyebrow {
+      margin-bottom: 12px;
+    }
+
+    .home-visual-lab-copy h2 {
+      max-width: 18ch;
+      margin-bottom: 16px;
+      font-size: clamp(30px, 3.2vw, 42px);
+      line-height: 1.05;
+    }
+
+    .home-visual-lab-copy .section-lead {
+      max-width: 72ch;
+      margin-bottom: 0;
+      font-size: 18px;
+      line-height: 1.62;
+    }
+
+    .home-visual-lab .visual-card {
+      padding: 16px;
+    }
+
+    .home-visual-lab .visual-card img {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      max-height: none;
+      object-fit: contain;
+      object-position: center;
+      background: #fff;
+    }
+
+    .home-visual-lab .visual-card figcaption {
+      max-width: 96ch;
+      padding: 14px 6px 3px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
     @media (max-width: 980px) {
       .home-hero {
         padding-top: 60px;
@@ -148,11 +202,19 @@
 
       .home-hero .hero-visual {
         width: 100%;
-        max-width: 760px;
+        max-width: 680px;
+      }
+
+      .home-hero .hero-visual img {
+        max-height: 720px;
       }
 
       .home-boundaries {
         padding-top: 40px;
+      }
+
+      .home-visual-lab {
+        padding-top: 12px;
       }
     }
 
@@ -192,6 +254,10 @@
         gap: 28px;
       }
 
+      .home-hero .hero-visual {
+        max-width: none;
+      }
+
       .home-boundaries {
         padding: 36px 20px 48px;
       }
@@ -209,6 +275,32 @@
 
       .boundary-card {
         padding: 21px;
+      }
+
+      .home-visual-lab {
+        padding: 8px 20px 40px;
+      }
+
+      .home-visual-lab-copy {
+        margin-bottom: 22px;
+      }
+
+      .home-visual-lab-copy h2 {
+        font-size: 30px;
+      }
+
+      .home-visual-lab-copy .section-lead {
+        font-size: 17px;
+        line-height: 1.58;
+      }
+
+      .home-visual-lab .visual-card {
+        padding: 10px;
+      }
+
+      .home-visual-lab .visual-card figcaption {
+        padding: 12px 4px 2px;
+        font-size: 13px;
       }
     }
   </style>
@@ -251,7 +343,14 @@
       </div>
     </div>
     <figure class="visual-card hero-visual">
-      <img src="/assets/nsdm_decision_boundary_hero_2.png" alt="NSDM decision boundary visual">
+      <img
+        src="/assets/upscale_nsdm_decision_boundary_primary_2.png"
+        width="4873"
+        height="6049"
+        fetchpriority="high"
+        decoding="async"
+        alt="Portrait illustration of the NSDM decision boundary from perception and reasoning to justified action"
+      >
       <figcaption>The model may be able to answer, recommend or act, but is it justified in doing so?</figcaption>
     </figure>
   </div>
@@ -284,6 +383,25 @@
       <div class="matrix-row"><strong>Controlled response</strong>Answer, generate, recommend, simulate, ask, verify, abstain, refuse or escalate.</div>
     </div>
   </div>
+</section>
+
+<section class="home-visual-lab">
+  <div class="home-visual-lab-copy">
+    <div class="eyebrow">Computational experimentation and visual evidence</div>
+    <h2>Making machine decisions visible.</h2>
+    <p class="section-lead">NSDM uses Python, MATLAB, Wolfram, computer vision, symbolic computation, simulation and animated diagnostics to reveal what a model learned, where its decision boundary lies, how uncertainty changes, and why a proposed action passes or fails its evidence and governance checks.</p>
+  </div>
+  <figure class="visual-card visual-wide">
+    <img
+      src="/assets/nsdm_decision_boundary_hero_2.png"
+      width="1536"
+      height="1024"
+      loading="lazy"
+      decoding="async"
+      alt="Wide NSDM decision-boundary architecture showing evidence, authority, consequence and controlled action pathways"
+    >
+    <figcaption>Visualisations are treated as research artefacts, not decoration. Each graph, animation, scene model or symbolic derivation must connect to an experiment, a dataset, a model version and a claim boundary—showing what is measured, what is inferred and what the result does not prove.</figcaption>
+  </figure>
 </section>
 
 <section>
