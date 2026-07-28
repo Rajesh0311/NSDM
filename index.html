@@ -7,6 +7,211 @@
   <meta name="description" content="NSDM stands for Neurosymbolic Decision Machines: systems that perceive, generate, recommend, simulate and act while checking what their evidence, model of the world, authority and consequences actually justify.">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .home-hero {
+      max-width: var(--max);
+      padding: 72px 24px 40px;
+    }
+
+    .home-hero .hero-grid {
+      grid-template-columns: minmax(0, 1fr) minmax(420px, .96fr);
+      gap: 48px;
+      align-items: center;
+    }
+
+    .home-hero-copy {
+      min-width: 0;
+    }
+
+    .home-hero .eyebrow {
+      max-width: 62ch;
+      margin-bottom: 18px;
+      font-size: 11px;
+      line-height: 1.45;
+      letter-spacing: .13em;
+    }
+
+    .home-hero h1 {
+      max-width: 17ch;
+      margin-bottom: 24px;
+      font-size: clamp(36px, 4.25vw, 56px);
+      line-height: 1.02;
+      letter-spacing: -.05em;
+      text-wrap: balance;
+    }
+
+    .home-hero .lead {
+      max-width: 61ch;
+      margin-bottom: 18px;
+      font-size: 18px;
+      line-height: 1.62;
+    }
+
+    .home-hero .lead + .lead {
+      margin-top: 0;
+    }
+
+    .home-hero .button-row {
+      margin-top: 26px;
+      gap: 12px;
+    }
+
+    .home-hero .button {
+      min-height: 46px;
+      padding: 11px 18px;
+      line-height: 1;
+    }
+
+    .home-hero .hero-visual {
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .home-hero .hero-visual img {
+      min-height: 0;
+      max-height: 590px;
+    }
+
+    .home-hero .visual-card figcaption {
+      padding: 12px 4px 3px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .home-boundaries {
+      max-width: var(--max);
+      padding: 46px 24px 60px;
+    }
+
+    .home-boundaries h2 {
+      max-width: 18ch;
+      margin-bottom: 18px;
+      font-size: clamp(30px, 3.2vw, 42px);
+      line-height: 1.05;
+      letter-spacing: -.04em;
+    }
+
+    .home-boundaries .section-lead {
+      max-width: 66ch;
+      margin-bottom: 30px;
+      font-size: 18px;
+      line-height: 1.62;
+    }
+
+    .home-boundaries .grid {
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .boundary-card {
+      min-height: 100%;
+      padding: 24px;
+    }
+
+    .boundary-card .tag {
+      margin-bottom: 12px;
+      padding: 5px 9px;
+      font-size: 11px;
+      line-height: 1.2;
+      letter-spacing: .08em;
+    }
+
+    .boundary-card h3 {
+      margin-bottom: 11px;
+      font-size: 22px;
+      line-height: 1.16;
+      letter-spacing: -.025em;
+    }
+
+    .boundary-card p {
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    @media (max-width: 980px) {
+      .home-hero {
+        padding-top: 60px;
+        padding-bottom: 34px;
+      }
+
+      .home-hero .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+
+      .home-hero h1 {
+        max-width: 20ch;
+        font-size: clamp(36px, 7vw, 52px);
+      }
+
+      .home-hero .hero-visual {
+        width: 100%;
+        max-width: 760px;
+      }
+
+      .home-boundaries {
+        padding-top: 40px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .home-hero {
+        padding: 48px 20px 28px;
+      }
+
+      .home-hero .eyebrow {
+        margin-bottom: 14px;
+        font-size: 10px;
+      }
+
+      .home-hero h1 {
+        max-width: none;
+        margin-bottom: 20px;
+        font-size: clamp(32px, 10.5vw, 42px);
+        line-height: 1.04;
+        letter-spacing: -.045em;
+      }
+
+      .home-hero .lead {
+        margin-bottom: 15px;
+        font-size: 17px;
+        line-height: 1.58;
+      }
+
+      .home-hero .button-row {
+        margin-top: 22px;
+      }
+
+      .home-hero .button {
+        width: 100%;
+      }
+
+      .home-hero .hero-grid {
+        gap: 28px;
+      }
+
+      .home-boundaries {
+        padding: 36px 20px 48px;
+      }
+
+      .home-boundaries h2 {
+        margin-bottom: 15px;
+        font-size: 30px;
+      }
+
+      .home-boundaries .section-lead {
+        margin-bottom: 24px;
+        font-size: 17px;
+        line-height: 1.58;
+      }
+
+      .boundary-card {
+        padding: 21px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -33,11 +238,11 @@
 
 <main>
 
-<section class="hero wide">
+<section class="hero home-hero">
   <div class="hero-grid">
-    <div>
+    <div class="home-hero-copy">
       <div class="eyebrow">Neurosymbolic Decision Machines · Independent research programme</div>
-      <h1 style="font-size:clamp(32px,3.35vw,50px);line-height:1.05;letter-spacing:-.045em;">Can a system perceive, generate, recommend, simulate and act while knowing what its evidence, model of the world, authority and consequences actually <em>justify?</em></h1>
+      <h1>Can a system perceive, generate, recommend, simulate and act while knowing what its evidence, model of the world, authority and consequences actually <em>justify?</em></h1>
       <p class="lead"><strong>NSDM stands for Neurosymbolic Decision Machines.</strong> We are building AI systems that combine learned pattern recognition with explicit rules, evidence checks, world models, permissions and consequence-aware decisions.</p>
       <p class="lead">In plain English: an AI may be able to see something, create something, suggest something or take an action. NSDM asks whether it has enough trustworthy evidence, understands the situation well enough, has permission to act, and knows what could happen if it is wrong.</p>
       <div class="button-row">
@@ -52,13 +257,13 @@
   </div>
 </section>
 
-<section>
+<section class="home-boundaries">
   <h2>What NSDM actually does</h2>
   <p class="section-lead">Most AI evaluation asks whether a model is accurate, fluent, creative or useful. NSDM asks what must be true before its answer, recommendation, simulation or action should influence a person, product, customer, company or regulated decision.</p>
   <div class="grid">
-    <article class="card"><div class="tag">Boundary 01</div><h3>Evidence-state</h3><p>Does the evidence support the claim, contradict it, fail to support it, or leave a necessary premise missing?</p></article>
-    <article class="card"><div class="tag">Boundary 02</div><h3>Governance-state</h3><p>Is the action allowed, forbidden, ambiguous, outside authority, audit-sensitive, or requiring human review?</p></article>
-    <article class="card"><div class="tag">Boundary 03</div><h3>Action-state</h3><p>Should the system answer, ask for clarification, request more evidence, abstain, refuse, escalate, or block?</p></article>
+    <article class="card boundary-card"><div class="tag">Boundary 01</div><h3>Evidence-state</h3><p>Does the evidence support the claim, contradict it, fail to support it, or leave a necessary premise missing?</p></article>
+    <article class="card boundary-card"><div class="tag">Boundary 02</div><h3>Governance-state</h3><p>Is the action allowed, forbidden, ambiguous, outside authority, audit-sensitive, or requiring human review?</p></article>
+    <article class="card boundary-card"><div class="tag">Boundary 03</div><h3>Action-state</h3><p>Should the system answer, ask for clarification, request more evidence, abstain, refuse, escalate, or block?</p></article>
   </div>
 </section>
 
