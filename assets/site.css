@@ -44,7 +44,7 @@ header {
 }
 
 .nav {
-  max-width: var(--wide);
+  max-width: var(--max);
   margin: 0 auto;
   padding: 18px 24px;
   display: flex;
@@ -60,6 +60,7 @@ header {
   font-weight: 750;
   letter-spacing: -.02em;
   color: var(--ink);
+  flex: 0 0 auto;
 }
 
 .mark {
@@ -72,6 +73,7 @@ header {
   color: var(--bg);
   font-size: 15px;
   font-weight: 800;
+  flex: 0 0 auto;
 }
 
 .links {
@@ -79,7 +81,9 @@ header {
   gap: 16px;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: flex-end;
   font-size: 14px;
+  min-width: 0;
 }
 
 .links a {
@@ -106,7 +110,7 @@ header {
 
 .hero.wide,
 section.wide {
-  max-width: var(--wide);
+  max-width: var(--max);
 }
 
 .hero-grid {
@@ -178,6 +182,7 @@ p { color: var(--muted); }
   border: 1px solid var(--teal);
   background: var(--teal);
   color: white;
+  text-align: center;
 }
 
 .button.secondary {
@@ -218,6 +223,7 @@ section {
   border-radius: 24px;
   padding: 24px;
   box-shadow: var(--shadow);
+  min-width: 0;
 }
 
 .card p {
@@ -248,6 +254,13 @@ section {
   grid-template-columns: .9fr 1.1fr;
   gap: 30px;
   align-items: start;
+  min-width: 0;
+}
+
+.panel > *,
+.hero-grid > *,
+.grid > * {
+  min-width: 0;
 }
 
 .panel h2,
@@ -262,6 +275,7 @@ section {
 .matrix {
   display: grid;
   gap: 12px;
+  min-width: 0;
 }
 
 .matrix-row {
@@ -269,6 +283,7 @@ section {
   border: 1px solid rgba(255,255,255,.22);
   border-radius: 18px;
   padding: 14px 16px;
+  min-width: 0;
 }
 
 .matrix-row strong {
@@ -282,6 +297,8 @@ section {
   border-radius: 24px;
   padding: 14px;
   box-shadow: var(--shadow);
+  min-width: 0;
+  overflow: hidden;
 }
 
 .visual-card img {
@@ -297,7 +314,8 @@ section {
 }
 
 .visual-wide {
-  max-width: var(--wide);
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -319,6 +337,7 @@ section {
   border-radius: 28px;
   padding: 32px;
   box-shadow: var(--shadow);
+  min-width: 0;
 }
 
 .formula-visual {
@@ -363,6 +382,7 @@ section {
   font-weight: 700;
   font-size: 14px;
   text-align: center;
+  min-width: 0;
 }
 
 .result-table {
@@ -446,6 +466,10 @@ section {
   border-bottom: 1px solid var(--line);
 }
 
+.usecase-row > * {
+  min-width: 0;
+}
+
 .usecase-row:last-child {
   border-bottom: 0;
 }
@@ -480,14 +504,39 @@ footer {
   border-top: 1px solid var(--line);
 }
 
+h1,
+h2,
+h3,
+.lead,
+.section-lead,
+.card,
+.matrix-row,
+.method,
+.visual-card figcaption,
+.result-table th,
+.result-table td {
+  overflow-wrap: break-word;
+}
+
 @media (max-width: 980px) {
+  .nav {
+    gap: 16px;
+  }
+
+  .links {
+    gap: 10px 12px;
+  }
+
   .hero-grid,
+  .panel {
+    grid-template-columns: 1fr;
+  }
+
   .grid,
   .grid.two,
   .grid.four,
-  .panel,
   .architecture {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2,minmax(0,1fr));
   }
 
   .formula-key {
@@ -499,23 +548,222 @@ footer {
     max-height: none;
   }
 
-  .nav {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
   .usecase-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: 150px 1fr 1fr;
   }
 
   .result-table {
     display: block;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 760px) {
+  html {
+    scroll-padding-top: 128px;
+  }
+
+  .nav {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 10px;
+  }
+
+  .links {
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 6px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .links a {
+    white-space: nowrap;
+    flex: 0 0 auto;
+  }
+
+  .grid,
+  .grid.two,
+  .grid.four,
+  .architecture,
+  .formula-key,
+  .usecase-row {
+    grid-template-columns: 1fr;
+  }
+
+  .architecture .card {
+    min-height: auto;
+  }
+
+  .button-row {
+    align-items: stretch;
   }
 }
 
 @media (max-width: 620px) {
+  .nav {
+    padding: 12px 18px 10px;
+  }
+
+  .links {
+    width: calc(100% + 36px);
+    margin-left: -18px;
+    margin-right: -18px;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .hero {
+    padding: 48px 18px 28px;
+  }
+
+  section {
+    padding: 34px 18px;
+  }
+
+  footer {
+    padding: 30px 18px 44px;
+  }
+
+  h1 {
+    font-size: clamp(34px,11vw,46px);
+    line-height: 1.02;
+  }
+
+  h2 {
+    font-size: clamp(28px,8vw,36px);
+    line-height: 1.05;
+  }
+
+  .lead {
+    font-size: 18px;
+    margin-bottom: 22px;
+  }
+
+  .section-lead {
+    font-size: 17px;
+    margin-bottom: 24px;
+  }
+
+  .button-row {
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .button {
+    width: 100%;
+    min-height: 46px;
+  }
+
+  .card {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .panel {
+    padding: 22px;
+    border-radius: 22px;
+    gap: 22px;
+  }
+
+  .matrix-row {
+    padding: 13px 14px;
+    border-radius: 15px;
+  }
+
+  .visual-card {
+    padding: 10px;
+    border-radius: 20px;
+  }
+
+  .visual-card img {
+    border-radius: 14px;
+  }
+
+  .visual-card figcaption {
+    padding: 10px 4px 2px;
+  }
+
+  .formula-panel {
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  .formula-visual {
+    margin: 18px 0;
+    padding: 20px 14px;
+    border-radius: 18px;
+  }
+
+  .formula-main {
+    font-size: clamp(22px,7.5vw,30px);
+  }
+
   .formula-key {
-    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .note {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .method {
+    padding-left: 16px;
+  }
+
+  .result-table th,
+  .result-table td {
+    padding: 12px;
+    min-width: 150px;
+  }
+
+  .usecase-row {
+    gap: 10px;
+    padding: 16px 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .nav,
+  .hero,
+  section,
+  footer {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .links {
+    width: calc(100% + 32px);
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  .panel,
+  .formula-panel {
+    padding: 18px;
+  }
+
+  .card {
+    padding: 18px;
   }
 }
