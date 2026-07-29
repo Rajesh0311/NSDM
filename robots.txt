@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://neuro-symbolic-decisions.co.za/sitemap.xml
