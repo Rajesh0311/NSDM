@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Neurosymbolic Decision Machines | NSDM Institute</title>
   <meta name="description" content="NSDM stands for Neurosymbolic Decision Machines: systems that perceive, generate, recommend, simulate and act while checking what their evidence, model of the world, authority and consequences actually justify.">
+  <link rel="canonical" href="https://neuro-symbolic-decisions.co.za/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="NSDM Institute">
+  <meta property="og:title" content="Neurosymbolic Decision Machines | NSDM Institute">
+  <meta property="og:description" content="Research into AI systems that distinguish capability from justified, authorised and consequence-aware action.">
+  <meta property="og:url" content="https://neuro-symbolic-decisions.co.za/">
+  <meta property="og:image" content="https://neuro-symbolic-decisions.co.za/assets/nsdm-boundary-monolith-og-1200x630.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Neurosymbolic Decision Machines | NSDM Institute">
+  <meta name="twitter:description" content="Research into AI systems that distinguish capability from justified, authorised and consequence-aware action.">
+  <meta name="twitter:image" content="https://neuro-symbolic-decisions.co.za/assets/nsdm-boundary-monolith-og-1200x630.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/assets/site.css">
   <style>
@@ -26,9 +39,9 @@
     .home-hero .eyebrow {
       max-width: 62ch;
       margin-bottom: 18px;
-      font-size: 11px;
-      line-height: 1.45;
-      letter-spacing: .13em;
+      font-size: 15px;
+      line-height: 1.4;
+      letter-spacing: .09em;
     }
 
     .home-hero h1 {
@@ -70,9 +83,14 @@
       overflow: hidden;
     }
 
+    .home-hero .hero-visual picture {
+      display: block;
+      width: 100%;
+    }
+
     .home-hero .hero-visual img {
       width: 100%;
-      aspect-ratio: 1600 / 1986;
+      aspect-ratio: 4 / 5;
       min-height: 0;
       max-height: 590px;
       object-fit: contain;
@@ -239,7 +257,7 @@
 
       .home-hero .eyebrow {
         margin-bottom: 14px;
-        font-size: 10px;
+        font-size: 12px;
       }
 
       .home-hero h1 {
@@ -324,7 +342,7 @@
 <header>
   <nav class="nav">
     <a class="brand" href="/index.html">
-      <span class="mark">N</span>
+      <span class="mark"><img src="/assets/nsdm-boundary-monolith-reversed.svg" width="24" height="24" alt="" aria-hidden="true"></span>
       <span>NSDM Institute</span>
     </a>
     <div class="links">
@@ -356,15 +374,22 @@
         <a class="button secondary" href="/papers.html">View papers</a>
       </div>
     </div>
-    <figure class="visual-card hero-visual">
-      <img
-        src="/assets/nsdm_decision_boundary_primary_1600.webp"
-        width="1600"
-        height="1986"
-        fetchpriority="high"
-        decoding="async"
-        alt="Portrait illustration of the NSDM decision boundary from perception and reasoning to justified action"
-      >
+    <figure class="visual-card hero-visual">      <picture>
+        <source
+          media="(max-width: 620px)"
+          srcset="/assets/nsdm-hero-boundary-mobile-1500.webp"
+          width="1500"
+          height="2000"
+        >
+        <img
+          src="/assets/nsdm-hero-boundary-1600.webp"
+          width="1600"
+          height="2000"
+          fetchpriority="high"
+          decoding="async"
+          alt="NSDM evidence and governance states evaluated at a justification boundary before admissible action"
+        >
+      </picture>
       <figcaption>The model may be able to answer, recommend or act, but is it justified in doing so?</figcaption>
     </figure>
   </div>
@@ -407,12 +432,12 @@
   </div>
   <figure class="visual-card visual-wide">
     <img
-      src="/assets/nsdm_decision_boundary_hero_2.png"
-      width="1536"
-      height="1024"
+      src="/assets/nsdm-decision-boundary-publication-2400.webp"
+      width="2400"
+      height="1600"
       loading="lazy"
       decoding="async"
-      alt="Wide NSDM decision-boundary architecture showing evidence, authority, consequence and controlled action pathways"
+      alt="NSDM evidence, governance and consequence states routing through a justification boundary to admissible or non-admissible actions"
     >
     <figcaption>Visualisations are treated as research artefacts, not decoration. Each graph, animation, scene model or symbolic derivation must connect to an experiment, a dataset, a model version and a claim boundary—showing what is measured, what is inferred and what the result does not prove.</figcaption>
   </figure>
