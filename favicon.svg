@@ -1,5 +1,1 @@
-﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#01696f"/>
-  <path d="M15 47 32 15l17 32" fill="none" stroke="#f7f6f2" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="32" cy="38" r="6" fill="#f7f6f2"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="NSDM Boundary Monolith favicon"><title>NSDM Boundary Monolith favicon</title><g transform="translate(10 10) scale(.92)"><path d="M20 28Q20 18 30 18h62q11 0 11 11v46L84 59q-4-4-12-4H20Zm0 42h50q7 0 13 6l29 31q6 6 6 16v17L20 207Zm0 154 98-67v69q0 10-10 10H30q-10 0-10-10Z" fill="#01696F" fill-rule="evenodd"/><path d="M138 47q0-17 16-23h36q10 0 17-8l15-16h14v83l-98 68Zm0 121 98-68v126q0 10-10 10h-78q-10 0-10-10Z" fill="#01696F" fill-rule="evenodd"/><path d="M126 109q9 15 5 34-1 9-7 22 5-18-3-29-5-13 1-25 2-3 4-2Z" fill="#D99B42"/></g></svg>
