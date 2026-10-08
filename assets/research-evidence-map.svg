@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc"><title id="title">A research map for justified AI execution</title><desc id="desc">Human context and source evidence inform NSDM decision boundaries. Candidate decisions enter ACE execution checks. Failures require review. Measured outcomes feed a versioned research record and a new test.</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10" fill="#01696f"/></marker></defs>
+<rect width="1440" height="900" rx="24" fill="#f7f6f2"/>
+<g font-family="Arial, sans-serif" fill="#102326">
+<text x="64" y="70" font-size="17" letter-spacing="3" fill="#01696f">NSDM × ACE · CONCEPTUAL RESEARCH MAP</text>
+<text x="64" y="125" font-size="37">What justifies it? What preserves it?</text>
+<text x="64" y="166" font-size="20">Distinct disciplines meet at an inspectable execution record.</text>
+<g fill="none" stroke="#01696f" stroke-width="3" marker-end="url(#arrow)">
+<path d="M350 300 H425"/><path d="M350 485 H390 V355 H425"/>
+<path d="M810 340 H900"/><path d="M1095 460 V550"/>
+<path d="M615 460 V550"/><path d="M1095 670 V735 H815"/>
+<path d="M505 785 H160 V560" stroke-dasharray="8 7"/>
+</g>
+<g stroke="#01696f" stroke-width="1.5">
+<rect x="64" y="235" width="285" height="150" rx="14" fill="#fff"/>
+<rect x="64" y="415" width="285" height="145" rx="14" fill="#fff"/>
+<rect x="425" y="235" width="385" height="225" rx="14" fill="#102326" stroke="#102326"/>
+<rect x="900" y="235" width="385" height="225" rx="14" fill="#fff"/>
+<rect x="425" y="550" width="385" height="120" rx="14" fill="#fff" stroke="#d99b42"/>
+<rect x="900" y="550" width="385" height="120" rx="14" fill="#fff"/>
+<rect x="505" y="735" width="310" height="100" rx="14" fill="#fff"/>
+</g>
+<text x="86" y="270" font-size="23" font-weight="bold">Human context</text>
+<text x="86" y="308" font-size="19">Purpose · consent · population</text><text x="86" y="340" font-size="19">Behaviour ≠ inferred intent</text>
+<text x="86" y="452" font-size="23" font-weight="bold">Source evidence</text>
+<text x="86" y="490" font-size="19">Premises · dates · provenance</text><text x="86" y="522" font-size="19">Contradictions and gaps</text>
+<g fill="#f7f6f2"><text x="452" y="276" font-size="24" font-weight="bold">NSDM · decision boundary</text><text x="452" y="322" font-size="20">Sufficiency · uncertainty</text><text x="452" y="357" font-size="20">Authority · consequence</text><text x="452" y="400" font-size="20">Candidate action or deferral</text></g>
+<text x="926" y="276" font-size="24" font-weight="bold">ACE · execution checks</text><text x="926" y="322" font-size="20">Semantics · request lifecycle</text><text x="926" y="357" font-size="20">Resources · actor permissions</text><text x="926" y="400" font-size="20">Hardware and toolchain provenance</text>
+<text x="451" y="587" font-size="22" font-weight="bold">Insufficient or failed check</text><text x="451" y="628" font-size="19">Review · abstain · correct · retest</text>
+<text x="927" y="587" font-size="22" font-weight="bold">Measured outcome</text><text x="927" y="628" font-size="19">Validity · service limits · useful cost</text>
+<text x="530" y="771" font-size="22" font-weight="bold">Versioned research record</text><text x="530" y="806" font-size="18">New question; new frozen test</text>
+<text x="64" y="873" font-size="17" fill="#52686a">Conceptual relationships only. No end-to-end implementation, performance or alignment claim.</text>
+</g></svg>

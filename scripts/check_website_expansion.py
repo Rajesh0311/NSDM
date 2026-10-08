@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE = 'c89ce28e537fab0678bc8e4e9f232fd4720c3271'
 CHANGED = ['index.html', 'papers.html', 'research.html', 'use-cases.html',
            'verticals.html', 'governance.html', 'tools.html']
-NEW = ['architecture.html', 'evidence.html', 'frontier.html']
+NEW = ['architecture.html', 'evidence.html', 'frontier.html', 'programme.html', 'primers.html']
 
 class Page(HTMLParser):
     def __init__(self, text):
