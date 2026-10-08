@@ -2,3 +2,21 @@ dist/
 node_modules/
 .env
 .DS_Store
+
+# Private working material belongs in a separate private repository.
+.env.*
+!.env.example
+!.env.sample
+private/
+confidential/
+proposals/
+customer-data/
+client-data/
+credentials/
+secrets/
+**/*Residency_Proposal*
+*.pem
+*.key
+*.p12
+*.pfx
+*.kdbx

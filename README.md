@@ -201,3 +201,9 @@ A trustworthy AI system should be able to say:
 - This action depends on unclear authority.
 
 That is the foundation of NSDM.
+
+## Public publication boundary
+
+This is the public website and released research dossier. Commercial implementation, customer data and operational records belong in the private development repository. See [the publication boundary](PUBLICATION_BOUNDARY.md).
+
+Before pushing a public release, run `python scripts/check_public_release.py`. Its inventory and selected credential checks supplement manual review; they do not remove historical exposure or certify every changed file.
