@@ -7,7 +7,7 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-policy = json.loads((ROOT / ".public-release.json").read_text())
+policy = json.loads((ROOT / ".public-release.json").read_text(encoding="utf-8"))
 tracked = subprocess.check_output(["git", "ls-files", "-z"], cwd=ROOT).decode().split("\0")
 approved = set(policy["approved_paths"])
 errors = []
@@ -35,7 +35,10 @@ for name in filter(None, tracked):
         if pattern.search(data):
             errors.append(f"{name}: possible {label}; inspect privately")
     expected = policy.get("frozen_private_record_stubs", {}).get(name)
-    if expected and hashlib.sha256(data).hexdigest() != expected:
+    # Git may check Markdown out as CRLF on Windows. Freeze the notice
+    # content while accepting that checkout-only newline conversion.
+    stub_data = data.replace(b"\r\n", b"\n")
+    if expected and hashlib.sha256(stub_data).hexdigest() != expected:
         errors.append(f"{name}: private operational record must not be republished")
 if errors:
     print("\n".join(errors))
