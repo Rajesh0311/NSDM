@@ -1,0 +1,65 @@
+{
+  "date": "2026-11-26",
+  "author": "Rajesh Singh",
+  "status": "Author-approved independent working research; not peer-reviewed",
+  "evidence_commit": "86e891946b7b86fac53343702f415ce718454e02",
+  "items": [
+    {
+      "title": "Observation Cost and Incomplete Decisions",
+      "route": "observation-cost.html",
+      "kind": "Working paper v0.1",
+      "manuscript": "publications/ace-2026-11-26/01_Observation_Cost_and_Incomplete_Decisions.md",
+      "pdf": "publications/ACE-2026-11-26-Observation-Cost-v0.1.pdf",
+      "evidence_url": "https://github.com/Rajesh0311/accelerated-computing-engineering/tree/86e891946b7b86fac53343702f415ce718454e02/publications/weekly/2026-11-26",
+      "source_manuscript": "https://github.com/Rajesh0311/accelerated-computing-engineering/blob/86e891946b7b86fac53343702f415ce718454e02/publications/weekly/2026-11-26/manuscripts/01_Observation_Cost_and_Incomplete_Decisions.md",
+      "html_sha256": "0618e5539040597ac6fd6935297771beddfbf253003c2906a5851a387b54036e",
+      "manuscript_sha256": "d6321b6ddd6f8fc520ee70fc1fa41083ca7f8a5a749d23f37e515f5296022c04",
+      "pdf_sha256": "83ce41ef2cd3f4040fb6d14b9051344b933f4543854f9d4a7f5462a86d34ee18"
+    },
+    {
+      "title": "Preserving UNKNOWN in Decision Scores",
+      "route": "preserving-unknown.html",
+      "kind": "Technical case study v0.1",
+      "manuscript": "publications/ace-2026-11-26/02_Preserving_Unknown_in_Decision_Scores.md",
+      "pdf": "publications/ACE-2026-11-26-Preserving-Unknown-v0.1.pdf",
+      "evidence_url": "https://github.com/Rajesh0311/accelerated-computing-engineering/tree/86e891946b7b86fac53343702f415ce718454e02/publications/weekly/2026-11-26",
+      "source_manuscript": "https://github.com/Rajesh0311/accelerated-computing-engineering/blob/86e891946b7b86fac53343702f415ce718454e02/publications/weekly/2026-11-26/manuscripts/02_Preserving_Unknown_in_Decision_Scores.md",
+      "html_sha256": "078e9105fec809f2f63e6b4af4d4a2436f8e02aedd198294080cf026a3873beb",
+      "manuscript_sha256": "ebfb735e2814cc081bf6916413349509bf98e3d997aea643094847e7e3b5e6b6",
+      "pdf_sha256": "8de80257812e2071b945f125375e00fee6f258c511008fc229fc9d82c8e62359"
+    },
+    {
+      "title": "The Machine Has to Earn Its Speed",
+      "route": "machine-earns-speed.html",
+      "kind": "The NeuroAlchemist | Essay",
+      "manuscript": "publications/ace-2026-11-26/01_The_Machine_Has_to_Earn_Its_Speed.md",
+      "pdf": null,
+      "evidence_url": "https://github.com/Rajesh0311/accelerated-computing-engineering/tree/86e891946b7b86fac53343702f415ce718454e02/publications/weekly/2026-11-26",
+      "source_manuscript": "https://github.com/Rajesh0311/accelerated-computing-engineering/blob/86e891946b7b86fac53343702f415ce718454e02/publications/weekly/2026-11-26/manuscripts/01_The_Machine_Has_to_Earn_Its_Speed.md",
+      "html_sha256": "cd7b7fa849a216243ff5f825b3c6579411b152d25b6338d2de777b44fc9623fc",
+      "manuscript_sha256": "7abfeca85ff2465d90ae976ff6d37ca402aaafac1b60792b7d1000fe88c723d9"
+    },
+    {
+      "title": "The Cheapest Answer Left the Question Open",
+      "route": "cheapest-answer-open.html",
+      "kind": "The NeuroAlchemist | Essay",
+      "manuscript": "publications/ace-2026-11-26/02_The_Cheapest_Answer_Left_the_Question_Open.md",
+      "pdf": null,
+      "evidence_url": "https://github.com/Rajesh0311/accelerated-computing-engineering/tree/86e891946b7b86fac53343702f415ce718454e02/publications/weekly/2026-11-26",
+      "source_manuscript": "https://github.com/Rajesh0311/accelerated-computing-engineering/blob/86e891946b7b86fac53343702f415ce718454e02/publications/weekly/2026-11-26/manuscripts/02_The_Cheapest_Answer_Left_the_Question_Open.md",
+      "html_sha256": "0ea63e738a8e52e0a55aaee046b9d74807ddfe9062302125b6a493af5a11bcd5",
+      "manuscript_sha256": "8a4de018f39991432d1acd14e219ea9c36b67b9d7cbe9d12f59be9c287b13416"
+    },
+    {
+      "title": "When Unknown Scored 103",
+      "route": "unknown-scored-103.html",
+      "kind": "The NeuroAlchemist | Essay",
+      "manuscript": "publications/ace-2026-11-26/03_When_Unknown_Scored_103.md",
+      "pdf": null,
+      "evidence_url": "https://github.com/Rajesh0311/accelerated-computing-engineering/tree/86e891946b7b86fac53343702f415ce718454e02/publications/weekly/2026-11-26",
+      "source_manuscript": "https://github.com/Rajesh0311/accelerated-computing-engineering/blob/86e891946b7b86fac53343702f415ce718454e02/publications/weekly/2026-11-26/manuscripts/03_When_Unknown_Scored_103.md",
+      "html_sha256": "9e65c4048013122565c0f938f7b50361d22a072ed923beaaf16250b960aa9313",
+      "manuscript_sha256": "e6f09044f1e707bf90fa01fc8b9b9cec779ae679f61c758524cf3f0233c57a5c"
+    }
+  ]
+}
